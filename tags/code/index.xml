@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>code on Clarity</title>
+    <title>code on vCoffee.cloud Blog</title>
     <link>https://adeleporte.github.io/tags/code/</link>
-    <description>Recent content in code on Clarity</description>
+    <description>Recent content in code on vCoffee.cloud Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Fri, 15 Jan 2021 15:01:14 +0100</lastBuildDate><atom:link href="https://adeleporte.github.io/tags/code/index.xml" rel="self" type="application/rss+xml" />
