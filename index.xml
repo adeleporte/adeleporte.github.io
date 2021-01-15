@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>vCoffee</title>
-    <link>https://adeleporte.github.io/</link>
-    <description>Recent content on vCoffee</description>
+    <title>Clarity</title>
+    <link>https://example.com/</link>
+    <description>Recent content on Clarity</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 15 Jan 2021 15:01:14 +0100</lastBuildDate><atom:link href="https://adeleporte.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 15 Jan 2021 15:01:14 +0100</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VeloCloud Terraform Provider published on Hashicorp registry!</title>
-      <link>https://adeleporte.github.io/posts/my-first-post/</link>
+      <link>https://example.com/posts/my-first-post/</link>
       <pubDate>Fri, 15 Jan 2021 15:01:14 +0100</pubDate>
       
-      <guid>https://adeleporte.github.io/posts/my-first-post/</guid>
+      <guid>https://example.com/posts/my-first-post/</guid>
       <description>
         
           &lt;p&gt;My Terraform provider for VeloCloud is now available on the official Terraform registry. Checkout &lt;a href=&#34;https://registry.terraform.io/providers/adeleporte/velocloud/latest&#34;&gt;https://registry.terraform.io/providers/adeleporte/velocloud/latest&lt;/a&gt;&lt;/p&gt;
@@ -51,21 +51,34 @@
 &lt;li&gt;VCO installation&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Start trying the provider with:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-hcl&#34; data-lang=&#34;hcl&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;terraform&lt;/span&gt; {
-  &lt;span style=&#34;color:#66d9ef&#34;&gt;required_providers&lt;/span&gt; {
-    velocloud   &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
-      source    &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;adeleporte/velocloud&amp;#34;&lt;/span&gt;
-      version   &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0.2.9&amp;#34;&lt;/span&gt;
-    }
-  }
-}
-
- 
-&lt;span style=&#34;color:#66d9ef&#34;&gt;provider&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;velocloud&amp;#34;&lt;/span&gt; {&lt;span style=&#34;color:#75715e&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;  # Configuration options
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-hcl&#34; data-lang=&#34;hcl&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;terraform&lt;/span&gt; {
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;required_providers&lt;/span&gt; {
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;    velocloud&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; {
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;      source&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;adeleporte/velocloud&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;      version&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0.2.9&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;    }
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;  }
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;}
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;provider&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;velocloud&amp;#34;&lt;/span&gt; {&lt;span class=&#34;c1&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;  # Configuration options
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And learn how to use it with &lt;a href=&#34;https://registry.terraform.io/providers/adeleporte/velocloud/latest/docs&#34;&gt;https://registry.terraform.io/providers/adeleporte/velocloud/latest/docs&lt;/a&gt;&lt;/p&gt;
-
+&lt;h2 id=&#34;code-blocks&#34;&gt;Code Blocks&lt;/h2&gt;
+&lt;h4 id=&#34;code-block-with-backticks&#34;&gt;Code block with backticks&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;!doctype html&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;lang&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;charset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;utf-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Example HTML5 Document&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Test&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- this line is extraneous 2Error from server (Forbidden): deployments.apps is forbidden: User &amp;#34;chiptest&amp;#34; cannot create resource &amp;#34;deployments&amp;#34; in API group &amp;#34;apps&amp;#34; in the namespace &amp;#34;default&amp;#34; --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         
       </description>
     </item>
