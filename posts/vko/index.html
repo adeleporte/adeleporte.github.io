@@ -638,35 +638,32 @@ So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my ap
 </span><span class="ln">13</span><span class="w">    </span><span class="nt">service-group</span><span class="p">:</span><span class="w"> </span><span class="l">PRIVATE_WIRED</span><span class="w">
 </span><span class="ln">14</span><span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l">low</span><span class="w">
 </span><span class="ln">15</span><span class="w">    </span><span class="nt">bandwidth-limit</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
-</span><span class="ln">16</span><span class="w">
-</span><span class="ln">17</span><span class="w"></span><span class="l">adeleporte@adeleporte-a01 ns1 % kubectl apply -f velocloud.yaml --namespace ns1</span><span class="w">
-</span><span class="ln">18</span><span class="w"></span><span class="l">velocloudbp.vcn.cloud/velokube1 unchanged</span><span class="w">
-</span><span class="ln">19</span><span class="w"></span><span class="l">velocloudbp.vcn.cloud/velokube2 configured</span><span class="w">
-</span><span class="ln">20</span><span class="w"></span><span class="l">adeleporte@adeleporte-a01 ns1 %</span><span class="w">
-</span><span class="ln">21</span><span class="w">
-</span><span class="ln">22</span><span class="w"></span><span class="l">Set some limits to devs</span><span class="w">
-</span><span class="ln">23</span><span class="w"></span><span class="l">Now, let’s imagine that I want to change the bandwidth limit to 75%</span><span class="w">
-</span><span class="ln">24</span><span class="w">
-</span><span class="ln">25</span><span class="w"></span><span class="nn">---</span><span class="w">
-</span><span class="ln">26</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">vcn.cloud/v1</span><span class="w">
-</span><span class="ln">27</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">VelocloudBP</span><span class="w">
-</span><span class="ln">28</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="ln">29</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2</span><span class="w">
-</span><span class="ln">30</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="ln">31</span><span class="w">    </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l">Quick Start Profile</span><span class="w">
-</span><span class="ln">32</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2</span><span class="w">
-</span><span class="ln">33</span><span class="w">    </span><span class="nt">fqdn</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2.vcn.cloud</span><span class="w">
-</span><span class="ln">34</span><span class="w">    </span><span class="nt">dport</span><span class="p">:</span><span class="w"> </span><span class="m">443</span><span class="w">
-</span><span class="ln">35</span><span class="w">    </span><span class="nt">service-class</span><span class="p">:</span><span class="w"> </span><span class="l">realtime</span><span class="w">
-</span><span class="ln">36</span><span class="w">    </span><span class="nt">link-policy</span><span class="p">:</span><span class="w"> </span><span class="l">fixed</span><span class="w">
-</span><span class="ln">37</span><span class="w">    </span><span class="nt">service-group</span><span class="p">:</span><span class="w"> </span><span class="l">PRIVATE_WIRED</span><span class="w">
-</span><span class="ln">38</span><span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l">low</span><span class="w">
-</span><span class="ln">39</span><span class="w">    </span><span class="nt">bandwidth-limit</span><span class="p">:</span><span class="w"> </span><span class="m">75</span><span class="w">
-</span><span class="ln">40</span><span class="w">
-</span><span class="ln">41</span><span class="w"></span><span class="l">velocloudbp.vcn.cloud/velokube1 unchanged</span><span class="w">
-</span><span class="ln">42</span><span class="w"></span><span class="l">The VelocloudBP &#34;velokube2&#34; is invalid: spec.bandwidth-limit: Invalid value: 50: spec.bandwidth-limit in body should be less than or equal to 50</span><span class="w">
-</span><span class="ln">43</span><span class="w"></span><span class="l">adeleporte@adeleporte-a01 ns1 %</span><span class="w">
-</span></code></pre></div><p>As a developer, I’m not allowed to set more than 50% of bandwidth, because this limit has been set by the infra team when defining the CRD.</p>
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>
+<span class="ln">2</span>adeleporte@adeleporte-a01 ns1 % kubectl apply -f velocloud.yaml --namespace ns1
+<span class="ln">3</span>velocloudbp.vcn.cloud/velokube1 unchanged
+<span class="ln">4</span>velocloudbp.vcn.cloud/velokube2 configured
+<span class="ln">5</span>adeleporte@adeleporte-a01 ns1 %
+</code></pre></div><p>Set some limits to devs
+Now, let’s imagine that I want to change the bandwidth limit to 75%</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="ln"> 1</span><span class="nn">---</span><span class="w">
+</span><span class="ln"> 2</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">vcn.cloud/v1</span><span class="w">
+</span><span class="ln"> 3</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">VelocloudBP</span><span class="w">
+</span><span class="ln"> 4</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 5</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2</span><span class="w">
+</span><span class="ln"> 6</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 7</span><span class="w">    </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l">Quick Start Profile</span><span class="w">
+</span><span class="ln"> 8</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2</span><span class="w">
+</span><span class="ln"> 9</span><span class="w">    </span><span class="nt">fqdn</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2.vcn.cloud</span><span class="w">
+</span><span class="ln">10</span><span class="w">    </span><span class="nt">dport</span><span class="p">:</span><span class="w"> </span><span class="m">443</span><span class="w">
+</span><span class="ln">11</span><span class="w">    </span><span class="nt">service-class</span><span class="p">:</span><span class="w"> </span><span class="l">realtime</span><span class="w">
+</span><span class="ln">12</span><span class="w">    </span><span class="nt">link-policy</span><span class="p">:</span><span class="w"> </span><span class="l">fixed</span><span class="w">
+</span><span class="ln">13</span><span class="w">    </span><span class="nt">service-group</span><span class="p">:</span><span class="w"> </span><span class="l">PRIVATE_WIRED</span><span class="w">
+</span><span class="ln">14</span><span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l">low</span><span class="w">
+</span><span class="ln">15</span><span class="w">    </span><span class="nt">bandwidth-limit</span><span class="p">:</span><span class="w"> </span><span class="m">75</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>velocloudbp.vcn.cloud/velokube1 unchanged
+<span class="ln">2</span>The VelocloudBP <span class="s2">&#34;velokube2&#34;</span> is invalid: spec.bandwidth-limit: Invalid value: 50: spec.bandwidth-limit in body should be less than or equal to <span class="m">50</span>
+<span class="ln">3</span>adeleporte@adeleporte-a01 ns1 %
+</code></pre></div><p>As a developer, I’m not allowed to set more than 50% of bandwidth, because this limit has been set by the infra team when defining the CRD.</p>
 <p>As a result, the infra team can define very specific limit for each namespace and developers are free to set the Velocloud configutation within these limit.</p>
 <h1 id="conclusion">Conclusion</h1>
 <p>I hope that this post will give you some insights about what can be achieved when integrating such great solutions together, like Velocloud and Kubernetes. The infra/network/wan teams can now work together with the dev team to align infrastructure needs and business/dev agility.</p>
