@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>velocloud on vCoffee</title>
+    <link>https://adeleporte.github.io/tags/velocloud/</link>
+    <description>Recent content in velocloud on vCoffee</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Jan 2021 15:01:14 +0100</lastBuildDate><atom:link href="https://adeleporte.github.io/tags/velocloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VeloCloud Terraform Provider published on Hashicorp registry!</title>
+      <link>https://adeleporte.github.io/posts/my-first-post/</link>
+      <pubDate>Fri, 15 Jan 2021 15:01:14 +0100</pubDate>
+      
+      <guid>https://adeleporte.github.io/posts/my-first-post/</guid>
+      <description>
+        
+          &lt;p&gt;My Terraform provider for VeloCloud is now available on the official Terraform registry. Checkout &lt;a href=&#34;https://registry.terraform.io/providers/adeleporte/velocloud/latest&#34;&gt;https://registry.terraform.io/providers/adeleporte/velocloud/latest&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For me, it was the opportunity to learn more about:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;signing some code&lt;/li&gt;
+&lt;li&gt;managing the GitHub release process&lt;/li&gt;
+&lt;li&gt;using go-releaser&lt;/li&gt;
+&lt;li&gt;documenting the code with Terraform syntax&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The provider is published as a community provider, so with no official VMware support.&lt;/p&gt;
+&lt;p&gt;By the way, as of today, it enables:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the creation/update/deletion of Edges&lt;/li&gt;
+&lt;li&gt;the creation/update/deletion of Address Groups&lt;/li&gt;
+&lt;li&gt;the creation/update/deletion of Port Groups&lt;/li&gt;
+&lt;li&gt;the management of Business Policies&lt;/li&gt;
+&lt;li&gt;the management of Firewall Rules&lt;/li&gt;
+&lt;li&gt;the management of Interface Settings within the Device Settings module&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Some datasources are also available:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Existing Port Group&lt;/li&gt;
+&lt;li&gt;Existing Address Group&lt;/li&gt;
+&lt;li&gt;Existing Profile&lt;/li&gt;
+&lt;li&gt;Existing Edge&lt;/li&gt;
+&lt;li&gt;Map an application&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Future release will include Operator-level operations, like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the creation/update/deletion of Enterprises&lt;/li&gt;
+&lt;li&gt;the creation/update/deletion of Gateways&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;and day-0 operations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;VCO installation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Start trying the provider with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-hcl&#34; data-lang=&#34;hcl&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;terraform&lt;/span&gt; {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;required_providers&lt;/span&gt; {
+    velocloud   &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+      source    &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;adeleporte/velocloud&amp;#34;&lt;/span&gt;
+      version   &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0.2.9&amp;#34;&lt;/span&gt;
+    }
+  }
+}
+
+ 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;provider&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;velocloud&amp;#34;&lt;/span&gt; {&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;  # Configuration options
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And learn how to use it with &lt;a href=&#34;https://registry.terraform.io/providers/adeleporte/velocloud/latest/docs&#34;&gt;https://registry.terraform.io/providers/adeleporte/velocloud/latest/docs&lt;/a&gt;&lt;/p&gt;
+
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
