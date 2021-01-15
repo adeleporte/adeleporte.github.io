@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>velocloud on Clarity</title>
-    <link>https://example.com/tags/velocloud/</link>
+    <link>https://adeleporte.github.io/tags/velocloud/</link>
     <description>Recent content in velocloud on Clarity</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Fri, 15 Jan 2021 15:01:14 +0100</lastBuildDate><atom:link href="https://example.com/tags/velocloud/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Jan 2021 15:01:14 +0100</lastBuildDate><atom:link href="https://adeleporte.github.io/tags/velocloud/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VeloCloud Terraform Provider published on Hashicorp registry!</title>
-      <link>https://example.com/posts/my-first-post/</link>
+      <link>https://adeleporte.github.io/posts/my-first-post/</link>
       <pubDate>Fri, 15 Jan 2021 15:01:14 +0100</pubDate>
       
-      <guid>https://example.com/posts/my-first-post/</guid>
+      <guid>https://adeleporte.github.io/posts/my-first-post/</guid>
       <description>
         
           &lt;p&gt;My Terraform provider for VeloCloud is now available on the official Terraform registry. Checkout &lt;a href=&#34;https://registry.terraform.io/providers/adeleporte/velocloud/latest&#34;&gt;https://registry.terraform.io/providers/adeleporte/velocloud/latest&lt;/a&gt;&lt;/p&gt;
