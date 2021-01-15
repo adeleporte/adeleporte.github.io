@@ -393,13 +393,15 @@ Now, let’s start coding a very basic Velocloud CRD in a crd.yaml file:&lt;/p&g
 &lt;span class=&#34;ln&#34;&gt;162&lt;/span&gt; 
 &lt;span class=&#34;ln&#34;&gt;163&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;event_loop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The code is written is Python. The interesting parts are:&lt;/p&gt;
-&lt;p&gt;we use a Stream Request to watch at velocloudbps events (/apis/vcn.cloud/v1/namespaces/{}/velocloudbps?watch=true)
-this socket acts as a loop and generate a line for each event
-when a new event arises, we decode the details (obj = json.loads(line))
-depending of the type of changes (creation/modification/deletion) (obj[‘type’]), we use a different Python function
-the Velocloud Business Profile is stored inside a Configuration module (the profile) and a Qos module (the business policies), so we have a implement some code to fetch these values
-in case of creation, we copy the default QoS rule, change some parameters according to the CRD, and update the QoS module
-This code is copied in a Python container and uploaded to docker hub. Here is the docker file to generate the adeleporte/velokube container:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;we use a Stream Request to watch at velocloudbps events (/apis/vcn.cloud/v1/namespaces/{}/velocloudbps?watch=true)&lt;/li&gt;
+&lt;li&gt;this socket acts as a loop and generate a line for each event&lt;/li&gt;
+&lt;li&gt;when a new event arises, we decode the details (obj = json.loads(line))&lt;/li&gt;
+&lt;li&gt;depending of the type of changes (creation/modification/deletion) (obj[‘type’]), we use a different Python function&lt;/li&gt;
+&lt;li&gt;the Velocloud Business Profile is stored inside a Configuration module (the profile) and a Qos module (the business policies), so we have a implement some code to fetch these values&lt;/li&gt;
+&lt;li&gt;in case of creation, we copy the default QoS rule, change some parameters according to the CRD, and update the QoS module&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This code is copied in a Python container and uploaded to docker hub. Here is the docker file to generate the adeleporte/velokube container:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;FROM python:latest
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;RUN pip install requests
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;COPY operator/main.py /main.py
@@ -462,7 +464,8 @@ This code is copied in a Python container and uploaded to docker hub. Here is th
 &lt;span class=&#34;ln&#34;&gt;55&lt;/span&gt;2020-07-21 13:14:51,674 Starting the service
 &lt;span class=&#34;ln&#34;&gt;56&lt;/span&gt;adeleporte@adeleporte-a01 ns1 %
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;using-the-velocloud-kubernetes-operator&#34;&gt;Using the Velocloud Kubernetes Operator&lt;/h1&gt;
-&lt;p&gt;Everything is done! Let’s test our new Velocloud Kubernetes Operator 😉 So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my application manifest:&lt;/p&gt;
+&lt;p&gt;Everything is done! Let’s test our new Velocloud Kubernetes Operator 😉
+So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my application manifest:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nn&#34;&gt;---&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;apiVersion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;vcn.cloud/v1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;kind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;VelocloudBP&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;

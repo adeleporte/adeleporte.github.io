@@ -495,13 +495,15 @@ Now, let’s start coding a very basic Velocloud CRD in a crd.yaml file:</p>
 <span class="ln">162</span> 
 <span class="ln">163</span><span class="n">event_loop</span><span class="p">()</span>
 </code></pre></div><p>The code is written is Python. The interesting parts are:</p>
-<p>we use a Stream Request to watch at velocloudbps events (/apis/vcn.cloud/v1/namespaces/{}/velocloudbps?watch=true)
-this socket acts as a loop and generate a line for each event
-when a new event arises, we decode the details (obj = json.loads(line))
-depending of the type of changes (creation/modification/deletion) (obj[‘type’]), we use a different Python function
-the Velocloud Business Profile is stored inside a Configuration module (the profile) and a Qos module (the business policies), so we have a implement some code to fetch these values
-in case of creation, we copy the default QoS rule, change some parameters according to the CRD, and update the QoS module
-This code is copied in a Python container and uploaded to docker hub. Here is the docker file to generate the adeleporte/velokube container:</p>
+<ul>
+<li>we use a Stream Request to watch at velocloudbps events (/apis/vcn.cloud/v1/namespaces/{}/velocloudbps?watch=true)</li>
+<li>this socket acts as a loop and generate a line for each event</li>
+<li>when a new event arises, we decode the details (obj = json.loads(line))</li>
+<li>depending of the type of changes (creation/modification/deletion) (obj[‘type’]), we use a different Python function</li>
+<li>the Velocloud Business Profile is stored inside a Configuration module (the profile) and a Qos module (the business policies), so we have a implement some code to fetch these values</li>
+<li>in case of creation, we copy the default QoS rule, change some parameters according to the CRD, and update the QoS module</li>
+</ul>
+<p>This code is copied in a Python container and uploaded to docker hub. Here is the docker file to generate the adeleporte/velokube container:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>FROM python:latest
 <span class="ln">2</span>RUN pip install requests
 <span class="ln">3</span>COPY operator/main.py /main.py
@@ -564,7 +566,8 @@ This code is copied in a Python container and uploaded to docker hub. Here is th
 <span class="ln">55</span>2020-07-21 13:14:51,674 Starting the service
 <span class="ln">56</span>adeleporte@adeleporte-a01 ns1 %
 </code></pre></div><h1 id="using-the-velocloud-kubernetes-operator">Using the Velocloud Kubernetes Operator</h1>
-<p>Everything is done! Let’s test our new Velocloud Kubernetes Operator 😉 So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my application manifest:</p>
+<p>Everything is done! Let’s test our new Velocloud Kubernetes Operator 😉
+So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my application manifest:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="ln"> 1</span><span class="nn">---</span><span class="w">
 </span><span class="ln"> 2</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">vcn.cloud/v1</span><span class="w">
 </span><span class="ln"> 3</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">VelocloudBP</span><span class="w">
@@ -684,7 +687,7 @@ This code is copied in a Python container and uploaded to docker hub. Here is th
     
       <h2>Antoine Deleporte and Jean-Bernard Fontenette</h2>
       <div>
-        Technologists, perpetual student, sometimes teacher, continual incremental improvement.
+        Technologists, perpetual students, sometimes teachers, continual incremental improvement.
       </div>
       <a href='https://adeleporte.github.io/about/' class="button mt-1" role="button">Read More</a>
     <h2 class="mt-4">Featured Posts</h2>
