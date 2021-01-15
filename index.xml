@@ -17,34 +17,39 @@
         
           &lt;p&gt;My Terraform provider for VeloCloud is now available on the official Terraform registry. Checkout &lt;a href=&#34;https://registry.terraform.io/providers/adeleporte/velocloud/latest&#34;&gt;https://registry.terraform.io/providers/adeleporte/velocloud/latest&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;For me, it was the opportunity to learn more about:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;signing some code
-managing the GitHub release process
-using go-releaser
-documenting the code with Terraform syntax
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;signing some code&lt;/li&gt;
+&lt;li&gt;managing the GitHub release process&lt;/li&gt;
+&lt;li&gt;using go-releaser&lt;/li&gt;
+&lt;li&gt;documenting the code with Terraform syntax&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;The provider is published as a community provider, so with no official VMware support.&lt;/p&gt;
 &lt;p&gt;By the way, as of today, it enables:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;the creation/update/deletion of Edges
-the creation/update/deletion of Address Groups
-the creation/update/deletion of Port Groups
-the management of Business Policies
-the management of Firewall Rules
-the management of Interface Settings within the Device Settings module
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;the creation/update/deletion of Edges&lt;/li&gt;
+&lt;li&gt;the creation/update/deletion of Address Groups&lt;/li&gt;
+&lt;li&gt;the creation/update/deletion of Port Groups&lt;/li&gt;
+&lt;li&gt;the management of Business Policies&lt;/li&gt;
+&lt;li&gt;the management of Firewall Rules&lt;/li&gt;
+&lt;li&gt;the management of Interface Settings within the Device Settings module&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Some datasources are also available:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Existing Port Group
-Existing Address Group
-Existing Profile
-Existing Edge
-Map an application
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Existing Port Group&lt;/li&gt;
+&lt;li&gt;Existing Address Group&lt;/li&gt;
+&lt;li&gt;Existing Profile&lt;/li&gt;
+&lt;li&gt;Existing Edge&lt;/li&gt;
+&lt;li&gt;Map an application&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Future release will include Operator-level operations, like:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;the creation/update/deletion of Enterprises
-the creation/update/deletion of Gateways
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;the creation/update/deletion of Enterprises&lt;/li&gt;
+&lt;li&gt;the creation/update/deletion of Gateways&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;and day-0 operations:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;VCO installation
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;VCO installation&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Start trying the provider with:&lt;/p&gt;
 &lt;p&gt;And learn how to use it with &lt;a href=&#34;https://registry.terraform.io/providers/adeleporte/velocloud/latest/docs&#34;&gt;https://registry.terraform.io/providers/adeleporte/velocloud/latest/docs&lt;/a&gt;&lt;/p&gt;
 
