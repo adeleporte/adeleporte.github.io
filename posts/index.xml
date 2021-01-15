@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 15 Jan 2021 15:01:14 +0100</lastBuildDate><atom:link href="https://adeleporte.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My First Post</title>
+      <title>VeloCloud Terraform Provider published on Hashicorp registry!</title>
       <link>https://adeleporte.github.io/posts/my-first-post/</link>
       <pubDate>Fri, 15 Jan 2021 15:01:14 +0100</pubDate>
       
@@ -51,6 +51,17 @@
 &lt;li&gt;VCO installation&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Start trying the provider with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-hcl&#34; data-lang=&#34;hcl&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;terraform&lt;/span&gt; {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;required_providers&lt;/span&gt; {
+    velocloud &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+      source &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;adeleporte/velocloud&amp;#34;&lt;/span&gt;
+      version &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0.2.9&amp;#34;&lt;/span&gt;
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;provider &amp;ldquo;velocloud&amp;rdquo; {&lt;/p&gt;
+&lt;h1 id=&#34;configuration-options&#34;&gt;Configuration options&lt;/h1&gt;
+&lt;p&gt;}&lt;/p&gt;
 &lt;p&gt;And learn how to use it with &lt;a href=&#34;https://registry.terraform.io/providers/adeleporte/velocloud/latest/docs&#34;&gt;https://registry.terraform.io/providers/adeleporte/velocloud/latest/docs&lt;/a&gt;&lt;/p&gt;
 
         
