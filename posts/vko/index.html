@@ -1,0 +1,804 @@
+
+<!DOCTYPE html>
+<html lang="en" data-figures="" class="page">
+  <head>
+<title>A VELOCLOUD KUBERNETES OPERATOR ! | vCoffee.cloud Blog</title>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.81.0-DEV" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta property="og:locale" content="en" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer As Kubernetes is becoming the …">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="">
+<meta name="twitter:title" content="A VELOCLOUD KUBERNETES OPERATOR !" />
+<meta property="og:url" content="https://adeleporte.github.io/posts/vko/" />
+<meta property="og:title" content="A VELOCLOUD KUBERNETES OPERATOR !" />
+<meta property="og:description" content="DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer As Kubernetes is becoming the …" />
+<meta property="og:image" content="https://adeleporte.github.io" />
+<link rel="apple-touch-icon" sizes="180x180" href='https://adeleporte.github.io/icons/apple-touch-icon.png'>
+<link rel="icon" type="image/png" sizes="32x32" href='https://adeleporte.github.io/icons/favicon-32x32.png'>
+<link rel="manifest" href='https://adeleporte.github.io/icons/site.webmanifest'>
+<link rel="mask-icon" href='https://adeleporte.github.io/safari-pinned-tab.svg' color="#002538">
+<meta name="msapplication-TileColor" content="#002538">
+<meta name="theme-color" content="#002538">
+
+<link rel="canonical" href="https://adeleporte.github.io/posts/vko/">
+
+    
+
+    
+    
+    <link rel="preload" href="https://adeleporte.github.io/css/styles.37cea41fe2c1b43e2a17095e01eb999e8701c9f0ba06d4df0a9db514a215e26dfbdb8a606a36c9d3b54bb1c09fd4a9ce41ee8f6788a8c6b17067830f34396135.css" integrity = "sha512-N86kH&#43;LBtD4qFwleAeuZnocByfC6BtTfCp21FKIV4m3724pgajbJ07VLscCf1KnOQe6PZ4ioxrFwZ4MPNDlhNQ==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://adeleporte.github.io/js/bundle.min.7231196d34d9d405d088e9e44126601b16e27b4febf8ef570653eb9065d931cb791aa6efc01549a8918383b39684325b85754596ae536063a76dbbff2285b263.js" as="script" integrity=
+    "sha512-cjEZbTTZ1AXQiOnkQSZgGxbie0/r&#43;O9XBlPrkGXZMct5GqbvwBVJqJGDg7OWhDJbhXVFlq5TYGOnbbv/IoWyYw==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" type="text/css" href="https://adeleporte.github.io/css/styles.37cea41fe2c1b43e2a17095e01eb999e8701c9f0ba06d4df0a9db514a215e26dfbdb8a606a36c9d3b54bb1c09fd4a9ce41ee8f6788a8c6b17067830f34396135.css" integrity="sha512-N86kH&#43;LBtD4qFwleAeuZnocByfC6BtTfCp21FKIV4m3724pgajbJ07VLscCf1KnOQe6PZ4ioxrFwZ4MPNDlhNQ==" crossorigin="anonymous">
+    
+  </head>
+  
+  
+    
+  
+  <body data-code="10" data-lines="false" id="documentTop">
+
+<header class="nav_header" >
+  <nav class="nav">
+    <a href='https://adeleporte.github.io' class="nav_brand nav_item">
+        vCoffee.cloud Blog
+      <div class="nav_close">
+        <div>
+          <svg class="icon">
+  <use xlink:href="#open-menu"></use>
+</svg>
+          <svg class="icon">
+  <use xlink:href="#closeme"></use>
+</svg>
+        </div>
+      </div>
+    </a>
+    <div class='nav_body nav_body_left'>
+      
+      
+      
+        
+
+      
+<div class='follow'>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+</header>
+
+    <main>
+  
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title">A VELOCLOUD KUBERNETES OPERATOR !</h1><div class="post_meta">
+  
+    <svg class="icon">
+  <use xlink:href="#calendar"></use>
+</svg>
+    <span class="post_date">
+      Jan 15, 2021</span>
+</div>
+
+    
+  <div class="post_share">
+    Share on:
+    <a href="https://twitter.com/intent/tweet?text=A%20VELOCLOUD%20KUBERNETES%20OPERATOR%20%21&url=https%3a%2f%2fadeleporte.github.io%2fposts%2fvko%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#twitter"></use>
+</svg>
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fadeleporte.github.io%2fposts%2fvko%2f&t=A%20VELOCLOUD%20KUBERNETES%20OPERATOR%20%21" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#facebook"></use>
+</svg>
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+    </a>
+    <a href="https://adeleporte.github.io/posts/vko/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <use xlink:href="#copy"></use>
+</svg>
+    </a>
+  </div>
+
+    
+    <h3 id="disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer"><em>DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer</em></h3>
+<p>As Kubernetes is becoming the de-facto standard to run the new modern applications, there is a need to include the SDWAN configuration as part of the application development.</p>
+<p>Let’s imagine a dev coding a new app. As part of the application testing, it can be useful to adapt the SDWAN policy, such as bandwidth, the QoS settings, the link steering and so on. The dev could use the same YAML files and kubectl commands that he loves and just include the SDWAN parameters.</p>
+<p>Obviously, the settings that the dev could use should be limited to a range that has been defined by infra admins. Some namespaces could set more bandwidth than others, for example. The link steering policy could be limited to “Internet Only” for pre-prod namespaces, as another example.</p>
+<p>In this post, I’m going to cover the creation of such integration. We’re going to create a Velocloud CRD (Custom Resource Definition), that the infra admins will be able to use to define the set of settings allowed for a dev. Then, we’ll create a Kubernetes Operator, which is going to talk with the Velocloud Orchestrator to implement the SDWAN logic. Finally, we’ll define some YAML samples to demonstrate how a dev can use such a Velocloud CRD.</p>
+<p>So we need 2 things to start coding: a Velocloud Orchestrator and a Kubernetes 😉</p>
+<p>For Kubernetes, I will use Kind as a very simple Kubernetes running on my laptop. The setup is really easy to do, and you can have a running Kube on your laptop after only a few minutes: <a href="https://kind.sigs.k8s.io/docs/user/quick-start/">https://kind.sigs.k8s.io/docs/user/quick-start/</a></p>
+<p>I’m going the create 2 namespaces:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln"> 1</span>adeleporte@adeleporte-a01 ns1 % kubectl create ns ns1
+<span class="ln"> 2</span>namespace/ns1 created
+<span class="ln"> 3</span>adeleporte@adeleporte-a01 ns1 % kubectl create ns ns2
+<span class="ln"> 4</span>namespace/ns2 created
+<span class="ln"> 5</span>adeleporte@adeleporte-a01 ns1 % kubectl get ns
+<span class="ln"> 6</span>NAME                 STATUS   AGE
+<span class="ln"> 7</span>default              Active   8m27s
+<span class="ln"> 8</span>kube-node-lease      Active   8m29s
+<span class="ln"> 9</span>kube-public          Active   8m29s
+<span class="ln">10</span>kube-system          Active   8m29s
+<span class="ln">11</span>local-path-storage   Active   8m23s
+<span class="ln">12</span>ns1                  Active   6s
+<span class="ln">13</span>ns2                  Active   5s
+</code></pre></div><p>For the Velocloud Orchestrator, I will use a new feature, the API tokens. Once logged as a Administrator, you can now create/revoke some API tokens, which seems to be a good idea in my own opinion.</p>
+<p>Velocloud CRD definition
+Now, let’s start coding a very basic Velocloud CRD in a crd.yaml file:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="ln"> 1</span><span class="nn">---</span><span class="w">
+</span><span class="ln"> 2</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">apiextensions.k8s.io/v1beta1</span><span class="w">
+</span><span class="ln"> 3</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">CustomResourceDefinition</span><span class="w">
+</span><span class="ln"> 4</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 5</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velocloudbps.vcn.cloud</span><span class="w">
+</span><span class="ln"> 6</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 7</span><span class="w">    </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="l">Namespaced</span><span class="w">
+</span><span class="ln"> 8</span><span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l">vcn.cloud</span><span class="w">
+</span><span class="ln"> 9</span><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="ln">10</span><span class="w">    </span><span class="nt">names</span><span class="p">:</span><span class="w">
+</span><span class="ln">11</span><span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">VelocloudBP</span><span class="w">
+</span><span class="ln">12</span><span class="w">      </span><span class="nt">plural</span><span class="p">:</span><span class="w"> </span><span class="l">velocloudbps</span><span class="w">
+</span><span class="ln">13</span><span class="w">      </span><span class="nt">singular</span><span class="p">:</span><span class="w"> </span><span class="l">velocloudbp</span><span class="w">
+</span><span class="ln">14</span><span class="w">      </span><span class="nt">shortNames</span><span class="p">:</span><span class="w">
+</span><span class="ln">15</span><span class="w">      </span>- <span class="l">velo</span><span class="w">
+</span><span class="ln">16</span><span class="w"></span><span class="nn">---</span><span class="w">
+</span><span class="ln">17</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io/v1</span><span class="w">
+</span><span class="ln">18</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Role</span><span class="w">
+</span><span class="ln">19</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="ln">20</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velocloud-group-admin</span><span class="w">
+</span><span class="ln">21</span><span class="w"></span><span class="nt">rules</span><span class="p">:</span><span class="w">
+</span><span class="ln">22</span><span class="w"></span>- <span class="nt">apiGroups</span><span class="p">:</span><span class="w">
+</span><span class="ln">23</span><span class="w">  </span>- <span class="l">vcn.cloud</span><span class="w">
+</span><span class="ln">24</span><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span><span class="ln">25</span><span class="w">  </span>- <span class="l">velocloudbps</span><span class="w">
+</span><span class="ln">26</span><span class="w">  </span>- <span class="l">velocloudbps/finalizers</span><span class="w">
+</span><span class="ln">27</span><span class="w">  </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="l">get, list, create, update, delete, deletecollection, watch ]</span><span class="w">
+</span><span class="ln">28</span><span class="w"> 
+</span><span class="ln">29</span><span class="w"></span><span class="nn">---</span><span class="w">
+</span><span class="ln">30</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io/v1beta1</span><span class="w">
+</span><span class="ln">31</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">RoleBinding</span><span class="w">
+</span><span class="ln">32</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="ln">33</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velocloud-group-rbac</span><span class="w">
+</span><span class="ln">34</span><span class="w"></span><span class="nt">subjects</span><span class="p">:</span><span class="w">
+</span><span class="ln">35</span><span class="w"></span>- <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ServiceAccount</span><span class="w">
+</span><span class="ln">36</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span><span class="ln">37</span><span class="w">  </span><span class="c">#namespace: default</span><span class="w">
+</span><span class="ln">38</span><span class="w"></span><span class="nt">roleRef</span><span class="p">:</span><span class="w">
+</span><span class="ln">39</span><span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Role</span><span class="w">
+</span><span class="ln">40</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velocloud-group-admin</span><span class="w">
+</span><span class="ln">41</span><span class="w">    </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>adeleporte@adeleporte-a01 ns1 % kubectl apply -f crd.yaml -n ns1
+<span class="ln">2</span>customresourcedefinition.apiextensions.k8s.io/velocloudbps.vcn.cloud created
+</code></pre></div><p>Here is what we’ve done:</p>
+<p>We have a new kind of CRD, called velocloudbps + a new role, called velocloud-group-admin, which can use get, list, create…watch commands, and this role in bind to the default service account.</p>
+<p>By doing so, we now have some new kubectl commands:-)</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>adeleporte@adeleporte-a01 ns1 % kubectl get velocloudbps
+<span class="ln">2</span>No resources found.
+<span class="ln">3</span>
+<span class="ln">4</span>adeleporte@adeleporte-a01 ns1 % kubectl get velocloudbps
+<span class="ln">5</span>No resources found.
+<span class="ln">6</span>adeleporte@adeleporte-a01 ns1 % kubectl get velo
+<span class="ln">7</span>No resources found.
+</code></pre></div><p>Ok, not very useful at this stage, but we have our new Velocloud CRD! Let’s modify the initial crd.yaml file to include some validation. This will enable us (and the infra admins) to define which parameter can be set on this CRD. Let’s say that we want to define the Velocloud Configuration Profile that is going to be used, the FQDN of the application currently being developed by the dev, the TCP port, and the Business Policy settings (Link steering policy, QoS priority, Bandwidth Limit). We also define the column to be displayed when using commands such as “kubectl get velocloudbps -o wide”</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="ln"> 1</span><span class="nn">---</span><span class="w">
+</span><span class="ln"> 2</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">apiextensions.k8s.io/v1beta1</span><span class="w">
+</span><span class="ln"> 3</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">CustomResourceDefinition</span><span class="w">
+</span><span class="ln"> 4</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 5</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velocloudbps.vcn.cloud</span><span class="w">
+</span><span class="ln"> 6</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 7</span><span class="w">    </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="l">Namespaced</span><span class="w">
+</span><span class="ln"> 8</span><span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l">vcn.cloud</span><span class="w">
+</span><span class="ln"> 9</span><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="ln">10</span><span class="w">    </span><span class="nt">names</span><span class="p">:</span><span class="w">
+</span><span class="ln">11</span><span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">VelocloudBP</span><span class="w">
+</span><span class="ln">12</span><span class="w">      </span><span class="nt">plural</span><span class="p">:</span><span class="w"> </span><span class="l">velocloudbps</span><span class="w">
+</span><span class="ln">13</span><span class="w">      </span><span class="nt">singular</span><span class="p">:</span><span class="w"> </span><span class="l">velocloudbp</span><span class="w">
+</span><span class="ln">14</span><span class="w">      </span><span class="nt">shortNames</span><span class="p">:</span><span class="w">
+</span><span class="ln">15</span><span class="w">      </span>- <span class="l">velo</span><span class="w">
+</span><span class="ln">16</span><span class="w">    </span><span class="nt">validation</span><span class="p">:</span><span class="w">
+</span><span class="ln">17</span><span class="w">        </span><span class="nt">openAPIV3Schema</span><span class="p">:</span><span class="w">
+</span><span class="ln">18</span><span class="w">          </span><span class="nt">properties</span><span class="p">:</span><span class="w">
+</span><span class="ln">19</span><span class="w">            </span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="ln">20</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">object</span><span class="w">
+</span><span class="ln">21</span><span class="w">              </span><span class="nt">properties</span><span class="p">:</span><span class="w">
+</span><span class="ln">22</span><span class="w">                </span><span class="nt">profile</span><span class="p">:</span><span class="w">
+</span><span class="ln">23</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="ln">24</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">profile</span><span class="w">
+</span><span class="ln">25</span><span class="w">                    </span><span class="nt">enum</span><span class="p">:</span><span class="w">
+</span><span class="ln">26</span><span class="w">                    </span>- <span class="l">Quick Start Profile</span><span class="w">
+</span><span class="ln">27</span><span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w">
+</span><span class="ln">28</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="ln">29</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">name</span><span class="w">
+</span><span class="ln">30</span><span class="w">                </span><span class="nt">fqdn</span><span class="p">:</span><span class="w">
+</span><span class="ln">31</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="ln">32</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">fqdn</span><span class="w">
+</span><span class="ln">33</span><span class="w">                    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;^(.*).vcn.cloud$&#39;</span><span class="w">
+</span><span class="ln">34</span><span class="w">                </span><span class="nt">dport</span><span class="p">:</span><span class="w">
+</span><span class="ln">35</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">integer</span><span class="w">
+</span><span class="ln">36</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">dport</span><span class="w">
+</span><span class="ln">37</span><span class="w">                </span><span class="nt">service-class</span><span class="p">:</span><span class="w">
+</span><span class="ln">38</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="ln">39</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">sc</span><span class="w">
+</span><span class="ln">40</span><span class="w">                    </span><span class="nt">enum</span><span class="p">:</span><span class="w">
+</span><span class="ln">41</span><span class="w">                    </span>- <span class="l">realtime</span><span class="w">
+</span><span class="ln">42</span><span class="w">                    </span>- <span class="l">transactional</span><span class="w">
+</span><span class="ln">43</span><span class="w">                    </span>- <span class="l">bulk</span><span class="w">
+</span><span class="ln">44</span><span class="w">                </span><span class="nt">link-policy</span><span class="p">:</span><span class="w">
+</span><span class="ln">45</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="ln">46</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">lp</span><span class="w">
+</span><span class="ln">47</span><span class="w">                    </span><span class="nt">enum</span><span class="p">:</span><span class="w">
+</span><span class="ln">48</span><span class="w">                    </span>- <span class="l">auto</span><span class="w">
+</span><span class="ln">49</span><span class="w">                    </span>- <span class="l">fixed</span><span class="w">
+</span><span class="ln">50</span><span class="w">                </span><span class="nt">service-group</span><span class="p">:</span><span class="w">
+</span><span class="ln">51</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="ln">52</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">sg</span><span class="w">
+</span><span class="ln">53</span><span class="w">                    </span><span class="nt">enum</span><span class="p">:</span><span class="w">
+</span><span class="ln">54</span><span class="w">                    </span>- <span class="l">PRIVATE_WIRED</span><span class="w">
+</span><span class="ln">55</span><span class="w">                    </span>- <span class="l">PUBLIC_WIRED</span><span class="w">
+</span><span class="ln">56</span><span class="w">                    </span>- <span class="l">ALL</span><span class="w">
+</span><span class="ln">57</span><span class="w">                </span><span class="nt">priority</span><span class="p">:</span><span class="w">
+</span><span class="ln">58</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="ln">59</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">priority</span><span class="w">
+</span><span class="ln">60</span><span class="w">                    </span><span class="nt">enum</span><span class="p">:</span><span class="w">
+</span><span class="ln">61</span><span class="w">                    </span>- <span class="l">high</span><span class="w">
+</span><span class="ln">62</span><span class="w">                    </span>- <span class="l">normal</span><span class="w">
+</span><span class="ln">63</span><span class="w">                    </span>- <span class="l">low</span><span class="w">
+</span><span class="ln">64</span><span class="w">                </span><span class="nt">bandwidth-limit</span><span class="p">:</span><span class="w">
+</span><span class="ln">65</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">integer</span><span class="w">
+</span><span class="ln">66</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">bpl</span><span class="w">
+</span><span class="ln">67</span><span class="w">                    </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span>-<span class="m">1</span><span class="w">
+</span><span class="ln">68</span><span class="w">                    </span><span class="nt">maximum</span><span class="p">:</span><span class="w"> </span><span class="m">50</span><span class="w">
+</span><span class="ln">69</span><span class="w"></span><span class="nt">additionalPrinterColumns</span><span class="p">:</span><span class="w">
+</span><span class="ln">70</span><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Profile</span><span class="w">
+</span><span class="ln">71</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="ln">72</span><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">The profile</span><span class="w">
+</span><span class="ln">73</span><span class="w">        </span><span class="nt">JSONPath</span><span class="p">:</span><span class="w"> </span><span class="l">.spec.profile</span><span class="w">
+</span><span class="ln">74</span><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">FQDN</span><span class="w">
+</span><span class="ln">75</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="ln">76</span><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">The fqdn</span><span class="w">
+</span><span class="ln">77</span><span class="w">        </span><span class="nt">JSONPath</span><span class="p">:</span><span class="w"> </span><span class="l">.spec.fqdn</span><span class="w">
+</span><span class="ln">78</span><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Service Class</span><span class="w">
+</span><span class="ln">79</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="ln">80</span><span class="w">        </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="ln">81</span><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">The service class</span><span class="w">
+</span><span class="ln">82</span><span class="w">        </span><span class="nt">JSONPath</span><span class="p">:</span><span class="w"> </span><span class="l">.spec.service-class</span><span class="w">
+</span><span class="ln">83</span><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Priority</span><span class="w">
+</span><span class="ln">84</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="ln">85</span><span class="w">        </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="ln">86</span><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">The priority</span><span class="w">
+</span><span class="ln">87</span><span class="w">        </span><span class="nt">JSONPath</span><span class="p">:</span><span class="w"> </span><span class="l">.spec.priority</span><span class="w">
+</span><span class="ln">88</span><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Link Policy</span><span class="w">
+</span><span class="ln">89</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="ln">90</span><span class="w">        </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="ln">91</span><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">The link Policy</span><span class="w">
+</span><span class="ln">92</span><span class="w">        </span><span class="nt">JSONPath</span><span class="p">:</span><span class="w"> </span><span class="l">.spec.link-policy</span><span class="w">
+</span><span class="ln">93</span><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Bandwidth Limit</span><span class="w">
+</span><span class="ln">94</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">integer</span><span class="w">
+</span><span class="ln">95</span><span class="w">        </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="ln">96</span><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">The bandwidth Limit</span><span class="w">
+</span><span class="ln">97</span><span class="w">        </span><span class="nt">JSONPath</span><span class="p">:</span><span class="w"> </span><span class="l">.spec.bandwidth-limit</span><span class="w">
+</span></code></pre></div><h1 id="velocloud-kubernetes-operator">Velocloud Kubernetes Operator</h1>
+<p>Finally, we need now is an operator. Basically, we want Kubernetes to run our Velocloud operator when a CRD is created/updated/deleted. For that, we’ll create a deployment of a pod with 2 containers: the operator itself (which is going to talk to the Velocloud Orchestrator) and a kubectl proxy (to handle authentication).</p>
+<p>Let’s change again our crd.yaml file to include this deployment as part of the CRD definition:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="ln"> 1</span><span class="nn">---</span><span class="w">
+</span><span class="ln"> 2</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">apps/v1</span><span class="w">
+</span><span class="ln"> 3</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Deployment</span><span class="w">
+</span><span class="ln"> 4</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 5</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">operator</span><span class="w">
+</span><span class="ln"> 6</span><span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 7</span><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">operator</span><span class="w">
+</span><span class="ln"> 8</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 9</span><span class="w">    </span><span class="nt">selector</span><span class="p">:</span><span class="w">
+</span><span class="ln">10</span><span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w">
+</span><span class="ln">11</span><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">operator</span><span class="w">
+</span><span class="ln">12</span><span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w">
+</span><span class="ln">13</span><span class="w">      </span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="ln">14</span><span class="w">        </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span><span class="ln">15</span><span class="w">          </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">operator</span><span class="w">
+</span><span class="ln">16</span><span class="w">      </span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="ln">17</span><span class="w">        </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="ln">18</span><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">proxycontainer</span><span class="w">
+</span><span class="ln">19</span><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">lachlanevenson/k8s-kubectl</span><span class="w">
+</span><span class="ln">20</span><span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;kubectl&#34;</span><span class="p">,</span><span class="s2">&#34;proxy&#34;</span><span class="p">,</span><span class="s2">&#34;--port=8001&#34;</span><span class="p">]</span><span class="w">
+</span><span class="ln">21</span><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">app</span><span class="w">
+</span><span class="ln">22</span><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">adeleporte/velokube</span><span class="w">
+</span><span class="ln">23</span><span class="w">          </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span><span class="ln">24</span><span class="w">          </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">res_namespace</span><span class="w">
+</span><span class="ln">25</span><span class="w">            </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span><span class="ln">26</span><span class="w">              </span><span class="nt">fieldRef</span><span class="p">:</span><span class="w">
+</span><span class="ln">27</span><span class="w">                </span><span class="nt">fieldPath</span><span class="p">:</span><span class="w"> </span><span class="l">metadata.namespace</span><span class="w">
+</span><span class="ln">28</span><span class="w">          </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">VCO_URL</span><span class="w">
+</span><span class="ln">29</span><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">https://vco22-fra1.velocloud.net/portal/rest</span><span class="w">
+</span><span class="ln">30</span><span class="w">          </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">VCO_TOKEN</span><span class="w">
+</span><span class="ln">31</span><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">changeme</span><span class="w">
+</span><span class="ln">32</span><span class="w">          </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">verbose</span><span class="w">
+</span><span class="ln">33</span><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">log</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>adeleporte@adeleporte-a01 ns1 % kubectl apply -f crd.yaml -n ns1
+<span class="ln">2</span>customresourcedefinition.apiextensions.k8s.io/velocloudbps.vcn.cloud created
+</code></pre></div><p>At this stage, the Velocloud Kubernetes operator logic is defined. The adeleporte/velokube container (we’ll discuss about this container right after) is responsible for watching at velocloudbps CRD changes. This container will then implement the necessary changes over the Velocloud Orchestrator. Let’s now deep in the adeleporte/velokube container:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">  1</span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="ln">  2</span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="ln">  3</span><span class="kn">import</span> <span class="nn">json</span>
+<span class="ln">  4</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="ln">  5</span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="ln">  6</span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="ln">  7</span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="ln">  8</span> 
+<span class="ln">  9</span><span class="c1"># Env variables</span>
+<span class="ln"> 10</span><span class="n">vco_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;VCO_URL&#34;</span><span class="p">)</span>
+<span class="ln"> 11</span><span class="n">token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;VCO_TOKEN&#34;</span><span class="p">)</span>
+<span class="ln"> 12</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;verbose&#34;</span><span class="p">)</span>
+<span class="ln"> 13</span> 
+<span class="ln"> 14</span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&#34;http://127.0.0.1:8001&#34;</span>
+<span class="ln"> 15</span><span class="n">namespace</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;res_namespace&#34;</span><span class="p">,</span> <span class="s2">&#34;default&#34;</span><span class="p">)</span>
+<span class="ln"> 16</span> 
+<span class="ln"> 17</span><span class="c1"># Logging</span>
+<span class="ln"> 18</span><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="ln"> 19</span><span class="n">out_hdlr</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="ln"> 20</span><span class="n">out_hdlr</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">))</span>
+<span class="ln"> 21</span><span class="n">out_hdlr</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="ln"> 22</span><span class="n">log</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">out_hdlr</span><span class="p">)</span>
+<span class="ln"> 23</span><span class="n">log</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="ln"> 24</span> 
+<span class="ln"> 25</span> 
+<span class="ln"> 26</span><span class="k">def</span> <span class="nf">client</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+<span class="ln"> 27</span>  <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Unverified HTTPS request&#39;</span><span class="p">)</span>
+<span class="ln"> 28</span>  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span> <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;Token {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">token</span><span class="p">)}</span>
+<span class="ln"> 29</span>  <span class="k">try</span><span class="p">:</span>
+<span class="ln"> 30</span>    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;{}/{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">vco_url</span><span class="p">,</span> <span class="n">method</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">body</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="ln"> 31</span>    <span class="k">if</span> <span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">):</span>
+<span class="ln"> 32</span>      <span class="n">resp_parsed</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="ln"> 33</span>      <span class="k">return</span> <span class="n">resp_parsed</span>
+<span class="ln"> 34</span>    <span class="k">else</span><span class="p">:</span>
+<span class="ln"> 35</span>      <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="ln"> 36</span>      <span class="k">return</span> <span class="bp">False</span>
+<span class="ln"> 37</span>  <span class="k">except</span><span class="p">:</span>
+<span class="ln"> 38</span>    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Request failed&#39;</span><span class="p">)</span>
+<span class="ln"> 39</span>    <span class="k">return</span> <span class="bp">False</span>
+<span class="ln"> 40</span> 
+<span class="ln"> 41</span> 
+<span class="ln"> 42</span><span class="k">def</span> <span class="nf">GetConfiguration</span><span class="p">(</span><span class="n">profilename</span><span class="p">):</span>
+<span class="ln"> 43</span> 
+<span class="ln"> 44</span>  <span class="n">profiles</span> <span class="o">=</span> <span class="n">client</span><span class="p">(</span><span class="s1">&#39;enterprise/getEnterpriseConfigurationsPolicies&#39;</span><span class="p">,</span> <span class="p">{})</span>
+<span class="ln"> 45</span>  <span class="k">for</span> <span class="n">profile</span> <span class="ow">in</span> <span class="n">profiles</span><span class="p">:</span>
+<span class="ln"> 46</span>    <span class="k">if</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">profilename</span><span class="p">:</span>
+<span class="ln"> 47</span>      <span class="n">config</span> <span class="o">=</span> <span class="n">client</span><span class="p">(</span><span class="s1">&#39;configuration/getConfiguration&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="s2">&#34;with&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;modules&#34;</span><span class="p">]})</span>
+<span class="ln"> 48</span>      <span class="k">return</span> <span class="n">config</span>
+<span class="ln"> 49</span>   
+<span class="ln"> 50</span>  <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Failed to find Profile&#39;</span><span class="p">)</span>
+<span class="ln"> 51</span>  <span class="k">return</span> <span class="bp">False</span>
+<span class="ln"> 52</span> 
+<span class="ln"> 53</span><span class="k">def</span> <span class="nf">GetQosModule</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<span class="ln"> 54</span>  <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;modules&#39;</span><span class="p">]:</span>
+<span class="ln"> 55</span>    <span class="k">if</span> <span class="n">module</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;QOS&#34;</span><span class="p">:</span>
+<span class="ln"> 56</span>      <span class="n">qos_module</span> <span class="o">=</span> <span class="n">module</span>
+<span class="ln"> 57</span>      <span class="k">return</span> <span class="n">qos_module</span>
+<span class="ln"> 58</span>      <span class="k">break</span>
+<span class="ln"> 59</span>  <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Cant find Qos Module&#39;</span><span class="p">)</span>
+<span class="ln"> 60</span>  <span class="k">return</span> <span class="bp">None</span>
+<span class="ln"> 61</span> 
+<span class="ln"> 62</span><span class="k">def</span> <span class="nf">DeleteQosRule</span><span class="p">(</span><span class="n">qos_module</span><span class="p">,</span> <span class="n">spec</span><span class="p">):</span>
+<span class="ln"> 63</span>  <span class="c1"># Look for rule to delete</span>
+<span class="ln"> 64</span>  <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="ln"> 65</span>  <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">qos_module</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;segments&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;rules&#39;</span><span class="p">]:</span>
+<span class="ln"> 66</span>    <span class="k">if</span> <span class="n">rule</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]:</span>
+<span class="ln"> 67</span>      <span class="n">qos_module</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;segments&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;rules&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+<span class="ln"> 68</span>    <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span>
+<span class="ln"> 69</span>   
+<span class="ln"> 70</span>  <span class="c1"># Update the module</span>
+<span class="ln"> 71</span>  <span class="n">update</span> <span class="o">=</span> <span class="n">client</span><span class="p">(</span><span class="s1">&#39;configuration/updateConfigurationModule&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="n">qos_module</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="s2">&#34;_update&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;QOS&#34;</span><span class="p">,</span> <span class="s2">&#34;data&#34;</span><span class="p">:</span> <span class="n">qos_module</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]}})</span>
+<span class="ln"> 72</span> 
+<span class="ln"> 73</span>  <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;rule deleted&#39;</span><span class="p">)</span>
+<span class="ln"> 74</span>  <span class="k">return</span> <span class="n">update</span>
+<span class="ln"> 75</span> 
+<span class="ln"> 76</span><span class="k">def</span> <span class="nf">SetQosRule</span><span class="p">(</span><span class="n">qos_module</span><span class="p">,</span> <span class="n">spec</span><span class="p">):</span>
+<span class="ln"> 77</span>  <span class="n">template_rule</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="ln"> 78</span>  <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">qos_module</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;segments&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;defaults&#39;</span><span class="p">]:</span>
+<span class="ln"> 79</span>    <span class="k">if</span> <span class="n">rule</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;Default-Any-Other&#34;</span><span class="p">:</span>
+<span class="ln"> 80</span>      <span class="n">template_rule</span> <span class="o">=</span> <span class="n">rule</span>
+<span class="ln"> 81</span>      <span class="k">break</span>
+<span class="ln"> 82</span>   
+<span class="ln"> 83</span>  <span class="k">if</span> <span class="p">(</span><span class="n">template_rule</span> <span class="o">==</span> <span class="bp">None</span><span class="p">):</span>
+<span class="ln"> 84</span>    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Default rule Default-Any-Other not found&#39;</span><span class="p">)</span>
+<span class="ln"> 85</span>    <span class="k">return</span> <span class="bp">False</span>
+<span class="ln"> 86</span> 
+<span class="ln"> 87</span>  <span class="n">new_rule</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">template_rule</span><span class="p">)</span>
+<span class="ln"> 88</span> 
+<span class="ln"> 89</span>  <span class="c1"># Name</span>
+<span class="ln"> 90</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="ln"> 91</span> 
+<span class="ln"> 92</span>  <span class="c1"># Match</span>
+<span class="ln"> 93</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;match&#39;</span><span class="p">][</span><span class="s1">&#39;hostname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;fqdn&#39;</span><span class="p">]</span>
+<span class="ln"> 94</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;match&#39;</span><span class="p">][</span><span class="s1">&#39;dport_high&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;dport&#39;</span><span class="p">]</span>
+<span class="ln"> 95</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;match&#39;</span><span class="p">][</span><span class="s1">&#39;dport_low&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;dport&#39;</span><span class="p">]</span>
+<span class="ln"> 96</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;match&#39;</span><span class="p">][</span><span class="s1">&#39;proto&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="ln"> 97</span> 
+<span class="ln"> 98</span>  <span class="c1"># Service Class</span>
+<span class="ln"> 99</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">][</span><span class="s1">&#39;QoS&#39;</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;service-class&#39;</span><span class="p">]</span>
+<span class="ln">100</span> 
+<span class="ln">101</span>  <span class="c1"># Priority</span>
+<span class="ln">102</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">][</span><span class="s1">&#39;QoS&#39;</span><span class="p">][</span><span class="s1">&#39;rxScheduler&#39;</span><span class="p">][</span><span class="s1">&#39;priority&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;priority&#39;</span><span class="p">]</span>
+<span class="ln">103</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">][</span><span class="s1">&#39;QoS&#39;</span><span class="p">][</span><span class="s1">&#39;txScheduler&#39;</span><span class="p">][</span><span class="s1">&#39;priority&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;priority&#39;</span><span class="p">]</span>
+<span class="ln">104</span> 
+<span class="ln">105</span>  <span class="c1"># Bandwidth Limit</span>
+<span class="ln">106</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">][</span><span class="s1">&#39;QoS&#39;</span><span class="p">][</span><span class="s1">&#39;rxScheduler&#39;</span><span class="p">][</span><span class="s1">&#39;bandwidthCapPct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;bandwidth-limit&#39;</span><span class="p">]</span>
+<span class="ln">107</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">][</span><span class="s1">&#39;QoS&#39;</span><span class="p">][</span><span class="s1">&#39;txScheduler&#39;</span><span class="p">][</span><span class="s1">&#39;bandwidthCapPct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;bandwidth-limit&#39;</span><span class="p">]</span>
+<span class="ln">108</span>   
+<span class="ln">109</span>  <span class="c1"># Link Steering</span>
+<span class="ln">110</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">][</span><span class="s1">&#39;edge2CloudRouteAction&#39;</span><span class="p">][</span><span class="s1">&#39;linkPolicy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;link-policy&#39;</span><span class="p">]</span>
+<span class="ln">111</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">][</span><span class="s1">&#39;edge2CloudRouteAction&#39;</span><span class="p">][</span><span class="s1">&#39;serviceGroup&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;service-group&#39;</span><span class="p">]</span>
+<span class="ln">112</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">][</span><span class="s1">&#39;edge2DataCenterRouteAction&#39;</span><span class="p">][</span><span class="s1">&#39;linkPolicy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;link-policy&#39;</span><span class="p">]</span>
+<span class="ln">113</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">][</span><span class="s1">&#39;edge2DataCenterRouteAction&#39;</span><span class="p">][</span><span class="s1">&#39;serviceGroup&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;service-group&#39;</span><span class="p">]</span>
+<span class="ln">114</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">][</span><span class="s1">&#39;edge2EdgeRouteAction&#39;</span><span class="p">][</span><span class="s1">&#39;linkPolicy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;link-policy&#39;</span><span class="p">]</span>
+<span class="ln">115</span>  <span class="n">new_rule</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">][</span><span class="s1">&#39;edge2EdgeRouteAction&#39;</span><span class="p">][</span><span class="s1">&#39;serviceGroup&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;service-group&#39;</span><span class="p">]</span>
+<span class="ln">116</span> 
+<span class="ln">117</span>  <span class="c1"># Look if rule already exists</span>
+<span class="ln">118</span>  <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="ln">119</span>  <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">qos_module</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;segments&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;rules&#39;</span><span class="p">]:</span>
+<span class="ln">120</span>    <span class="k">if</span> <span class="n">rule</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">spec</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]:</span>
+<span class="ln">121</span>      <span class="n">qos_module</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;segments&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;rules&#39;</span><span class="p">][</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_rule</span>
+<span class="ln">122</span>      <span class="n">update</span> <span class="o">=</span> <span class="n">client</span><span class="p">(</span><span class="s1">&#39;configuration/updateConfigurationModule&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="n">qos_module</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="s2">&#34;_update&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;QOS&#34;</span><span class="p">,</span> <span class="s2">&#34;data&#34;</span><span class="p">:</span> <span class="n">qos_module</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]}})</span>
+<span class="ln">123</span>      <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;rule updated&#39;</span><span class="p">)</span>
+<span class="ln">124</span>      <span class="k">return</span> <span class="n">update</span>
+<span class="ln">125</span>    <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span>
+<span class="ln">126</span> 
+<span class="ln">127</span>  <span class="c1"># Rule not found, insert it at the top</span>
+<span class="ln">128</span>  <span class="n">qos_module</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;segments&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;rules&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_rule</span><span class="p">)</span>
+<span class="ln">129</span>  <span class="n">update</span> <span class="o">=</span> <span class="n">client</span><span class="p">(</span><span class="s1">&#39;configuration/updateConfigurationModule&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="n">qos_module</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="s2">&#34;_update&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;QOS&#34;</span><span class="p">,</span> <span class="s2">&#34;data&#34;</span><span class="p">:</span> <span class="n">qos_module</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]}})</span>
+<span class="ln">130</span>  <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;rule added&#39;</span><span class="p">)</span>
+<span class="ln">131</span>  <span class="k">return</span> <span class="n">update</span>
+<span class="ln">132</span> 
+<span class="ln">133</span> 
+<span class="ln">134</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="ln">135</span>  <span class="n">config</span> <span class="o">=</span> <span class="n">GetConfiguration</span><span class="p">()</span>
+<span class="ln">136</span>  <span class="n">qos_module</span> <span class="o">=</span> <span class="n">GetQosModule</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="ln">137</span>  <span class="n">update</span> <span class="o">=</span> <span class="n">SetQosRule</span><span class="p">(</span><span class="n">qos_module</span><span class="p">,</span> <span class="n">fqdn</span><span class="p">)</span>
+<span class="ln">138</span> 
+<span class="ln">139</span> 
+<span class="ln">140</span><span class="k">def</span> <span class="nf">event_loop</span><span class="p">():</span>
+<span class="ln">141</span>    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Starting the service&#34;</span><span class="p">)</span>
+<span class="ln">142</span>    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;{}/apis/vcn.cloud/v1/namespaces/{}/velocloudbps?watch=true&#34;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="ln">143</span>        <span class="n">base_url</span><span class="p">,</span> <span class="n">namespace</span><span class="p">)</span>
+<span class="ln">144</span>    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="ln">145</span>    <span class="c1"># We issue the request to the API endpoint and keep the conenction open</span>
+<span class="ln">146</span>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">iter_lines</span><span class="p">():</span>
+<span class="ln">147</span>        <span class="n">obj</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="ln">148</span>        <span class="c1"># We examine the type part of the object to see if it is MODIFIED</span>
+<span class="ln">149</span>        <span class="k">if</span> <span class="p">(</span><span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;log&#39;</span><span class="p">):</span>
+<span class="ln">150</span>          <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="ln">151</span> 
+<span class="ln">152</span>        <span class="n">config</span> <span class="o">=</span> <span class="n">GetConfiguration</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">][</span><span class="s1">&#39;spec&#39;</span><span class="p">][</span><span class="s1">&#39;profile&#39;</span><span class="p">])</span>
+<span class="ln">153</span>        <span class="n">qos_module</span> <span class="o">=</span> <span class="n">GetQosModule</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="ln">154</span> 
+<span class="ln">155</span>        <span class="k">if</span> <span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ADDED&#39;</span><span class="p">):</span>
+<span class="ln">156</span>          <span class="n">SetQosRule</span><span class="p">(</span><span class="n">qos_module</span><span class="p">,</span> <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">][</span><span class="s1">&#39;spec&#39;</span><span class="p">])</span>
+<span class="ln">157</span>        <span class="k">if</span> <span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;MODIFIED&#39;</span><span class="p">):</span>
+<span class="ln">158</span>          <span class="n">SetQosRule</span><span class="p">(</span><span class="n">qos_module</span><span class="p">,</span> <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">][</span><span class="s1">&#39;spec&#39;</span><span class="p">])</span>
+<span class="ln">159</span>        <span class="k">if</span> <span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;DELETED&#39;</span><span class="p">):</span>
+<span class="ln">160</span>          <span class="n">DeleteQosRule</span><span class="p">(</span><span class="n">qos_module</span><span class="p">,</span> <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">][</span><span class="s1">&#39;spec&#39;</span><span class="p">])</span>
+<span class="ln">161</span> 
+<span class="ln">162</span> 
+<span class="ln">163</span><span class="n">event_loop</span><span class="p">()</span>
+</code></pre></div><p>The code is written is Python. The interesting parts are:</p>
+<p>we use a Stream Request to watch at velocloudbps events (/apis/vcn.cloud/v1/namespaces/{}/velocloudbps?watch=true)
+this socket acts as a loop and generate a line for each event
+when a new event arises, we decode the details (obj = json.loads(line))
+depending of the type of changes (creation/modification/deletion) (obj[‘type’]), we use a different Python function
+the Velocloud Business Profile is stored inside a Configuration module (the profile) and a Qos module (the business policies), so we have a implement some code to fetch these values
+in case of creation, we copy the default QoS rule, change some parameters according to the CRD, and update the QoS module
+This code is copied in a Python container and uploaded to docker hub. Here is the docker file to generate the adeleporte/velokube container:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>FROM python:latest
+<span class="ln">2</span>RUN pip install requests
+<span class="ln">3</span>COPY operator/main.py /main.py
+<span class="ln">4</span>ENTRYPOINT <span class="o">[</span> <span class="s2">&#34;python&#34;</span>, <span class="s2">&#34;/main.py&#34;</span> <span class="o">]</span>
+</code></pre></div><p>If everything works as expected, you should see your deployment as ok in Kube:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln"> 1</span>adeleporte@adeleporte-a01 ns1 % kubectl get deployments -n ns1
+<span class="ln"> 2</span>NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+<span class="ln"> 3</span>operator   1/1     <span class="m">1</span>            <span class="m">1</span>           96m
+<span class="ln"> 4</span>adeleporte@adeleporte-a01 ns1 % kubectl describe deployment operator -n ns1
+<span class="ln"> 5</span>Name:                   operator
+<span class="ln"> 6</span>Namespace:              ns1
+<span class="ln"> 7</span>CreationTimestamp:      Tue, <span class="m">21</span> Jul <span class="m">2020</span> 14:02:31 +0200
+<span class="ln"> 8</span>Labels:                 <span class="nv">app</span><span class="o">=</span>operator
+<span class="ln"> 9</span>Annotations:            deployment.kubernetes.io/revision: <span class="m">1</span>
+<span class="ln">10</span>                        kubectl.kubernetes.io/last-applied-configuration:
+<span class="ln">11</span>                          <span class="o">{</span><span class="s2">&#34;apiVersion&#34;</span>:<span class="s2">&#34;apps/v1&#34;</span>,<span class="s2">&#34;kind&#34;</span>:<span class="s2">&#34;Deployment&#34;</span>,<span class="s2">&#34;metadata&#34;</span>:<span class="o">{</span><span class="s2">&#34;annotations&#34;</span>:<span class="o">{}</span>,<span class="s2">&#34;labels&#34;</span>:<span class="o">{</span><span class="s2">&#34;app&#34;</span>:<span class="s2">&#34;operator&#34;</span><span class="o">}</span>,<span class="s2">&#34;name&#34;</span>:<span class="s2">&#34;operator&#34;</span>,<span class="s2">&#34;namespace&#34;</span>:<span class="s2">&#34;ns1&#34;</span><span class="o">}</span>,...
+<span class="ln">12</span>Selector:               <span class="nv">app</span><span class="o">=</span>operator
+<span class="ln">13</span>Replicas:               <span class="m">1</span> desired <span class="p">|</span> <span class="m">1</span> updated <span class="p">|</span> <span class="m">1</span> total <span class="p">|</span> <span class="m">1</span> available <span class="p">|</span> <span class="m">0</span> unavailable
+<span class="ln">14</span>StrategyType:           RollingUpdate
+<span class="ln">15</span>MinReadySeconds:        <span class="m">0</span>
+<span class="ln">16</span>RollingUpdateStrategy:  25% max unavailable, 25% max surge
+<span class="ln">17</span>Pod Template:
+<span class="ln">18</span>  Labels:  <span class="nv">app</span><span class="o">=</span>operator
+<span class="ln">19</span>  Containers:
+<span class="ln">20</span>   proxycontainer:
+<span class="ln">21</span>    Image:      lachlanevenson/k8s-kubectl
+<span class="ln">22</span>    Port:       &lt;none&gt;
+<span class="ln">23</span>    Host Port:  &lt;none&gt;
+<span class="ln">24</span>    Command:
+<span class="ln">25</span>      kubectl
+<span class="ln">26</span>      proxy
+<span class="ln">27</span>      --port<span class="o">=</span><span class="m">8001</span>
+<span class="ln">28</span>    Environment:  &lt;none&gt;
+<span class="ln">29</span>    Mounts:       &lt;none&gt;
+<span class="ln">30</span>   app:
+<span class="ln">31</span>    Image:      adeleporte/velokube
+<span class="ln">32</span>    Port:       &lt;none&gt;
+<span class="ln">33</span>    Host Port:  &lt;none&gt;
+<span class="ln">34</span>    Environment:
+<span class="ln">35</span>      res_namespace:   <span class="o">(</span>v1:metadata.namespace<span class="o">)</span>
+<span class="ln">36</span>      VCO_URL:        https://vco22-fra1.velocloud.net/portal/rest
+<span class="ln">37</span>      VCO_TOKEN:      changeme
+<span class="ln">38</span>      verbose:        log
+<span class="ln">39</span>    Mounts:           &lt;none&gt;
+<span class="ln">40</span>  Volumes:            &lt;none&gt;
+<span class="ln">41</span>Conditions:
+<span class="ln">42</span>  Type           Status  Reason
+<span class="ln">43</span>  ----           ------  ------
+<span class="ln">44</span>  Progressing    True    NewReplicaSetAvailable
+<span class="ln">45</span>  Available      True    MinimumReplicasAvailable
+<span class="ln">46</span>OldReplicaSets:  &lt;none&gt;
+<span class="ln">47</span>NewReplicaSet:   operator-5bf4b944cd <span class="o">(</span>1/1 replicas created<span class="o">)</span>
+<span class="ln">48</span>Events:          &lt;none&gt;
+<span class="ln">49</span>adeleporte@adeleporte-a01 ns1 %
+<span class="ln">50</span>adeleporte@adeleporte-a01 ns1 % kubectl get pods -n ns1   
+<span class="ln">51</span>NAME                        READY   STATUS    RESTARTS   AGE
+<span class="ln">52</span>operator-5bf4b944cd-tnfh9   2/2     Running   <span class="m">2</span>          98m
+<span class="ln">53</span>adeleporte@adeleporte-a01 ns1 % 
+<span class="ln">54</span>adeleporte@adeleporte-a01 ns1 % kubectl logs operator-5bf4b944cd-tnfh9 app -n ns1
+<span class="ln">55</span>2020-07-21 13:14:51,674 Starting the service
+<span class="ln">56</span>adeleporte@adeleporte-a01 ns1 %
+</code></pre></div><h1 id="using-the-velocloud-kubernetes-operator">Using the Velocloud Kubernetes Operator</h1>
+<p>Everything is done! Let’s test our new Velocloud Kubernetes Operator 😉 So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my application manifest:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="ln"> 1</span><span class="nn">---</span><span class="w">
+</span><span class="ln"> 2</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">vcn.cloud/v1</span><span class="w">
+</span><span class="ln"> 3</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">VelocloudBP</span><span class="w">
+</span><span class="ln"> 4</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 5</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velokube1</span><span class="w">
+</span><span class="ln"> 6</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 7</span><span class="w">    </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l">Quick Start Profile</span><span class="w">
+</span><span class="ln"> 8</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velokube1</span><span class="w">
+</span><span class="ln"> 9</span><span class="w">    </span><span class="nt">fqdn</span><span class="p">:</span><span class="w"> </span><span class="l">velokube1.vcn.cloud</span><span class="w">
+</span><span class="ln">10</span><span class="w">    </span><span class="nt">dport</span><span class="p">:</span><span class="w"> </span><span class="m">8080</span><span class="w">
+</span><span class="ln">11</span><span class="w">    </span><span class="nt">service-class</span><span class="p">:</span><span class="w"> </span><span class="l">realtime</span><span class="w">
+</span><span class="ln">12</span><span class="w">    </span><span class="nt">link-policy</span><span class="p">:</span><span class="w"> </span><span class="l">auto</span><span class="w">
+</span><span class="ln">13</span><span class="w">    </span><span class="nt">service-group</span><span class="p">:</span><span class="w"> </span><span class="l">ALL</span><span class="w">
+</span><span class="ln">14</span><span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l">high</span><span class="w">
+</span><span class="ln">15</span><span class="w">    </span><span class="nt">bandwidth-limit</span><span class="p">:</span><span class="w"> </span>-<span class="m">1</span><span class="w">
+</span><span class="ln">16</span><span class="w"></span><span class="nn">---</span><span class="w">
+</span><span class="ln">17</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">vcn.cloud/v1</span><span class="w">
+</span><span class="ln">18</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">VelocloudBP</span><span class="w">
+</span><span class="ln">19</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="ln">20</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2</span><span class="w">
+</span><span class="ln">21</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="ln">22</span><span class="w">    </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l">Quick Start Profile</span><span class="w">
+</span><span class="ln">23</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2</span><span class="w">
+</span><span class="ln">24</span><span class="w">    </span><span class="nt">fqdn</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2.vcn.cloud</span><span class="w">
+</span><span class="ln">25</span><span class="w">    </span><span class="nt">dport</span><span class="p">:</span><span class="w"> </span><span class="m">443</span><span class="w">
+</span><span class="ln">26</span><span class="w">    </span><span class="nt">service-class</span><span class="p">:</span><span class="w"> </span><span class="l">realtime</span><span class="w">
+</span><span class="ln">27</span><span class="w">    </span><span class="nt">link-policy</span><span class="p">:</span><span class="w"> </span><span class="l">fixed</span><span class="w">
+</span><span class="ln">28</span><span class="w">    </span><span class="nt">service-group</span><span class="p">:</span><span class="w"> </span><span class="l">PUBLIC_WIRED</span><span class="w">
+</span><span class="ln">29</span><span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l">high</span><span class="w">
+</span><span class="ln">30</span><span class="w">    </span><span class="nt">bandwidth-limit</span><span class="p">:</span><span class="w"> </span><span class="m">40</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln"> 1</span>adeleporte@adeleporte-a01 ns1 % kubectl create -f velocloud.yaml --namespace ns1
+<span class="ln"> 2</span>velocloudbp.vcn.cloud/velokube1 created
+<span class="ln"> 3</span>velocloudbp.vcn.cloud/velokube2 created
+<span class="ln"> 4</span>adeleporte@adeleporte-a01 ns1 % 
+<span class="ln"> 5</span>adeleporte@adeleporte-a01 ns1 % kubectl get velocloudbps -n ns1
+<span class="ln"> 6</span>NAME        PROFILE               FQDN
+<span class="ln"> 7</span>velokube1   Quick Start Profile   velokube1.vcn.cloud
+<span class="ln"> 8</span>velokube2   Quick Start Profile   velokube2.vcn.cloud
+<span class="ln"> 9</span>adeleporte@adeleporte-a01 ns1 % kubectl get velocloudbps -n ns1 -o wide
+<span class="ln">10</span>NAME        PROFILE               FQDN                  SERVICE CLASS   PRIORITY   LINK POLICY   BANDWIDTH LIMIT
+<span class="ln">11</span>velokube1   Quick Start Profile   velokube1.vcn.cloud   realtime        high       auto          -1
+<span class="ln">12</span>velokube2   Quick Start Profile   velokube2.vcn.cloud   realtime        high       fixed         <span class="m">40</span>
+<span class="ln">13</span>adeleporte@adeleporte-a01 ns1 % 
+<span class="ln">14</span><span class="sb">```</span>html
+<span class="ln">15</span>
+<span class="ln">16</span>For my application velokube1.vcn.cloud, I want to have a RealTime Service Class, use all the available links, have a high QoS priority and no bandwidth limit.
+<span class="ln">17</span>
+<span class="ln">18</span>For my application velokube2.vcn.cloud, I want to have a RealTime Service Class, use only Internet Links, have a High QoS priority and a bandwidth limit <span class="nb">set</span> to 40%.
+<span class="ln">19</span>
+<span class="ln">20</span>Let’s check the Velocloud configuration:
+<span class="ln">21</span>
+<span class="ln">22</span>And the operator logs
+<span class="ln">23</span>
+<span class="ln">24</span><span class="sb">```</span>bash
+<span class="ln">25</span>deleporte@adeleporte-a01 ns1 % kubectl logs operator-5bf4b944cd-tnfh9 app -n ns1
+<span class="ln">26</span>2020-07-21 13:14:51,674 Starting the service
+<span class="ln">27</span>2020-07-21 13:47:05,250 <span class="o">{</span><span class="s1">&#39;type&#39;</span>: <span class="s1">&#39;ADDED&#39;</span>, <span class="s1">&#39;object&#39;</span>: <span class="o">{</span><span class="s1">&#39;apiVersion&#39;</span>: <span class="s1">&#39;vcn.cloud/v1&#39;</span>, <span class="s1">&#39;kind&#39;</span>: <span class="s1">&#39;VelocloudBP&#39;</span>, <span class="s1">&#39;metadata&#39;</span>: <span class="o">{</span><span class="s1">&#39;creationTimestamp&#39;</span>: <span class="s1">&#39;2020-07-21T13:47:05Z&#39;</span>, <span class="s1">&#39;generation&#39;</span>: 1, <span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;velokube1&#39;</span>, <span class="s1">&#39;namespace&#39;</span>: <span class="s1">&#39;ns1&#39;</span>, <span class="s1">&#39;resourceVersion&#39;</span>: <span class="s1">&#39;18703&#39;</span>, <span class="s1">&#39;selfLink&#39;</span>: <span class="s1">&#39;/apis/vcn.cloud/v1/namespaces/ns1/velocloudbps/velokube1&#39;</span>, <span class="s1">&#39;uid&#39;</span>: <span class="s1">&#39;b2767e70-642e-4e4b-aad8-cd78fd089b7b&#39;</span><span class="o">}</span>, <span class="s1">&#39;spec&#39;</span>: <span class="o">{</span><span class="s1">&#39;bandwidth-limit&#39;</span>: -1, <span class="s1">&#39;dport&#39;</span>: 8080, <span class="s1">&#39;fqdn&#39;</span>: <span class="s1">&#39;velokube1.vcn.cloud&#39;</span>, <span class="s1">&#39;link-policy&#39;</span>: <span class="s1">&#39;auto&#39;</span>, <span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;velokube1&#39;</span>, <span class="s1">&#39;priority&#39;</span>: <span class="s1">&#39;high&#39;</span>, <span class="s1">&#39;profile&#39;</span>: <span class="s1">&#39;Quick Start Profile&#39;</span>, <span class="s1">&#39;service-class&#39;</span>: <span class="s1">&#39;realtime&#39;</span>, <span class="s1">&#39;service-group&#39;</span>: <span class="s1">&#39;ALL&#39;</span><span class="o">}}}</span>
+<span class="ln">28</span>2020-07-21 13:47:05,629 rule added
+<span class="ln">29</span>2020-07-21 13:47:05,629 <span class="o">{</span><span class="s1">&#39;type&#39;</span>: <span class="s1">&#39;ADDED&#39;</span>, <span class="s1">&#39;object&#39;</span>: <span class="o">{</span><span class="s1">&#39;apiVersion&#39;</span>: <span class="s1">&#39;vcn.cloud/v1&#39;</span>, <span class="s1">&#39;kind&#39;</span>: <span class="s1">&#39;VelocloudBP&#39;</span>, <span class="s1">&#39;metadata&#39;</span>: <span class="o">{</span><span class="s1">&#39;creationTimestamp&#39;</span>: <span class="s1">&#39;2020-07-21T13:47:05Z&#39;</span>, <span class="s1">&#39;generation&#39;</span>: 1, <span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;velokube2&#39;</span>, <span class="s1">&#39;namespace&#39;</span>: <span class="s1">&#39;ns1&#39;</span>, <span class="s1">&#39;resourceVersion&#39;</span>: <span class="s1">&#39;18704&#39;</span>, <span class="s1">&#39;selfLink&#39;</span>: <span class="s1">&#39;/apis/vcn.cloud/v1/namespaces/ns1/velocloudbps/velokube2&#39;</span>, <span class="s1">&#39;uid&#39;</span>: <span class="s1">&#39;646346aa-d8b5-4ef3-bbb0-c8fb0ff7b062&#39;</span><span class="o">}</span>, <span class="s1">&#39;spec&#39;</span>: <span class="o">{</span><span class="s1">&#39;bandwidth-limit&#39;</span>: 40, <span class="s1">&#39;dport&#39;</span>: 443, <span class="s1">&#39;fqdn&#39;</span>: <span class="s1">&#39;velokube2.vcn.cloud&#39;</span>, <span class="s1">&#39;link-policy&#39;</span>: <span class="s1">&#39;fixed&#39;</span>, <span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;velokube2&#39;</span>, <span class="s1">&#39;priority&#39;</span>: <span class="s1">&#39;high&#39;</span>, <span class="s1">&#39;profile&#39;</span>: <span class="s1">&#39;Quick Start Profile&#39;</span>, <span class="s1">&#39;service-class&#39;</span>: <span class="s1">&#39;realtime&#39;</span>, <span class="s1">&#39;service-group&#39;</span>: <span class="s1">&#39;PUBLIC_WIRED&#39;</span><span class="o">}}}</span>
+<span class="ln">30</span>2020-07-21 13:47:05,997 rule added
+<span class="ln">31</span>adeleporte@adeleporte-a01 ns1 %
+</code></pre></div><p>Now let’s imagine that I want to change my mind for application2. I change some settings in the YAML file (Link Policy Public to Private, Priority High to Low, Bandwidth Limit from 40 to 10)</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="ln"> 1</span><span class="nn">---</span><span class="w">
+</span><span class="ln"> 2</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">vcn.cloud/v1</span><span class="w">
+</span><span class="ln"> 3</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">VelocloudBP</span><span class="w">
+</span><span class="ln"> 4</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 5</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2</span><span class="w">
+</span><span class="ln"> 6</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 7</span><span class="w">    </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l">Quick Start Profile</span><span class="w">
+</span><span class="ln"> 8</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2</span><span class="w">
+</span><span class="ln"> 9</span><span class="w">    </span><span class="nt">fqdn</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2.vcn.cloud</span><span class="w">
+</span><span class="ln">10</span><span class="w">    </span><span class="nt">dport</span><span class="p">:</span><span class="w"> </span><span class="m">443</span><span class="w">
+</span><span class="ln">11</span><span class="w">    </span><span class="nt">service-class</span><span class="p">:</span><span class="w"> </span><span class="l">realtime</span><span class="w">
+</span><span class="ln">12</span><span class="w">    </span><span class="nt">link-policy</span><span class="p">:</span><span class="w"> </span><span class="l">fixed</span><span class="w">
+</span><span class="ln">13</span><span class="w">    </span><span class="nt">service-group</span><span class="p">:</span><span class="w"> </span><span class="l">PRIVATE_WIRED</span><span class="w">
+</span><span class="ln">14</span><span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l">low</span><span class="w">
+</span><span class="ln">15</span><span class="w">    </span><span class="nt">bandwidth-limit</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="ln">16</span><span class="w">
+</span><span class="ln">17</span><span class="w"></span><span class="l">adeleporte@adeleporte-a01 ns1 % kubectl apply -f velocloud.yaml --namespace ns1</span><span class="w">
+</span><span class="ln">18</span><span class="w"></span><span class="l">velocloudbp.vcn.cloud/velokube1 unchanged</span><span class="w">
+</span><span class="ln">19</span><span class="w"></span><span class="l">velocloudbp.vcn.cloud/velokube2 configured</span><span class="w">
+</span><span class="ln">20</span><span class="w"></span><span class="l">adeleporte@adeleporte-a01 ns1 %</span><span class="w">
+</span><span class="ln">21</span><span class="w">
+</span><span class="ln">22</span><span class="w"></span><span class="l">Set some limits to devs</span><span class="w">
+</span><span class="ln">23</span><span class="w"></span><span class="l">Now, let’s imagine that I want to change the bandwidth limit to 75%</span><span class="w">
+</span><span class="ln">24</span><span class="w">
+</span><span class="ln">25</span><span class="w"></span><span class="nn">---</span><span class="w">
+</span><span class="ln">26</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">vcn.cloud/v1</span><span class="w">
+</span><span class="ln">27</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">VelocloudBP</span><span class="w">
+</span><span class="ln">28</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="ln">29</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2</span><span class="w">
+</span><span class="ln">30</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="ln">31</span><span class="w">    </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l">Quick Start Profile</span><span class="w">
+</span><span class="ln">32</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2</span><span class="w">
+</span><span class="ln">33</span><span class="w">    </span><span class="nt">fqdn</span><span class="p">:</span><span class="w"> </span><span class="l">velokube2.vcn.cloud</span><span class="w">
+</span><span class="ln">34</span><span class="w">    </span><span class="nt">dport</span><span class="p">:</span><span class="w"> </span><span class="m">443</span><span class="w">
+</span><span class="ln">35</span><span class="w">    </span><span class="nt">service-class</span><span class="p">:</span><span class="w"> </span><span class="l">realtime</span><span class="w">
+</span><span class="ln">36</span><span class="w">    </span><span class="nt">link-policy</span><span class="p">:</span><span class="w"> </span><span class="l">fixed</span><span class="w">
+</span><span class="ln">37</span><span class="w">    </span><span class="nt">service-group</span><span class="p">:</span><span class="w"> </span><span class="l">PRIVATE_WIRED</span><span class="w">
+</span><span class="ln">38</span><span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l">low</span><span class="w">
+</span><span class="ln">39</span><span class="w">    </span><span class="nt">bandwidth-limit</span><span class="p">:</span><span class="w"> </span><span class="m">75</span><span class="w">
+</span><span class="ln">40</span><span class="w">
+</span><span class="ln">41</span><span class="w"></span><span class="l">velocloudbp.vcn.cloud/velokube1 unchanged</span><span class="w">
+</span><span class="ln">42</span><span class="w"></span><span class="l">The VelocloudBP &#34;velokube2&#34; is invalid: spec.bandwidth-limit: Invalid value: 50: spec.bandwidth-limit in body should be less than or equal to 50</span><span class="w">
+</span><span class="ln">43</span><span class="w"></span><span class="l">adeleporte@adeleporte-a01 ns1 %</span><span class="w">
+</span></code></pre></div><p>As a developer, I’m not allowed to set more than 50% of bandwidth, because this limit has been set by the infra team when defining the CRD.</p>
+<p>As a result, the infra team can define very specific limit for each namespace and developers are free to set the Velocloud configutation within these limit.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>I hope that this post will give you some insights about what can be achieved when integrating such great solutions together, like Velocloud and Kubernetes. The infra/network/wan teams can now work together with the dev team to align infrastructure needs and business/dev agility.</p>
+
+    
+      
+    
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    
+      <h2>Antoine Deleporte and Jean-Bernard Fontenette</h2>
+      <div>
+        Technologists, perpetual student, sometimes teacher, continual incremental improvement.
+      </div>
+      <a href='https://adeleporte.github.io/about/' class="button mt-1" role="button">Read More</a>
+    <h2 class="mt-4">Featured Posts</h2>
+    <ul>
+      <li>
+        <a href="https://adeleporte.github.io/posts/my-first-post/" class="nav-link">VeloCloud Terraform Provider published on Hashicorp registry!</a>
+      </li>
+    </ul>
+    <h2 class="mt-4">Recent Posts</h2>
+    <ul class="flex-column">
+      <li>
+        <a href="https://adeleporte.github.io/posts/my-first-post/" class="nav-link">VeloCloud Terraform Provider published on Hashicorp registry!</a>
+      </li>
+    </ul>
+    <div>
+      <h2 class="mt-4 taxonomy" id="tags-section">Tags</h2>
+      <nav class="tags_nav">
+        <a href='https://adeleporte.github.io/tags/code/' class="post_tag button button_translucent">
+          CODE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://adeleporte.github.io/tags/terraform/' class="post_tag button button_translucent">
+          TERRAFORM
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://adeleporte.github.io/tags/velocloud/' class="post_tag button button_translucent">
+          VELOCLOUD
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+  </section>
+</aside>
+
+</div>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" id="gitlab">
+    <path d="M12.3 74.7h54L43.3 3c-1-3.6-6.4-3.6-7.6 0L12.3 74.8z" />
+    <path d="M12.3 74.7L.5 111c-1 3.2 0 6.8 3 8.8l101.6 74-92.5-119z"/>
+    <path d="M105 193.7l-38.6-119h-54l92.7 119z"/>
+    <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
+    <path d="M105 193.7l38.7-119H198l-93 119z"/>
+    <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/> 
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="arrow">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+</svg>
+
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='https://adeleporte.github.io/icons/apple-touch-icon.png' class="icon icon_2 transparent">
+    <p>Copyright<span class="year"></span> VCOFFEE.CLOUD BLOG. All Rights Reserved</p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <use xlink:href="#arrow"></use>
+</svg>
+</a>
+
+  </div>
+</footer>
+
+    <script type="text/javascript" src="https://adeleporte.github.io/js/bundle.min.7231196d34d9d405d088e9e44126601b16e27b4febf8ef570653eb9065d931cb791aa6efc01549a8918383b39684325b85754596ae536063a76dbbff2285b263.js" integrity="sha512-cjEZbTTZ1AXQiOnkQSZgGxbie0/r&#43;O9XBlPrkGXZMct5GqbvwBVJqJGDg7OWhDJbhXVFlq5TYGOnbbv/IoWyYw==" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
