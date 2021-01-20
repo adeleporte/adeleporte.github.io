@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+<html lang="en" data-figures="" class="page">
+  <head>
+<title>GET VRNI GRAPHS DIRECTLY FROM A KUBECTL VRNI COMMAND! | vCoffee.cloud Blog</title>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.81.0-DEV" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta property="og:locale" content="en" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer Hi, today in this blog, I’m …">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="">
+<meta name="twitter:title" content="GET VRNI GRAPHS DIRECTLY FROM A KUBECTL VRNI COMMAND!" />
+<meta property="og:url" content="https://adeleporte.github.io/posts/vrni-plugin/" />
+<meta property="og:title" content="GET VRNI GRAPHS DIRECTLY FROM A KUBECTL VRNI COMMAND!" />
+<meta property="og:description" content="DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer Hi, today in this blog, I’m …" />
+<meta property="og:image" content="https://adeleporte.github.io/" />
+<link rel="apple-touch-icon" sizes="180x180" href='https://adeleporte.github.io/icons/apple-touch-icon.png'>
+<link rel="icon" type="image/png" sizes="32x32" href='https://adeleporte.github.io/icons/favicon-32x32.png'>
+<link rel="manifest" href='https://adeleporte.github.io/icons/site.webmanifest'>
+<link rel="mask-icon" href='https://adeleporte.github.io/safari-pinned-tab.svg' color="#002538">
+<meta name="msapplication-TileColor" content="#002538">
+<meta name="theme-color" content="#002538">
+
+<link rel="canonical" href="https://adeleporte.github.io/posts/vrni-plugin/">
+
+    
+
+    
+    
+    <link rel="preload" href="https://adeleporte.github.io/css/styles.37cea41fe2c1b43e2a17095e01eb999e8701c9f0ba06d4df0a9db514a215e26dfbdb8a606a36c9d3b54bb1c09fd4a9ce41ee8f6788a8c6b17067830f34396135.css" integrity = "sha512-N86kH&#43;LBtD4qFwleAeuZnocByfC6BtTfCp21FKIV4m3724pgajbJ07VLscCf1KnOQe6PZ4ioxrFwZ4MPNDlhNQ==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://adeleporte.github.io/js/bundle.min.46cf37e5a00dd7c5e3b78a26ad22a75e87e6a2ba72791b22f52da3ee3604203dc090c63bc335d9007270dd1dd00294579092ed55f2dd71a3a7e6863b3f766270.js" as="script" integrity=
+    "sha512-Rs835aAN18Xjt4omrSKnXofmorpyeRsi9S2j7jYEID3AkMY7wzXZAHJw3R3QApRXkJLtVfLdcaOn5oY7P3ZicA==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" type="text/css" href="https://adeleporte.github.io/css/styles.37cea41fe2c1b43e2a17095e01eb999e8701c9f0ba06d4df0a9db514a215e26dfbdb8a606a36c9d3b54bb1c09fd4a9ce41ee8f6788a8c6b17067830f34396135.css" integrity="sha512-N86kH&#43;LBtD4qFwleAeuZnocByfC6BtTfCp21FKIV4m3724pgajbJ07VLscCf1KnOQe6PZ4ioxrFwZ4MPNDlhNQ==" crossorigin="anonymous">
+    
+  </head>
+  
+  
+    
+  
+  <body data-code="10" data-lines="false" id="documentTop">
+
+<header class="nav_header" >
+  <nav class="nav">
+    <a href='https://adeleporte.github.io/' class="nav_brand nav_item">
+        vCoffee.cloud Blog
+      <div class="nav_close">
+        <div>
+          <svg class="icon">
+  <use xlink:href="#open-menu"></use>
+</svg>
+          <svg class="icon">
+  <use xlink:href="#closeme"></use>
+</svg>
+        </div>
+      </div>
+    </a>
+    <div class='nav_body nav_body_left'>
+      
+      
+      
+        
+
+  <div class="nav_parent">
+    <a href="https://adeleporte.github.io/" class="nav_item">Home </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://adeleporte.github.io/" class="nav_item">Links <img src='https://adeleporte.github.io/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <div class="nav_sub">
+      <span class="nav_child"></span>
+        <a href="https://www.linkedin.com/" class="nav_child nav_item">LinkedIn</a>
+        <a href="https://twitter.com/" class="nav_child nav_item">Twitter</a>
+    </div>
+  </div>
+  <div class="nav_parent">
+    <a href="https://adeleporte.github.io/about/" class="nav_item">About </a>
+  </div>
+      
+<div class='follow'>
+  <a href="https://github.com/#">
+    <svg class="icon">
+  <use xlink:href="#github"></use>
+</svg>
+  </a>
+  <a href="https://twitter.com/#">
+    <svg class="icon">
+  <use xlink:href="#twitter"></use>
+</svg>
+  </a>
+  <a href="https://www.linkedin.com/in/#">
+    <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+  </a>
+    
+  <a href="https://adeleporte.github.io/index.xml">
+    <svg class="icon">
+  <use xlink:href="#rss"></use>
+</svg>
+  </a>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+</header>
+
+    <main>
+  
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title">GET VRNI GRAPHS DIRECTLY FROM A KUBECTL VRNI COMMAND!</h1><div class="post_meta">
+  
+    <svg class="icon">
+  <use xlink:href="#calendar"></use>
+</svg>
+    <span class="post_date">
+      Aug 24, 2020</span>
+</div>
+
+    
+  <div class="post_share">
+    Share on:
+    <a href="https://twitter.com/intent/tweet?text=GET%20VRNI%20GRAPHS%20DIRECTLY%20FROM%20A%20KUBECTL%20VRNI%20COMMAND%21&url=https%3a%2f%2fadeleporte.github.io%2fposts%2fvrni-plugin%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#twitter"></use>
+</svg>
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fadeleporte.github.io%2fposts%2fvrni-plugin%2f&t=GET%20VRNI%20GRAPHS%20DIRECTLY%20FROM%20A%20KUBECTL%20VRNI%20COMMAND%21" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#facebook"></use>
+</svg>
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+    </a>
+    <a href="https://adeleporte.github.io/posts/vrni-plugin/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <use xlink:href="#copy"></use>
+</svg>
+    </a>
+  </div>
+
+    
+    <h3 id="disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer"><em>DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer</em></h3>
+<p><img src="/vrni-plugin-cli.png" alt="kubectl vrni plugin"></p>
+<p>Hi, today in this blog, I’m going to explain how to develop a small kubectl plugin. As you may know, VMware has a wonderful solution to collect and analyze network flows from many different sources, including Kubernetes: vRealize Network Insight (aka vRNI). My objective is to make this rich information easily and quickly available to a kube admin, thanks to a kubectl command.</p>
+<p>What I want to achieve in this part 1 is a kubectl vrni flow IP command that will display some charts representing the flows for this specific IP (source or destination). This information can help to troubleshoot any networking issue. I will handle Kubernetes POD to IP translation in part 2.</p>
+<p>Here are the different steps to code:
+<img src="/vrni-plugin-steps.png" alt="Steps"></p>
+<p>I’m going to develop this code in Go. Because we’ll have to deal with Kubernetes API in Part 2, Go is the best language to start with.</p>
+<p>Let’s start by creating a client that we’ll use to speak to vRNI:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="ln">  1</span><span class="kn">package</span> <span class="nx">main</span>
+<span class="ln">  2</span> 
+<span class="ln">  3</span><span class="kn">import</span> <span class="p">(</span>
+<span class="ln">  4</span>    <span class="s">&#34;bytes&#34;</span>
+<span class="ln">  5</span>    <span class="s">&#34;crypto/tls&#34;</span>
+<span class="ln">  6</span>    <span class="s">&#34;encoding/json&#34;</span>
+<span class="ln">  7</span>    <span class="s">&#34;errors&#34;</span>
+<span class="ln">  8</span>    <span class="s">&#34;fmt&#34;</span>
+<span class="ln">  9</span>    <span class="s">&#34;github.com/guptarohit/asciigraph&#34;</span>
+<span class="ln"> 10</span>    <span class="s">&#34;io/ioutil&#34;</span>
+<span class="ln"> 11</span>    <span class="s">&#34;net/http&#34;</span>
+<span class="ln"> 12</span>    <span class="s">&#34;os&#34;</span>
+<span class="ln"> 13</span>        <span class="s">&#34;net/http&#34;</span>
+<span class="ln"> 14</span>    <span class="s">&#34;time&#34;</span>
+<span class="ln"> 15</span><span class="p">)</span>
+<span class="ln"> 16</span> 
+<span class="ln"> 17</span><span class="kd">const</span> <span class="p">(</span>
+<span class="ln"> 18</span>    <span class="c1">// BaseURL ...
+</span><span class="ln"> 19</span><span class="c1"></span>    <span class="nx">BaseURL</span> <span class="p">=</span> <span class="s">&#34;https://field-demo.vrni.cmbu.local/api/ni&#34;</span>
+<span class="ln"> 20</span><span class="p">)</span>
+<span class="ln"> 21</span> 
+<span class="ln"> 22</span><span class="kd">type</span> <span class="nx">Client</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="ln"> 23</span>    <span class="nx">BaseURL</span>    <span class="kt">string</span>
+<span class="ln"> 24</span>    <span class="nx">token</span>      <span class="kt">string</span>
+<span class="ln"> 25</span>    <span class="nx">HTTPClient</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span>
+<span class="ln"> 26</span><span class="p">}</span>
+<span class="ln"> 27</span> 
+<span class="ln"> 28</span><span class="kd">type</span> <span class="nx">errorResponse</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="ln"> 29</span>    <span class="nx">Code</span>    <span class="kt">int</span>    <span class="s">`json:&#34;code&#34;`</span>
+<span class="ln"> 30</span>    <span class="nx">Message</span> <span class="kt">string</span> <span class="s">`json:&#34;message&#34;`</span>
+<span class="ln"> 31</span><span class="p">}</span>
+<span class="ln"> 32</span> 
+<span class="ln"> 33</span><span class="kd">type</span> <span class="nx">successResponse</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="ln"> 34</span>    <span class="nx">Code</span> <span class="kt">int</span>         <span class="s">`json:&#34;code&#34;`</span>
+<span class="ln"> 35</span>    <span class="nx">Data</span> <span class="kd">interface</span><span class="p">{}</span> <span class="s">`json:&#34;data&#34;`</span>
+<span class="ln"> 36</span><span class="p">}</span>
+<span class="ln"> 37</span> 
+<span class="ln"> 38</span><span class="kd">type</span> <span class="nx">authResponse</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="ln"> 39</span>    <span class="nx">Token</span>  <span class="kt">string</span> <span class="s">`json:&#34;token&#34;`</span>
+<span class="ln"> 40</span>    <span class="nx">Expiry</span> <span class="kt">int64</span>  <span class="s">`json:&#34;expiry&#34;`</span>
+<span class="ln"> 41</span><span class="p">}</span>
+<span class="ln"> 42</span> 
+<span class="ln"> 43</span><span class="c1">// Domain ...
+</span><span class="ln"> 44</span><span class="c1"></span><span class="kd">type</span> <span class="nx">Domain</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="ln"> 45</span>    <span class="nx">DomainType</span> <span class="kt">string</span> <span class="s">`json:&#34;domain_type&#34;`</span>
+<span class="ln"> 46</span>    <span class="nx">Value</span>      <span class="kt">string</span> <span class="s">`json:&#34;value,omitempty&#34;`</span>
+<span class="ln"> 47</span><span class="p">}</span>
+<span class="ln"> 48</span> 
+<span class="ln"> 49</span><span class="c1">// AuthBody ...
+</span><span class="ln"> 50</span><span class="c1"></span><span class="kd">type</span> <span class="nx">AuthBody</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="ln"> 51</span>    <span class="nx">Username</span> <span class="kt">string</span> <span class="s">`json:&#34;username&#34;`</span>
+<span class="ln"> 52</span>    <span class="nx">Password</span> <span class="kt">string</span> <span class="s">`json:&#34;password&#34;`</span>
+<span class="ln"> 53</span>    <span class="nx">Domain</span>   <span class="nx">Domain</span> <span class="s">`json:&#34;domain&#34;`</span>
+<span class="ln"> 54</span><span class="p">}</span>
+<span class="ln"> 55</span> 
+<span class="ln"> 56</span><span class="c1">// NewClient ...
+</span><span class="ln"> 57</span><span class="c1"></span><span class="kd">func</span> <span class="nf">NewClient</span><span class="p">()</span> <span class="o">*</span><span class="nx">Client</span> <span class="p">{</span>
+<span class="ln"> 58</span>    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">Client</span><span class="p">{</span>
+<span class="ln"> 59</span>        <span class="nx">BaseURL</span><span class="p">:</span> <span class="nx">BaseURL</span><span class="p">,</span>
+<span class="ln"> 60</span>        <span class="nx">token</span><span class="p">:</span>   <span class="s">&#34;&#34;</span><span class="p">,</span>
+<span class="ln"> 61</span>        <span class="nx">HTTPClient</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{</span>
+<span class="ln"> 62</span>            <span class="nx">Timeout</span><span class="p">:</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">,</span>
+<span class="ln"> 63</span>        <span class="p">},</span>
+<span class="ln"> 64</span>    <span class="p">}</span>
+<span class="ln"> 65</span><span class="p">}</span>
+<span class="ln"> 66</span> 
+<span class="ln"> 67</span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Client</span><span class="p">)</span> <span class="nf">sendRequest</span><span class="p">(</span><span class="nx">req</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 68</span>    <span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="s">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s">&#34;application/json; charset=utf-8&#34;</span><span class="p">)</span>
+<span class="ln"> 69</span>    <span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="s">&#34;Accept&#34;</span><span class="p">,</span> <span class="s">&#34;application/json; charset=utf-8&#34;</span><span class="p">)</span>
+<span class="ln"> 70</span>    <span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="s">&#34;Authorization&#34;</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;NetworkInsight %s&#34;</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">token</span><span class="p">))</span>
+<span class="ln"> 71</span> 
+<span class="ln"> 72</span>    <span class="nx">http</span><span class="p">.</span><span class="nx">DefaultTransport</span><span class="p">.(</span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Transport</span><span class="p">).</span><span class="nx">TLSClientConfig</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">tls</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="nx">InsecureSkipVerify</span><span class="p">:</span> <span class="kc">true</span><span class="p">}</span>
+<span class="ln"> 73</span>    <span class="nx">res</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">HTTPClient</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+<span class="ln"> 74</span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln"> 75</span>        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
+<span class="ln"> 76</span>    <span class="p">}</span>
+<span class="ln"> 77</span> 
+<span class="ln"> 78</span>    <span class="k">defer</span> <span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+<span class="ln"> 79</span> 
+<span class="ln"> 80</span>    <span class="k">if</span> <span class="nx">res</span><span class="p">.</span><span class="nx">StatusCode</span> <span class="p">&lt;</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span> <span class="o">||</span> <span class="nx">res</span><span class="p">.</span><span class="nx">StatusCode</span> <span class="o">&gt;=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span> <span class="p">{</span>
+<span class="ln"> 81</span>        <span class="kd">var</span> <span class="nx">errRes</span> <span class="nx">errorResponse</span>
+<span class="ln"> 82</span>        <span class="k">if</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">NewDecoder</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">).</span><span class="nf">Decode</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">errRes</span><span class="p">);</span> <span class="nx">err</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln"> 83</span>            <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">errRes</span><span class="p">.</span><span class="nx">Message</span><span class="p">)</span>
+<span class="ln"> 84</span>        <span class="p">}</span>
+<span class="ln"> 85</span> 
+<span class="ln"> 86</span>        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;unknown error, status code: %d&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">StatusCode</span><span class="p">)</span>
+<span class="ln"> 87</span>    <span class="p">}</span>
+<span class="ln"> 88</span> 
+<span class="ln"> 89</span>    <span class="nx">body</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">ReadAll</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+<span class="ln"> 90</span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln"> 91</span>        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
+<span class="ln"> 92</span>    <span class="p">}</span>
+<span class="ln"> 93</span> 
+<span class="ln"> 94</span>    <span class="k">return</span> <span class="nx">body</span><span class="p">,</span> <span class="kc">nil</span>
+<span class="ln"> 95</span><span class="p">}</span>
+<span class="ln"> 96</span> 
+<span class="ln"> 97</span><span class="c1">// Auth authenticates vRNI requests
+</span><span class="ln"> 98</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Auth</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Client</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+<span class="ln"> 99</span>    <span class="kd">var</span> <span class="nx">err</span> <span class="kt">error</span>
+<span class="ln">100</span> 
+<span class="ln">101</span>    <span class="c1">// Build request body
+</span><span class="ln">102</span><span class="c1"></span>    <span class="nx">authBody</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">AuthBody</span><span class="p">{</span>
+<span class="ln">103</span>        <span class="nx">Username</span><span class="p">:</span> <span class="s">&#34;**********&#34;</span><span class="p">,</span>
+<span class="ln">104</span>        <span class="nx">Password</span><span class="p">:</span> <span class="s">&#34;**********&#34;</span><span class="p">,</span>
+<span class="ln">105</span>        <span class="nx">Domain</span><span class="p">:</span> <span class="nx">Domain</span><span class="p">{</span>
+<span class="ln">106</span>            <span class="nx">DomainType</span><span class="p">:</span> <span class="s">&#34;LDAP&#34;</span><span class="p">,</span>       <span class="c1">// Otherwise = LOCAL
+</span><span class="ln">107</span><span class="c1"></span>            <span class="nx">Value</span><span class="p">:</span>      <span class="s">&#34;****&#34;</span><span class="p">,</span> <span class="c1">// Otherwise = none
+</span><span class="ln">108</span><span class="c1"></span>        <span class="p">},</span>
+<span class="ln">109</span>    <span class="p">}</span>
+<span class="ln">110</span>    <span class="nx">buf</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nx">Buffer</span><span class="p">)</span>
+<span class="ln">111</span>    <span class="nx">json</span><span class="p">.</span><span class="nf">NewEncoder</span><span class="p">(</span><span class="nx">buf</span><span class="p">).</span><span class="nf">Encode</span><span class="p">(</span><span class="nx">authBody</span><span class="p">)</span>
+<span class="ln">112</span> 
+<span class="ln">113</span>    <span class="c1">// Build the request
+</span><span class="ln">114</span><span class="c1"></span>    <span class="nx">req</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">NewRequest</span><span class="p">(</span><span class="s">&#34;POST&#34;</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%s/auth/token&#34;</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">BaseURL</span><span class="p">),</span> <span class="nx">buf</span><span class="p">)</span>
+<span class="ln">115</span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln">116</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+<span class="ln">117</span>        <span class="k">return</span> <span class="s">&#34;&#34;</span>
+<span class="ln">118</span>    <span class="p">}</span>
+<span class="ln">119</span> 
+<span class="ln">120</span>    <span class="c1">// Send the request
+</span><span class="ln">121</span><span class="c1"></span>    <span class="nx">res</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">sendRequest</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+<span class="ln">122</span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln">123</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+<span class="ln">124</span>        <span class="k">return</span> <span class="s">&#34;&#34;</span>
+<span class="ln">125</span>    <span class="p">}</span>
+<span class="ln">126</span> 
+<span class="ln">127</span>    <span class="c1">// Decode the response
+</span><span class="ln">128</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">fullResponse</span> <span class="nx">authResponse</span>
+<span class="ln">129</span>    <span class="k">if</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">fullResponse</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln">130</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;error decoding&#34;</span><span class="p">)</span>
+<span class="ln">131</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="ln">132</span>        <span class="k">return</span> <span class="s">&#34;&#34;</span>
+<span class="ln">133</span>    <span class="p">}</span>
+<span class="ln">134</span> 
+<span class="ln">135</span>    <span class="nx">c</span><span class="p">.</span><span class="nx">token</span> <span class="p">=</span> <span class="nx">fullResponse</span><span class="p">.</span><span class="nx">Token</span>
+<span class="ln">136</span>    <span class="k">return</span> <span class="nx">fullResponse</span><span class="p">.</span><span class="nx">Token</span>
+<span class="ln">137</span> 
+<span class="ln">138</span><span class="p">}</span>
+</code></pre></div><p>What we’ve done in this piece of code is:</p>
+<ul>
+<li>define a sendRequest function to be able to send the REST API call to vRNI</li>
+<li>call /auth/token method to invoke the creation of a token</li>
+<li>get the token and set it in the client, so all subsequent requests will add a NetworkInsight token header as an authentication mechanism</li>
+</ul>
+<p>Then, we need to search the flows for a specific IP. We’re going to use /search method for that part.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="c1">// SearchBody ...
+</span><span class="ln"> 2</span><span class="c1"></span><span class="kd">type</span> <span class="nx">SearchBody</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="ln"> 3</span>    <span class="nx">EntityType</span> <span class="kt">string</span> <span class="s">`json:&#34;entity_type&#34;`</span>
+<span class="ln"> 4</span>    <span class="nx">Filter</span>     <span class="kt">string</span> <span class="s">`json:&#34;filter&#34;`</span>
+<span class="ln"> 5</span><span class="p">}</span>
+<span class="ln"> 6</span> 
+<span class="ln"> 7</span><span class="c1">// SearchResult ...
+</span><span class="ln"> 8</span><span class="c1"></span><span class="kd">type</span> <span class="nx">SearchResult</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="ln"> 9</span>    <span class="nx">EntityID</span>   <span class="kt">string</span> <span class="s">`json:&#34;entity_id&#34;`</span>
+<span class="ln">10</span>    <span class="nx">EntityType</span> <span class="kt">string</span> <span class="s">`json:&#34;entity_type&#34;`</span>
+<span class="ln">11</span>    <span class="nx">Time</span>       <span class="kt">int64</span>  <span class="s">`json:&#34;time&#34;`</span>
+<span class="ln">12</span><span class="p">}</span>
+<span class="ln">13</span> 
+<span class="ln">14</span><span class="c1">// SearchResults ...
+</span><span class="ln">15</span><span class="c1"></span><span class="kd">type</span> <span class="nx">SearchResults</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="ln">16</span>    <span class="nx">Results</span>    <span class="p">[]</span><span class="nx">SearchResult</span> <span class="s">`json:&#34;results&#34;`</span>
+<span class="ln">17</span>    <span class="nx">TotalCount</span> <span class="kt">int64</span>          <span class="s">`json:&#34;total_count&#34;`</span>
+<span class="ln">18</span><span class="p">}</span>
+<span class="ln">19</span> 
+<span class="ln">20</span><span class="c1">// Search is searching Flows...
+</span><span class="ln">21</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Search</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Client</span><span class="p">,</span> <span class="nx">SearchRequest</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">SearchResults</span> <span class="p">{</span>
+<span class="ln">22</span>    <span class="kd">var</span> <span class="nx">err</span> <span class="kt">error</span>
+<span class="ln">23</span> 
+<span class="ln">24</span>    <span class="c1">// Build request body
+</span><span class="ln">25</span><span class="c1"></span>    <span class="nx">searchBody</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">SearchBody</span><span class="p">{</span>
+<span class="ln">26</span>        <span class="nx">EntityType</span><span class="p">:</span> <span class="s">&#34;Flow&#34;</span><span class="p">,</span>
+<span class="ln">27</span>        <span class="nx">Filter</span><span class="p">:</span>     <span class="nx">SearchRequest</span><span class="p">,</span>
+<span class="ln">28</span>    <span class="p">}</span>
+<span class="ln">29</span>    <span class="nx">buf</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nx">Buffer</span><span class="p">)</span>
+<span class="ln">30</span>    <span class="c1">// json.NewEncoder(buf).Encode(authBody)
+</span><span class="ln">31</span><span class="c1"></span>    <span class="nx">json</span><span class="p">.</span><span class="nf">NewEncoder</span><span class="p">(</span><span class="nx">buf</span><span class="p">).</span><span class="nf">Encode</span><span class="p">(</span><span class="nx">searchBody</span><span class="p">)</span>
+<span class="ln">32</span> 
+<span class="ln">33</span>    <span class="c1">// Build the request
+</span><span class="ln">34</span><span class="c1"></span>    <span class="nx">req</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">NewRequest</span><span class="p">(</span><span class="s">&#34;POST&#34;</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%s/search&#34;</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">BaseURL</span><span class="p">),</span> <span class="nx">buf</span><span class="p">)</span>
+<span class="ln">35</span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln">36</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+<span class="ln">37</span>        <span class="k">return</span> <span class="nx">SearchResults</span><span class="p">{}</span>
+<span class="ln">38</span>    <span class="p">}</span>
+<span class="ln">39</span> 
+<span class="ln">40</span>    <span class="c1">// Send the request
+</span><span class="ln">41</span><span class="c1"></span>    <span class="nx">res</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">sendRequest</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+<span class="ln">42</span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln">43</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+<span class="ln">44</span>        <span class="k">return</span> <span class="nx">SearchResults</span><span class="p">{}</span>
+<span class="ln">45</span>    <span class="p">}</span>
+<span class="ln">46</span> 
+<span class="ln">47</span>    <span class="c1">// Decode the response
+</span><span class="ln">48</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">fullResponse</span> <span class="nx">SearchResults</span>
+<span class="ln">49</span>    <span class="k">if</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">fullResponse</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln">50</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;error decoding&#34;</span><span class="p">)</span>
+<span class="ln">51</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="ln">52</span>        <span class="k">return</span> <span class="nx">SearchResults</span><span class="p">{}</span>
+<span class="ln">53</span>    <span class="p">}</span>
+<span class="ln">54</span> 
+<span class="ln">55</span>    <span class="k">return</span> <span class="nx">fullResponse</span>
+<span class="ln">56</span> 
+<span class="ln">57</span><span class="p">}</span>
+</code></pre></div><p>Here, we define:</p>
+<ul>
+<li>the search body request</li>
+<li>the expected search result</li>
+</ul>
+<p>Then, the function Search takes a SearchRequest string as an argument. This enables me to use this function as a generic one. For example, if I call Search(c, <code>destination_ip.ip_address = ‘10.0.0.1’ or source_ip.ip_address = ‘10.0.0.1’</code>), I expect to to fill a SearchResults structure with flows matching source or destination IP 10.0.0.1.</p>
+<p>Now, I need a function to get some information for each flow (at least the name):</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="c1">// EntityResult ...
+</span><span class="ln"> 2</span><span class="c1"></span><span class="kd">type</span> <span class="nx">EntityResult</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="ln"> 3</span>    <span class="nx">Name</span> <span class="kt">string</span> <span class="s">`json:&#34;name&#34;`</span>
+<span class="ln"> 4</span><span class="p">}</span>
+<span class="ln"> 5</span> 
+<span class="ln"> 6</span><span class="c1">// GetEntity is getting details about the flow...
+</span><span class="ln"> 7</span><span class="c1"></span><span class="kd">func</span> <span class="nf">GetEntity</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Client</span><span class="p">,</span> <span class="nx">ID</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">EntityResult</span> <span class="p">{</span>
+<span class="ln"> 8</span>    <span class="kd">var</span> <span class="nx">err</span> <span class="kt">error</span>
+<span class="ln"> 9</span> 
+<span class="ln">10</span>    <span class="c1">// Build the request
+</span><span class="ln">11</span><span class="c1"></span>    <span class="nx">req</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">NewRequest</span><span class="p">(</span><span class="s">&#34;GET&#34;</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%s/entities/flows/%s&#34;</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">BaseURL</span><span class="p">,</span> <span class="nx">ID</span><span class="p">),</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="ln">12</span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln">13</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+<span class="ln">14</span>        <span class="k">return</span> <span class="nx">EntityResult</span><span class="p">{}</span>
+<span class="ln">15</span>    <span class="p">}</span>
+<span class="ln">16</span> 
+<span class="ln">17</span>    <span class="c1">// Send the request
+</span><span class="ln">18</span><span class="c1"></span>    <span class="nx">res</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">sendRequest</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+<span class="ln">19</span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln">20</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+<span class="ln">21</span>        <span class="k">return</span> <span class="nx">EntityResult</span><span class="p">{}</span>
+<span class="ln">22</span>    <span class="p">}</span>
+<span class="ln">23</span> 
+<span class="ln">24</span>    <span class="c1">// Decode the response
+</span><span class="ln">25</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">fullResponse</span> <span class="nx">EntityResult</span>
+<span class="ln">26</span>    <span class="k">if</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">fullResponse</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln">27</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;error decoding&#34;</span><span class="p">)</span>
+<span class="ln">28</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="ln">29</span>        <span class="k">return</span> <span class="nx">EntityResult</span><span class="p">{}</span>
+<span class="ln">30</span>    <span class="p">}</span>
+<span class="ln">31</span> 
+<span class="ln">32</span>    <span class="k">return</span> <span class="nx">fullResponse</span>
+<span class="ln">33</span> 
+<span class="ln">34</span><span class="p">}</span>
+</code></pre></div><p>For that, I’m using a /entities/flow method to get some details. For now, I just want to retrieve the name.</p>
+<p>Now that I have my flows and their name, I need to get their metrics:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="c1">// MetricsResults ...
+</span><span class="ln"> 2</span><span class="c1"></span><span class="kd">type</span> <span class="nx">MetricsResults</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="ln"> 3</span>    <span class="nx">Metric</span>      <span class="kt">string</span>      <span class="s">`json:&#34;metric&#34;`</span>
+<span class="ln"> 4</span>    <span class="nx">DisplayName</span> <span class="kt">string</span>      <span class="s">`json:&#34;display_name&#34;`</span>
+<span class="ln"> 5</span>    <span class="nx">Interval</span>    <span class="kt">int64</span>       <span class="s">`json:&#34;interval&#34;`</span>
+<span class="ln"> 6</span>    <span class="nx">Unit</span>        <span class="kt">string</span>      <span class="s">`json:&#34;unit&#34;`</span>
+<span class="ln"> 7</span>    <span class="nx">PointList</span>   <span class="p">[][]</span><span class="kt">float64</span> <span class="s">`json:&#34;pointlist&#34;`</span>
+<span class="ln"> 8</span>    <span class="nx">Start</span>       <span class="kt">int64</span>       <span class="s">`json:&#34;start&#34;`</span>
+<span class="ln"> 9</span>    <span class="nx">End</span>         <span class="kt">int64</span>       <span class="s">`json:&#34;end&#34;`</span>
+<span class="ln">10</span><span class="p">}</span>
+<span class="ln">11</span> 
+<span class="ln">12</span><span class="c1">// GetMetrics is listing VMs...
+</span><span class="ln">13</span><span class="c1"></span><span class="kd">func</span> <span class="nf">GetMetrics</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Client</span><span class="p">,</span> <span class="nx">ID</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">MetricsResults</span> <span class="p">{</span>
+<span class="ln">14</span>    <span class="kd">var</span> <span class="nx">err</span> <span class="kt">error</span>
+<span class="ln">15</span>    <span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Unix</span><span class="p">()</span>
+<span class="ln">16</span> 
+<span class="ln">17</span>    <span class="c1">// Build the request
+</span><span class="ln">18</span><span class="c1"></span>    <span class="nx">req</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">NewRequest</span><span class="p">(</span><span class="s">&#34;GET&#34;</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%s/metrics?entity_id=%s&amp;amp;start=%d&amp;amp;end=%d&amp;amp;interval=1800&amp;amp;metric=flow.totalBytesRate.rate.average.bitsPerSecond&#34;</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">BaseURL</span><span class="p">,</span> <span class="nx">ID</span><span class="p">,</span> <span class="nx">now</span><span class="o">-</span><span class="mi">86400</span><span class="p">,</span> <span class="nx">now</span><span class="p">),</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="ln">19</span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln">20</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+<span class="ln">21</span>        <span class="k">return</span> <span class="nx">MetricsResults</span><span class="p">{}</span>
+<span class="ln">22</span>    <span class="p">}</span>
+<span class="ln">23</span> 
+<span class="ln">24</span>    <span class="c1">// Send the request
+</span><span class="ln">25</span><span class="c1"></span>    <span class="nx">res</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">sendRequest</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+<span class="ln">26</span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln">27</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+<span class="ln">28</span>        <span class="k">return</span> <span class="nx">MetricsResults</span><span class="p">{}</span>
+<span class="ln">29</span>    <span class="p">}</span>
+<span class="ln">30</span> 
+<span class="ln">31</span>    <span class="c1">// Decode the response
+</span><span class="ln">32</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">fullResponse</span> <span class="nx">MetricsResults</span>
+<span class="ln">33</span>    <span class="k">if</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">fullResponse</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="ln">34</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;error decoding&#34;</span><span class="p">)</span>
+<span class="ln">35</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="ln">36</span>        <span class="k">return</span> <span class="nx">MetricsResults</span><span class="p">{}</span>
+<span class="ln">37</span>    <span class="p">}</span>
+<span class="ln">38</span> 
+<span class="ln">39</span>    <span class="k">return</span> <span class="nx">fullResponse</span>
+<span class="ln">40</span><span class="p">}</span>
+</code></pre></div><p>I’m using the /metrics method for that. The interesting part of this call in the parameters. I need to get actual time translated in epochs. I use this function: now := time.Now().Unix(). I use now at the end metric period and now-86400 for the start metric period. 86400s = 24h, so these params will get the last 24-hours of data. The interval is 1800 (30minutes), so we should collect 48 items. The last part is the metric that we want to use: I chose flow.totalBytesRate.rate.average.bitsPerSecond in this post. (If you need to list all accepted metrics, you can use this method: /api/ni/schema/Flow/metrics)</p>
+<p>Almost done! We just have to use all these functions in the right order and plot the charts! (For that, I’ll use this package: <a href="https://github.com/guptarohit/asciigraph">https://github.com/guptarohit/asciigraph</a>)</p>
+<p>Here is the main function:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="ln"> 1</span><span class="c1">// InfoColor ...
+</span><span class="ln"> 2</span><span class="c1"></span><span class="kd">const</span> <span class="p">(</span>
+<span class="ln"> 3</span>    <span class="nx">InfoColor</span>    <span class="p">=</span> <span class="s">&#34;\033[1;34m%s\033[0m\n&#34;</span>
+<span class="ln"> 4</span>    <span class="nx">NoticeColor</span>  <span class="p">=</span> <span class="s">&#34;\033[1;36m%s\033[0m\n&#34;</span>
+<span class="ln"> 5</span>    <span class="nx">WarningColor</span> <span class="p">=</span> <span class="s">&#34;\033[1;33m%s\033[0m\n&#34;</span>
+<span class="ln"> 6</span>    <span class="nx">ErrorColor</span>   <span class="p">=</span> <span class="s">&#34;\033[1;31m%s\033[0m\n&#34;</span>
+<span class="ln"> 7</span>    <span class="nx">DebugColor</span>   <span class="p">=</span> <span class="s">&#34;\033[0;36m%s\033[0m\n&#34;</span>
+<span class="ln"> 8</span><span class="p">)</span>
+<span class="ln"> 9</span> 
+<span class="ln">10</span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="ln">11</span> 
+<span class="ln">12</span>    <span class="nx">arg</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="ln">13</span> 
+<span class="ln">14</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="p">{</span>
+<span class="ln">15</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="nx">ErrorColor</span><span class="p">,</span> <span class="s">&#34;Please specify at least one arg&#34;</span><span class="p">)</span>
+<span class="ln">16</span>        <span class="k">return</span>
+<span class="ln">17</span>    <span class="p">}</span>
+<span class="ln">18</span> 
+<span class="ln">19</span>    <span class="nx">client</span> <span class="o">:=</span> <span class="nf">NewClient</span><span class="p">()</span>
+<span class="ln">20</span> 
+<span class="ln">21</span>    <span class="c1">// Authentication
+</span><span class="ln">22</span><span class="c1"></span>    <span class="nx">token</span> <span class="o">:=</span> <span class="nf">Auth</span><span class="p">(</span><span class="nx">client</span><span class="p">)</span>
+<span class="ln">23</span>    <span class="k">if</span> <span class="nx">token</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+<span class="ln">24</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="nx">ErrorColor</span><span class="p">,</span> <span class="s">&#34;Failed to authenticate&#34;</span><span class="p">)</span>
+<span class="ln">25</span>        <span class="k">return</span>
+<span class="ln">26</span>    <span class="p">}</span>
+<span class="ln">27</span> 
+<span class="ln">28</span> 
+<span class="ln">29</span>    <span class="nx">res</span> <span class="o">:=</span> <span class="nf">Search</span><span class="p">(</span><span class="nx">client</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">`destination_ip.ip_address = &#39;%s&#39; or source_ip.ip_address = &#39;%s&#39;`</span><span class="p">,</span> <span class="nx">arg</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">arg</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="ln">30</span> 
+<span class="ln">31</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+<span class="ln">32</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="nx">WarningColor</span><span class="p">,</span> <span class="s">&#34;no found flows&#34;</span><span class="p">)</span>
+<span class="ln">33</span>        <span class="k">return</span>
+<span class="ln">34</span>    <span class="p">}</span>
+<span class="ln">35</span> 
+<span class="ln">36</span>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">res</span><span class="p">.</span><span class="nx">Results</span> <span class="p">{</span>
+<span class="ln">37</span> 
+<span class="ln">38</span>        <span class="nx">metrics</span> <span class="o">:=</span> <span class="nf">GetMetrics</span><span class="p">(</span><span class="nx">client</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">Results</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">EntityID</span><span class="p">)</span>
+<span class="ln">39</span>        <span class="nx">flowName</span> <span class="o">:=</span> <span class="nf">GetEntity</span><span class="p">(</span><span class="nx">client</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">Results</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">EntityID</span><span class="p">)</span>
+<span class="ln">40</span> 
+<span class="ln">41</span>        <span class="nx">data</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">float64</span><span class="p">{}</span>
+<span class="ln">42</span>        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">s</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">metrics</span><span class="p">.</span><span class="nx">PointList</span> <span class="p">{</span>
+<span class="ln">43</span>            <span class="nx">data</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">1000000</span><span class="p">)</span>
+<span class="ln">44</span>        <span class="p">}</span>
+<span class="ln">45</span> 
+<span class="ln">46</span>        <span class="c1">// Display Charts
+</span><span class="ln">47</span><span class="c1"></span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+<span class="ln">48</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="nx">NoticeColor</span><span class="p">,</span> <span class="nx">flowName</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span>
+<span class="ln">49</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+<span class="ln">50</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="nx">InfoColor</span><span class="p">,</span> <span class="s">&#34;Average MBps (last 24Hours)&#34;</span><span class="p">)</span>
+<span class="ln">51</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+<span class="ln">52</span>        <span class="nx">graph</span> <span class="o">:=</span> <span class="nx">asciigraph</span><span class="p">.</span><span class="nf">Plot</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="ln">53</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">graph</span><span class="p">)</span>
+<span class="ln">54</span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+<span class="ln">55</span> 
+<span class="ln">56</span>    <span class="p">}</span>
+<span class="ln">57</span> 
+<span class="ln">58</span><span class="p">}</span>
+</code></pre></div><p>The code is straightforward to understand, the only trick is s[1]/1000000. I decided to display charts in Mbps instead of bps, so I divide each point by 1M.</p>
+<p>Making this code a kubectl pluging is more than easy. You just have to build the code with an output binary name starting by kubectl-, and move this executable in your system path.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>adeleporte@adeleporte-a01 adeleporte % go build -o kubectl-vrni
+<span class="ln">2</span>adeleporte@adeleporte-a01 adeleporte % mv kubectl-vrni /usr/local/bin
+<span class="ln">3</span>adeleporte@adeleporte-a01 adeleporte % 
+</code></pre></div><p>You should now be able to plot nice graphs by calling kubectl vrni flows and adding any IP:
+<img src="/vrni-plugin-cli.png" alt="kubectl vrni plugin"></p>
+
+    
+      
+    
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    
+      <h2>Antoine Deleporte and Jean-Bernard Fontenette</h2>
+      <div>
+        Technologists, perpetual students, sometimes teachers, continual incremental improvement.
+      </div>
+      <a href='https://adeleporte.github.io/about/' class="button mt-1" role="button">Read More</a>
+    <h2 class="mt-4">Featured Posts</h2>
+    <ul>
+      <li>
+        <a href="https://adeleporte.github.io/posts/my-first-post/" class="nav-link">VeloCloud Terraform Provider published on Hashicorp registry!</a>
+      </li>
+    </ul>
+    <h2 class="mt-4">Recent Posts</h2>
+    <ul class="flex-column">
+      <li>
+        <a href="https://adeleporte.github.io/posts/my-first-post/" class="nav-link">VeloCloud Terraform Provider published on Hashicorp registry!</a>
+      </li>
+      <li>
+        <a href="https://adeleporte.github.io/posts/vko/" class="nav-link">A VELOCLOUD KUBERNETES OPERATOR !</a>
+      </li>
+    </ul>
+    <div>
+      <h2 class="mt-4 taxonomy" id="tags-section">Tags</h2>
+      <nav class="tags_nav">
+        <a href='https://adeleporte.github.io/tags/code/' class="post_tag button button_translucent">
+          CODE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://adeleporte.github.io/tags/terraform/' class="post_tag button button_translucent">
+          TERRAFORM
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://adeleporte.github.io/tags/velocloud/' class="post_tag button button_translucent">
+          VELOCLOUD
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+  </section>
+</aside>
+
+</div>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" id="gitlab">
+    <path d="M12.3 74.7h54L43.3 3c-1-3.6-6.4-3.6-7.6 0L12.3 74.8z" />
+    <path d="M12.3 74.7L.5 111c-1 3.2 0 6.8 3 8.8l101.6 74-92.5-119z"/>
+    <path d="M105 193.7l-38.6-119h-54l92.7 119z"/>
+    <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
+    <path d="M105 193.7l38.7-119H198l-93 119z"/>
+    <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/> 
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="arrow">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+</svg>
+
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='https://adeleporte.github.io/icons/apple-touch-icon.png' class="icon icon_2 transparent">
+    <p>Copyright<span class="year"></span> VCOFFEE.CLOUD BLOG. All Rights Reserved</p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <use xlink:href="#arrow"></use>
+</svg>
+</a>
+
+  </div>
+</footer>
+
+    <script type="text/javascript" src="https://adeleporte.github.io/js/bundle.min.46cf37e5a00dd7c5e3b78a26ad22a75e87e6a2ba72791b22f52da3ee3604203dc090c63bc335d9007270dd1dd00294579092ed55f2dd71a3a7e6863b3f766270.js" integrity="sha512-Rs835aAN18Xjt4omrSKnXofmorpyeRsi9S2j7jYEID3AkMY7wzXZAHJw3R3QApRXkJLtVfLdcaOn5oY7P3ZicA==" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
