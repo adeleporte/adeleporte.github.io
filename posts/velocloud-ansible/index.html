@@ -154,6 +154,7 @@
     
     <h3 id="disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer"><em>DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer</em></h3>
 <p>In this post, we’re going to cover the different steps involved to create a basic Ansible module for the Velocloud SDWAN Solution.</p>
+<p><img src="/vco.png" alt="VCO"></p>
 <p>As an example, we’ll start with a quite basic module: how to configure the static routing at the Edge Level.</p>
 <p>VMware provides a very good API publicly available at <a href="http://code.vmware.com">http://code.vmware.com</a></p>
 <p>Let’s start with the basic structure of an Ansible module. As you may know, modules are generally written in Python. Basically, we need to import the Ansible python libraries and use the AnsibleModule function as the entry point of our module.</p>
