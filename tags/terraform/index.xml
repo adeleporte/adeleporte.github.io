@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>terraform on vCoffee.cloud Blog</title>
-    <link>https://vcoffee.cloud/tags/terraform/</link>
+    <link>http://vcoffee.cloud/tags/terraform/</link>
     <description>Recent content in terraform on vCoffee.cloud Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Thu, 12 Nov 2020 15:01:14 +0100</lastBuildDate><atom:link href="https://vcoffee.cloud/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Nov 2020 15:01:14 +0100</lastBuildDate><atom:link href="http://vcoffee.cloud/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VeloCloud Terraform Provider published on Hashicorp registry!</title>
-      <link>https://vcoffee.cloud/posts/my-first-post/</link>
+      <link>http://vcoffee.cloud/posts/my-first-post/</link>
       <pubDate>Thu, 12 Nov 2020 15:01:14 +0100</pubDate>
       
-      <guid>https://vcoffee.cloud/posts/my-first-post/</guid>
+      <guid>http://vcoffee.cloud/posts/my-first-post/</guid>
       <description>
         
           &lt;p&gt;My Terraform provider for VeloCloud is now available on the official Terraform registry. Checkout &lt;a href=&#34;https://registry.terraform.io/providers/adeleporte/velocloud/latest&#34;&gt;Velocloud TF provider docs&lt;/a&gt;&lt;/p&gt;

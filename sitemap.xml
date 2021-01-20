@@ -3,111 +3,111 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://vcoffee.cloud/about/</loc>
+    <loc>http://vcoffee.cloud/about/</loc>
     <lastmod>2021-01-15T17:07:15+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/tags/code/</loc>
+    <loc>http://vcoffee.cloud/tags/code/</loc>
     <lastmod>2020-11-12T15:01:14+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/posts/</loc>
+    <loc>http://vcoffee.cloud/posts/</loc>
     <lastmod>2020-11-12T15:01:14+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/tags/</loc>
+    <loc>http://vcoffee.cloud/tags/</loc>
     <lastmod>2020-11-12T15:01:14+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/tags/terraform/</loc>
+    <loc>http://vcoffee.cloud/tags/terraform/</loc>
     <lastmod>2020-11-12T15:01:14+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/</loc>
+    <loc>http://vcoffee.cloud/</loc>
     <lastmod>2020-11-12T15:01:14+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/tags/velocloud/</loc>
+    <loc>http://vcoffee.cloud/tags/velocloud/</loc>
     <lastmod>2020-11-12T15:01:14+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/posts/my-first-post/</loc>
+    <loc>http://vcoffee.cloud/posts/my-first-post/</loc>
     <lastmod>2020-11-12T15:01:14+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/posts/vrni-plugin/</loc>
+    <loc>http://vcoffee.cloud/posts/vrni-plugin/</loc>
     <lastmod>2020-08-24T17:07:15+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/tags/go/</loc>
+    <loc>http://vcoffee.cloud/tags/go/</loc>
     <lastmod>2020-08-24T17:07:15+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/tags/vrni/</loc>
+    <loc>http://vcoffee.cloud/tags/vrni/</loc>
     <lastmod>2020-08-24T17:07:15+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/posts/vko/</loc>
+    <loc>http://vcoffee.cloud/posts/vko/</loc>
     <lastmod>2020-07-21T17:07:15+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/tags/kubernetes/</loc>
+    <loc>http://vcoffee.cloud/tags/kubernetes/</loc>
     <lastmod>2020-07-21T17:07:15+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/tags/hcx/</loc>
+    <loc>http://vcoffee.cloud/tags/hcx/</loc>
     <lastmod>2020-03-02T17:07:15+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/posts/vmc-tags/</loc>
+    <loc>http://vcoffee.cloud/posts/vmc-tags/</loc>
     <lastmod>2020-03-02T17:07:15+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/tags/nsx/</loc>
+    <loc>http://vcoffee.cloud/tags/nsx/</loc>
     <lastmod>2020-03-02T17:07:15+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/tags/python/</loc>
+    <loc>http://vcoffee.cloud/tags/python/</loc>
     <lastmod>2020-03-02T17:07:15+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/tags/vmc/</loc>
+    <loc>http://vcoffee.cloud/tags/vmc/</loc>
     <lastmod>2020-03-02T17:07:15+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/tags/ansible/</loc>
+    <loc>http://vcoffee.cloud/tags/ansible/</loc>
     <lastmod>2020-02-27T17:07:15+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/posts/velocloud-ansible/</loc>
+    <loc>http://vcoffee.cloud/posts/velocloud-ansible/</loc>
     <lastmod>2020-02-27T17:07:15+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/categories/</loc>
+    <loc>http://vcoffee.cloud/categories/</loc>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/series/</loc>
+    <loc>http://vcoffee.cloud/series/</loc>
   </url>
   
 </urlset>

@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Series on vCoffee.cloud Blog</title>
-    <link>https://vcoffee.cloud/series/</link>
+    <link>http://vcoffee.cloud/series/</link>
     <description>Recent content in Series on vCoffee.cloud Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright><atom:link href="https://vcoffee.cloud/series/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright><atom:link href="http://vcoffee.cloud/series/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
