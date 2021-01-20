@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vCoffee.cloud Blog</title>
-    <link>https://adeleporte.github.io/</link>
+    <link>https://vcoffee.cloud/</link>
     <description>Recent content on vCoffee.cloud Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Thu, 12 Nov 2020 15:01:14 +0100</lastBuildDate><atom:link href="https://adeleporte.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Nov 2020 15:01:14 +0100</lastBuildDate><atom:link href="https://vcoffee.cloud/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VeloCloud Terraform Provider published on Hashicorp registry!</title>
-      <link>https://adeleporte.github.io/posts/my-first-post/</link>
+      <link>https://vcoffee.cloud/posts/my-first-post/</link>
       <pubDate>Thu, 12 Nov 2020 15:01:14 +0100</pubDate>
       
-      <guid>https://adeleporte.github.io/posts/my-first-post/</guid>
+      <guid>https://vcoffee.cloud/posts/my-first-post/</guid>
       <description>
         
           &lt;p&gt;My Terraform provider for VeloCloud is now available on the official Terraform registry. Checkout &lt;a href=&#34;https://registry.terraform.io/providers/adeleporte/velocloud/latest&#34;&gt;Velocloud TF provider docs&lt;/a&gt;&lt;/p&gt;
@@ -72,18 +72,17 @@
     
     <item>
       <title>GET VRNI GRAPHS DIRECTLY FROM A KUBECTL VRNI COMMAND!</title>
-      <link>https://adeleporte.github.io/posts/vrni-plugin/</link>
+      <link>https://vcoffee.cloud/posts/vrni-plugin/</link>
       <pubDate>Mon, 24 Aug 2020 17:07:15 +0100</pubDate>
       
-      <guid>https://adeleporte.github.io/posts/vrni-plugin/</guid>
+      <guid>https://vcoffee.cloud/posts/vrni-plugin/</guid>
       <description>
         
-          &lt;h3 id=&#34;disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer&#34;&gt;&lt;em&gt;DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer&lt;/em&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://adeleporte.github.io/vrni-plugin-cli.png&#34; alt=&#34;kubectl vrni plugin&#34;&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vrni-plugin-cli.png&#34; alt=&#34;kubectl vrni plugin&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Hi, today in this blog, I’m going to explain how to develop a small kubectl plugin. As you may know, VMware has a wonderful solution to collect and analyze network flows from many different sources, including Kubernetes: vRealize Network Insight (aka vRNI). My objective is to make this rich information easily and quickly available to a kube admin, thanks to a kubectl command.&lt;/p&gt;
 &lt;p&gt;What I want to achieve in this part 1 is a kubectl vrni flow IP command that will display some charts representing the flows for this specific IP (source or destination). This information can help to troubleshoot any networking issue. I will handle Kubernetes POD to IP translation in part 2.&lt;/p&gt;
 &lt;p&gt;Here are the different steps to code:
-&lt;img src=&#34;https://adeleporte.github.io/vrni-plugin-steps.png&#34; alt=&#34;Steps&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://vcoffee.cloud/vrni-plugin-steps.png&#34; alt=&#34;Steps&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I’m going to develop this code in Go. Because we’ll have to deal with Kubernetes API in Part 2, Go is the best language to start with.&lt;/p&gt;
 &lt;p&gt;Let’s start by creating a client that we’ll use to speak to vRNI:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;ln&#34;&gt;  1&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;main&lt;/span&gt;
@@ -438,7 +437,8 @@
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;adeleporte@adeleporte-a01 adeleporte % mv kubectl-vrni /usr/local/bin
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;adeleporte@adeleporte-a01 adeleporte % 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should now be able to plot nice graphs by calling kubectl vrni flows and adding any IP:
-&lt;img src=&#34;https://adeleporte.github.io/vrni-plugin-cli.png&#34; alt=&#34;kubectl vrni plugin&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://vcoffee.cloud/vrni-plugin-cli.png&#34; alt=&#34;kubectl vrni plugin&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer&#34;&gt;&lt;em&gt;DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer&lt;/em&gt;&lt;/h3&gt;
 
         
       </description>
@@ -446,14 +446,13 @@
     
     <item>
       <title>A VELOCLOUD KUBERNETES OPERATOR !</title>
-      <link>https://adeleporte.github.io/posts/vko/</link>
+      <link>https://vcoffee.cloud/posts/vko/</link>
       <pubDate>Tue, 21 Jul 2020 17:07:15 +0100</pubDate>
       
-      <guid>https://adeleporte.github.io/posts/vko/</guid>
+      <guid>https://vcoffee.cloud/posts/vko/</guid>
       <description>
         
-          &lt;h3 id=&#34;disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer&#34;&gt;&lt;em&gt;DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer&lt;/em&gt;&lt;/h3&gt;
-&lt;p&gt;As Kubernetes is becoming the de-facto standard to run the new modern applications, there is a need to include the SDWAN configuration as part of the application development.&lt;/p&gt;
+          &lt;p&gt;As Kubernetes is becoming the de-facto standard to run the new modern applications, there is a need to include the SDWAN configuration as part of the application development.&lt;/p&gt;
 &lt;p&gt;Let’s imagine a dev coding a new app. As part of the application testing, it can be useful to adapt the SDWAN policy, such as bandwidth, the QoS settings, the link steering and so on. The dev could use the same YAML files and kubectl commands that he loves and just includes the SDWAN parameters.&lt;/p&gt;
 &lt;p&gt;Obviously, the settings that the dev could use should be limited to a range that has been defined by infra admins. Some namespaces could consume more bandwidth than others, for example. The link steering policy could be limited to “Internet Only” for pre-prod namespaces, as another example.&lt;/p&gt;
 &lt;p&gt;In this post, I’m going to cover the creation of such integration. We’re going to create a Velocloud CRD (Custom Resource Definition), that the infra admins will be able to use to define the set of settings allowed for a dev. Then, we’ll create a Kubernetes Operator, which is going to talk with the Velocloud Orchestrator to implement the SDWAN logic. Finally, we’ll define some YAML samples to demonstrate how a dev can use such a Velocloud CRD.&lt;/p&gt;
@@ -474,7 +473,7 @@
 &lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;ns1                  Active   6s
 &lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;ns2                  Active   5s
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For the Velocloud Orchestrator, I will use a new feature, the API tokens. Once logged as a Administrator, you can now create/revoke some API tokens, which seems to be a good idea in my own opinion.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://adeleporte.github.io/vco-api-key.png&#34; alt=&#34;VCO API Key&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vco-api-key.png&#34; alt=&#34;VCO API Key&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;velocloud-crd-definition&#34;&gt;Velocloud CRD definition&lt;/h1&gt;
 &lt;p&gt;Now, let’s start coding a very basic Velocloud CRD in a crd.yaml file:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nn&#34;&gt;---&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -629,7 +628,7 @@
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;97&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;JSONPath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;.spec.bandwidth-limit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;velocloud-kubernetes-operator&#34;&gt;Velocloud Kubernetes Operator&lt;/h1&gt;
 &lt;p&gt;Finally, we need an operator. Basically, we want Kubernetes to run our Velocloud operator when a CRD is created/updated/deleted. For that, we’ll create a deployment of a pod with 2 containers: the operator itself (which is going to talk to the Velocloud Orchestrator) and a kubectl proxy (to handle authentication).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://adeleporte.github.io/vko-architecture.png&#34; alt=&#34;VKO Architecture&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vko-architecture.png&#34; alt=&#34;VKO Architecture&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Let’s change again our crd.yaml file to include this deployment as part of the CRD definition:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nn&#34;&gt;---&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;apiVersion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;apps/v1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -950,7 +949,7 @@ So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my ap
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For my application velokube1.vcn.cloud, I want to have a RealTime Service Class, use all the available links, have a high QoS priority and no bandwidth limit.&lt;/p&gt;
 &lt;p&gt;For my application velokube2.vcn.cloud, I want to have a RealTime Service Class, use only Internet Links, have a High QoS priority and a bandwidth limit set to 40%.&lt;/p&gt;
 &lt;p&gt;Let’s check the Velocloud configuration:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://adeleporte.github.io/vco-profiles.png&#34; alt=&#34;VCO Profiles&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vco-profiles.png&#34; alt=&#34;VCO Profiles&#34;&gt;&lt;/p&gt;
 &lt;p&gt;And the operator logs&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;deleporte@adeleporte-a01 ns1 % kubectl logs operator-5bf4b944cd-tnfh9 app -n ns1
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;2020-07-21 13:14:51,674 Starting the service
@@ -980,7 +979,7 @@ So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my ap
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;velocloudbp.vcn.cloud/velokube1 unchanged
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;velocloudbp.vcn.cloud/velokube2 configured
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;adeleporte@adeleporte-a01 ns1 %
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://adeleporte.github.io/vco-profiles2.png&#34; alt=&#34;VCO Profiles&#34;&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vco-profiles2.png&#34; alt=&#34;VCO Profiles&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;set-some-limits-to-devs&#34;&gt;Set some limits to devs&lt;/h1&gt;
 &lt;p&gt;Now, let’s imagine that I want to change the bandwidth limit to 75%&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nn&#34;&gt;---&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -1005,6 +1004,7 @@ So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my ap
 &lt;p&gt;As a result, the infra team can define very specific limits for each namespace and developers are free to set the Velocloud configutation only within these limit.&lt;/p&gt;
 &lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
 &lt;p&gt;I hope that this post will give you some insights about what can be achieved when integrating such great solutions together, like Velocloud and Kubernetes. The infra/network/wan teams can now work together with the dev team to align infrastructure needs and business/dev agility.&lt;/p&gt;
+&lt;h3 id=&#34;disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer&#34;&gt;&lt;em&gt;DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer&lt;/em&gt;&lt;/h3&gt;
 
         
       </description>
@@ -1012,14 +1012,13 @@ So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my ap
     
     <item>
       <title>MIGRATE VMS FROM VMC TO ON-PREM WHILE KEEPING NSX SECURITY TAGS</title>
-      <link>https://adeleporte.github.io/posts/vmc-tags/</link>
+      <link>https://vcoffee.cloud/posts/vmc-tags/</link>
       <pubDate>Mon, 02 Mar 2020 17:07:15 +0100</pubDate>
       
-      <guid>https://adeleporte.github.io/posts/vmc-tags/</guid>
+      <guid>https://vcoffee.cloud/posts/vmc-tags/</guid>
       <description>
         
-          &lt;h3 id=&#34;disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer&#34;&gt;&lt;em&gt;DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer&lt;/em&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://adeleporte.github.io/vmc-tags.png&#34; alt=&#34;VMC NSX tags&#34;&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vmc-tags.png&#34; alt=&#34;VMC NSX tags&#34;&gt;&lt;/p&gt;
 &lt;p&gt;In this post, we’re going to see how to script the migration of some workloads from VMC to a datacenter on-prem, leveraging HCX for a live migration.&lt;/p&gt;
 &lt;p&gt;At the time of this writing, HCX doesn’t copy the NSX tags when doing a VM migration. The following script is going to automate the following actions:&lt;/p&gt;
 &lt;ul&gt;
@@ -1337,9 +1336,9 @@ So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my ap
 &lt;span class=&#34;ln&#34;&gt;58&lt;/span&gt; 
 &lt;span class=&#34;ln&#34;&gt;59&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, let’s test our script. Here is the VM at source, before the migration:
-&lt;img src=&#34;https://adeleporte.github.io/hcx-tags-vm-source.png&#34; alt=&#34;VM at source, before the migration&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://vcoffee.cloud/hcx-tags-vm-source.png&#34; alt=&#34;VM at source, before the migration&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Some tags are applied to the VM
-&lt;img src=&#34;https://adeleporte.github.io/hcx-tags-vm-tags.png&#34; alt=&#34;tags at source, before the migration (scope = scope1, tag = tag1)&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://vcoffee.cloud/hcx-tags-vm-tags.png&#34; alt=&#34;tags at source, before the migration (scope = scope1, tag = tag1)&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Start our script:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;adeleporte@adeleporte-a01 hcx-tags % ./main.py
 &lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;Start migration process...
@@ -1370,10 +1369,11 @@ So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my ap
 &lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;Tag VM in NSX DC
 &lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;Migration process &lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The migration is started and the HCX console can be used to follow its progress.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://adeleporte.github.io/hcx-tags-migration1.png&#34; alt=&#34;HCX Migration&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/hcx-tags-migration1.png&#34; alt=&#34;HCX Migration&#34;&gt;&lt;/p&gt;
 &lt;p&gt;When the migration is finished, let’s connect on the DC NSX to check the tags&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://adeleporte.github.io/hcx-tags-migration2.png&#34; alt=&#34;HCX Migration&#34;&gt;
-&lt;img src=&#34;https://adeleporte.github.io/hcx-tags-migration3.png&#34; alt=&#34;Tags after migration&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/hcx-tags-migration2.png&#34; alt=&#34;HCX Migration&#34;&gt;
+&lt;img src=&#34;https://vcoffee.cloud/hcx-tags-migration3.png&#34; alt=&#34;Tags after migration&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer&#34;&gt;&lt;em&gt;DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer&lt;/em&gt;&lt;/h3&gt;
 
         
       </description>
@@ -1381,15 +1381,14 @@ So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my ap
     
     <item>
       <title>How to write an Ansible module for Velocloud</title>
-      <link>https://adeleporte.github.io/posts/velocloud-ansible/</link>
+      <link>https://vcoffee.cloud/posts/velocloud-ansible/</link>
       <pubDate>Thu, 27 Feb 2020 17:07:15 +0100</pubDate>
       
-      <guid>https://adeleporte.github.io/posts/velocloud-ansible/</guid>
+      <guid>https://vcoffee.cloud/posts/velocloud-ansible/</guid>
       <description>
         
-          &lt;h3 id=&#34;disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer&#34;&gt;&lt;em&gt;DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer&lt;/em&gt;&lt;/h3&gt;
-&lt;p&gt;In this post, we’re going to cover the different steps involved to create a basic Ansible module for the Velocloud SDWAN Solution.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://adeleporte.github.io/vco.png&#34; alt=&#34;VCO&#34;&gt;&lt;/p&gt;
+          &lt;p&gt;In this post, we’re going to cover the different steps involved to create a basic Ansible module for the Velocloud SDWAN Solution.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vco.png&#34; alt=&#34;VCO&#34;&gt;&lt;/p&gt;
 &lt;p&gt;As an example, we’ll start with a quite basic module: how to configure the static routing at the Edge Level.&lt;/p&gt;
 &lt;p&gt;VMware provides a very good API publicly available at &lt;a href=&#34;http://code.vmware.com&#34;&gt;http://code.vmware.com&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Let’s start with the basic structure of an Ansible module. As you may know, modules are generally written in Python. Basically, we need to import the Ansible python libraries and use the AnsibleModule function as the entry point of our module.&lt;/p&gt;
@@ -1677,7 +1676,8 @@ modify this module to create/modify/delete the routes
 &lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt; 
 &lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;PLAY RECAP *******************************************************************************************************************************************************************
 &lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;localhost                  : &lt;span class=&#34;nv&#34;&gt;ok&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;    &lt;span class=&#34;nv&#34;&gt;changed&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;    &lt;span class=&#34;nv&#34;&gt;unreachable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;    &lt;span class=&#34;nv&#34;&gt;failed&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;    &lt;span class=&#34;nv&#34;&gt;skipped&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;    &lt;span class=&#34;nv&#34;&gt;rescued&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;    &lt;span class=&#34;nv&#34;&gt;ignored&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer&#34;&gt;&lt;em&gt;DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer&lt;/em&gt;&lt;/h3&gt;
+
         
       </description>
     </item>
