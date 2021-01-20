@@ -17,8 +17,8 @@
         
           &lt;h3 id=&#34;disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer&#34;&gt;&lt;em&gt;DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer&lt;/em&gt;&lt;/h3&gt;
 &lt;p&gt;As Kubernetes is becoming the de-facto standard to run the new modern applications, there is a need to include the SDWAN configuration as part of the application development.&lt;/p&gt;
-&lt;p&gt;Let’s imagine a dev coding a new app. As part of the application testing, it can be useful to adapt the SDWAN policy, such as bandwidth, the QoS settings, the link steering and so on. The dev could use the same YAML files and kubectl commands that he loves and just include the SDWAN parameters.&lt;/p&gt;
-&lt;p&gt;Obviously, the settings that the dev could use should be limited to a range that has been defined by infra admins. Some namespaces could set more bandwidth than others, for example. The link steering policy could be limited to “Internet Only” for pre-prod namespaces, as another example.&lt;/p&gt;
+&lt;p&gt;Let’s imagine a dev coding a new app. As part of the application testing, it can be useful to adapt the SDWAN policy, such as bandwidth, the QoS settings, the link steering and so on. The dev could use the same YAML files and kubectl commands that he loves and just includes the SDWAN parameters.&lt;/p&gt;
+&lt;p&gt;Obviously, the settings that the dev could use should be limited to a range that has been defined by infra admins. Some namespaces could consume more bandwidth than others, for example. The link steering policy could be limited to “Internet Only” for pre-prod namespaces, as another example.&lt;/p&gt;
 &lt;p&gt;In this post, I’m going to cover the creation of such integration. We’re going to create a Velocloud CRD (Custom Resource Definition), that the infra admins will be able to use to define the set of settings allowed for a dev. Then, we’ll create a Kubernetes Operator, which is going to talk with the Velocloud Orchestrator to implement the SDWAN logic. Finally, we’ll define some YAML samples to demonstrate how a dev can use such a Velocloud CRD.&lt;/p&gt;
 &lt;p&gt;So we need 2 things to start coding: a Velocloud Orchestrator and a Kubernetes 😉&lt;/p&gt;
 &lt;p&gt;For Kubernetes, I will use Kind as a very simple Kubernetes running on my laptop. The setup is really easy to do, and you can have a running Kube on your laptop after only a few minutes: &lt;a href=&#34;https://kind.sigs.k8s.io/docs/user/quick-start/&#34;&gt;https://kind.sigs.k8s.io/docs/user/quick-start/&lt;/a&gt;&lt;/p&gt;
@@ -37,8 +37,9 @@
 &lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;ns1                  Active   6s
 &lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;ns2                  Active   5s
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For the Velocloud Orchestrator, I will use a new feature, the API tokens. Once logged as a Administrator, you can now create/revoke some API tokens, which seems to be a good idea in my own opinion.&lt;/p&gt;
-&lt;p&gt;Velocloud CRD definition
-Now, let’s start coding a very basic Velocloud CRD in a crd.yaml file:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://adeleporte.github.io/static/vco-api-key.png&#34; alt=&#34;VCO API Key&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;velocloud-crd-definition&#34;&gt;Velocloud CRD definition&lt;/h1&gt;
+&lt;p&gt;Now, let’s start coding a very basic Velocloud CRD in a crd.yaml file:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nn&#34;&gt;---&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;apiVersion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;apiextensions.k8s.io/v1beta1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;kind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;CustomResourceDefinition&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -75,15 +76,14 @@ Now, let’s start coding a very basic Velocloud CRD in a crd.yaml file:&lt;/p&g
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;34&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;subjects&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;35&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;kind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;ServiceAccount&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;36&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;37&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#namespace: default&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;38&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;roleRef&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;39&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;kind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Role&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;40&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;velocloud-group-admin&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;41&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;apiGroup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;rbac.authorization.k8s.io&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;37&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;roleRef&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;38&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;kind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Role&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;39&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;velocloud-group-admin&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;40&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;apiGroup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;rbac.authorization.k8s.io&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;adeleporte@adeleporte-a01 ns1 % kubectl apply -f crd.yaml -n ns1
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;customresourcedefinition.apiextensions.k8s.io/velocloudbps.vcn.cloud created
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here is what we’ve done:&lt;/p&gt;
-&lt;p&gt;We have a new kind of CRD, called velocloudbps + a new role, called velocloud-group-admin, which can use get, list, create…watch commands, and this role in bind to the default service account.&lt;/p&gt;
+&lt;p&gt;We have a new kind of CRD, called velocloudbps + a new role, called velocloud-group-admin, which can use get, list, create and watch commands, and this role is binded to the default service account.&lt;/p&gt;
 &lt;p&gt;By doing so, we now have some new kubectl commands:-)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;adeleporte@adeleporte-a01 ns1 % kubectl get velocloudbps
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;No resources found.
@@ -92,7 +92,7 @@ Now, let’s start coding a very basic Velocloud CRD in a crd.yaml file:&lt;/p&g
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;No resources found.
 &lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;adeleporte@adeleporte-a01 ns1 % kubectl get velo
 &lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;No resources found.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ok, not very useful at this stage, but we have our new Velocloud CRD! Let’s modify the initial crd.yaml file to include some validation. This will enable us (and the infra admins) to define which parameter can be set on this CRD. Let’s say that we want to define the Velocloud Configuration Profile that is going to be used, the FQDN of the application currently being developed by the dev, the TCP port, and the Business Policy settings (Link steering policy, QoS priority, Bandwidth Limit). We also define the column to be displayed when using commands such as “kubectl get velocloudbps -o wide”&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ok, not very useful right now, but we have our new Velocloud CRD! Let’s modify the initial crd.yaml file to include some validation. This will enable us (and the infra admins) to define which parameter can be set on this CRD. Let’s say that we want to define the Velocloud Configuration Profile that is going to be used, the FQDN of the application currently being developed by the dev, the TCP port, and the Business Policy settings (Link steering policy, QoS priority, Bandwidth Limit). We also define the column to be displayed when using commands such as “kubectl get velocloudbps -o wide”&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nn&#34;&gt;---&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;apiVersion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;apiextensions.k8s.io/v1beta1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;kind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;CustomResourceDefinition&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -191,7 +191,8 @@ Now, let’s start coding a very basic Velocloud CRD in a crd.yaml file:&lt;/p&g
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;96&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;description&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;The bandwidth Limit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;97&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;JSONPath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;.spec.bandwidth-limit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;velocloud-kubernetes-operator&#34;&gt;Velocloud Kubernetes Operator&lt;/h1&gt;
-&lt;p&gt;Finally, we need now is an operator. Basically, we want Kubernetes to run our Velocloud operator when a CRD is created/updated/deleted. For that, we’ll create a deployment of a pod with 2 containers: the operator itself (which is going to talk to the Velocloud Orchestrator) and a kubectl proxy (to handle authentication).&lt;/p&gt;
+&lt;p&gt;Finally, we need an operator. Basically, we want Kubernetes to run our Velocloud operator when a CRD is created/updated/deleted. For that, we’ll create a deployment of a pod with 2 containers: the operator itself (which is going to talk to the Velocloud Orchestrator) and a kubectl proxy (to handle authentication).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://adeleporte.github.io/static/vko-architecture.png&#34; alt=&#34;VKO Architecture&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Let’s change again our crd.yaml file to include this deployment as part of the CRD definition:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nn&#34;&gt;---&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;apiVersion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;apps/v1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -228,7 +229,7 @@ Now, let’s start coding a very basic Velocloud CRD in a crd.yaml file:&lt;/p&g
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;33&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;adeleporte@adeleporte-a01 ns1 % kubectl apply -f crd.yaml -n ns1
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;customresourcedefinition.apiextensions.k8s.io/velocloudbps.vcn.cloud created
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At this stage, the Velocloud Kubernetes operator logic is defined. The adeleporte/velokube container (we’ll discuss about this container right after) is responsible for watching at velocloudbps CRD changes. This container will then implement the necessary changes over the Velocloud Orchestrator. Let’s now deep in the adeleporte/velokube container:&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At this stage, the Velocloud Kubernetes operator logic is defined. The adeleporte/velokube container (we’ll discuss about this container right after) is responsible for watching at velocloudbps CRD changes. This container will then implement the necessary changes over the Velocloud Orchestrator. Let’s now go deeper into the adeleporte/velokube container:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;ln&#34;&gt;  1&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;requests&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;  2&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;warnings&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;  3&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;json&lt;/span&gt;
@@ -395,9 +396,9 @@ Now, let’s start coding a very basic Velocloud CRD in a crd.yaml file:&lt;/p&g
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The code is written is Python. The interesting parts are:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;we use a Stream Request to watch at velocloudbps events (/apis/vcn.cloud/v1/namespaces/{}/velocloudbps?watch=true)&lt;/li&gt;
-&lt;li&gt;this socket acts as a loop and generate a line for each event&lt;/li&gt;
-&lt;li&gt;when a new event arises, we decode the details (obj = json.loads(line))&lt;/li&gt;
-&lt;li&gt;depending of the type of changes (creation/modification/deletion) (obj[‘type’]), we use a different Python function&lt;/li&gt;
+&lt;li&gt;this socket acts as a loop and generates a line for each event&lt;/li&gt;
+&lt;li&gt;when a new event comes, we decode the details (obj = json.loads(line))&lt;/li&gt;
+&lt;li&gt;depending of the type of event (creation/modification/deletion) (obj[‘type’]), we use a different Python function&lt;/li&gt;
 &lt;li&gt;the Velocloud Business Profile is stored inside a Configuration module (the profile) and a Qos module (the business policies), so we have a implement some code to fetch these values&lt;/li&gt;
 &lt;li&gt;in case of creation, we copy the default QoS rule, change some parameters according to the CRD, and update the QoS module&lt;/li&gt;
 &lt;/ul&gt;
@@ -512,6 +513,7 @@ So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my ap
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For my application velokube1.vcn.cloud, I want to have a RealTime Service Class, use all the available links, have a high QoS priority and no bandwidth limit.&lt;/p&gt;
 &lt;p&gt;For my application velokube2.vcn.cloud, I want to have a RealTime Service Class, use only Internet Links, have a High QoS priority and a bandwidth limit set to 40%.&lt;/p&gt;
 &lt;p&gt;Let’s check the Velocloud configuration:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://adeleporte.github.io/static/vco-profiles.png&#34; alt=&#34;VCO Profiles&#34;&gt;&lt;/p&gt;
 &lt;p&gt;And the operator logs&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;deleporte@adeleporte-a01 ns1 % kubectl logs operator-5bf4b944cd-tnfh9 app -n ns1
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;2020-07-21 13:14:51,674 Starting the service
@@ -541,8 +543,9 @@ So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my ap
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;velocloudbp.vcn.cloud/velokube1 unchanged
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;velocloudbp.vcn.cloud/velokube2 configured
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;adeleporte@adeleporte-a01 ns1 %
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Set some limits to devs
-Now, let’s imagine that I want to change the bandwidth limit to 75%&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://adeleporte.github.io/static/vco-profiles2.png&#34; alt=&#34;VCO Profiles&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;set-some-limits-to-devs&#34;&gt;Set some limits to devs&lt;/h1&gt;
+&lt;p&gt;Now, let’s imagine that I want to change the bandwidth limit to 75%&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nn&#34;&gt;---&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;apiVersion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;vcn.cloud/v1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;kind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;VelocloudBP&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -562,7 +565,7 @@ Now, let’s imagine that I want to change the bandwidth limit to 75%&lt;/p&gt;
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;The VelocloudBP &lt;span class=&#34;s2&#34;&gt;&amp;#34;velokube2&amp;#34;&lt;/span&gt; is invalid: spec.bandwidth-limit: Invalid value: 50: spec.bandwidth-limit in body should be less than or equal to &lt;span class=&#34;m&#34;&gt;50&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;adeleporte@adeleporte-a01 ns1 %
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As a developer, I’m not allowed to set more than 50% of bandwidth, because this limit has been set by the infra team when defining the CRD.&lt;/p&gt;
-&lt;p&gt;As a result, the infra team can define very specific limit for each namespace and developers are free to set the Velocloud configutation within these limit.&lt;/p&gt;
+&lt;p&gt;As a result, the infra team can define very specific limits for each namespace and developers are free to set the Velocloud configutation only within these limit.&lt;/p&gt;
 &lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
 &lt;p&gt;I hope that this post will give you some insights about what can be achieved when integrating such great solutions together, like Velocloud and Kubernetes. The infra/network/wan teams can now work together with the dev team to align infrastructure needs and business/dev agility.&lt;/p&gt;
 
