@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>go on vCoffee.cloud Blog</title>
-    <link>http://vcoffee.cloud/tags/go/</link>
+    <link>https://vcoffee.cloud/tags/go/</link>
     <description>Recent content in go on vCoffee.cloud Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 24 Aug 2020 17:07:15 +0100</lastBuildDate><atom:link href="http://vcoffee.cloud/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Aug 2020 17:07:15 +0100</lastBuildDate><atom:link href="https://vcoffee.cloud/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GET VRNI GRAPHS DIRECTLY FROM A KUBECTL VRNI COMMAND!</title>
-      <link>http://vcoffee.cloud/posts/vrni-plugin/</link>
+      <link>https://vcoffee.cloud/posts/vrni-plugin/</link>
       <pubDate>Mon, 24 Aug 2020 17:07:15 +0100</pubDate>
       
-      <guid>http://vcoffee.cloud/posts/vrni-plugin/</guid>
+      <guid>https://vcoffee.cloud/posts/vrni-plugin/</guid>
       <description>
         
-          &lt;p&gt;&lt;img src=&#34;http://vcoffee.cloud/vrni-plugin-cli.png&#34; alt=&#34;kubectl vrni plugin&#34;&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vrni-plugin-cli.png&#34; alt=&#34;kubectl vrni plugin&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Hi, today in this blog, I’m going to explain how to develop a small kubectl plugin. As you may know, VMware has a wonderful solution to collect and analyze network flows from many different sources, including Kubernetes: vRealize Network Insight (aka vRNI). My objective is to make this rich information easily and quickly available to a kube admin, thanks to a kubectl command.&lt;/p&gt;
 &lt;p&gt;What I want to achieve in this part 1 is a kubectl vrni flow IP command that will display some charts representing the flows for this specific IP (source or destination). This information can help to troubleshoot any networking issue. I will handle Kubernetes POD to IP translation in part 2.&lt;/p&gt;
 &lt;p&gt;Here are the different steps to code:
-&lt;img src=&#34;http://vcoffee.cloud/vrni-plugin-steps.png&#34; alt=&#34;Steps&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://vcoffee.cloud/vrni-plugin-steps.png&#34; alt=&#34;Steps&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I’m going to develop this code in Go. Because we’ll have to deal with Kubernetes API in Part 2, Go is the best language to start with.&lt;/p&gt;
 &lt;p&gt;Let’s start by creating a client that we’ll use to speak to vRNI:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;ln&#34;&gt;  1&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;main&lt;/span&gt;
@@ -374,7 +374,7 @@
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;adeleporte@adeleporte-a01 adeleporte % mv kubectl-vrni /usr/local/bin
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;adeleporte@adeleporte-a01 adeleporte % 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should now be able to plot nice graphs by calling kubectl vrni flows and adding any IP:
-&lt;img src=&#34;http://vcoffee.cloud/vrni-plugin-cli.png&#34; alt=&#34;kubectl vrni plugin&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://vcoffee.cloud/vrni-plugin-cli.png&#34; alt=&#34;kubectl vrni plugin&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer&#34;&gt;&lt;em&gt;DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer&lt;/em&gt;&lt;/h3&gt;
 
         
@@ -383,10 +383,10 @@
     
     <item>
       <title>A VELOCLOUD KUBERNETES OPERATOR !</title>
-      <link>http://vcoffee.cloud/posts/vko/</link>
+      <link>https://vcoffee.cloud/posts/vko/</link>
       <pubDate>Tue, 21 Jul 2020 17:07:15 +0100</pubDate>
       
-      <guid>http://vcoffee.cloud/posts/vko/</guid>
+      <guid>https://vcoffee.cloud/posts/vko/</guid>
       <description>
         
           &lt;p&gt;As Kubernetes is becoming the de-facto standard to run the new modern applications, there is a need to include the SDWAN configuration as part of the application development.&lt;/p&gt;
@@ -410,7 +410,7 @@
 &lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;ns1                  Active   6s
 &lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;ns2                  Active   5s
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For the Velocloud Orchestrator, I will use a new feature, the API tokens. Once logged as a Administrator, you can now create/revoke some API tokens, which seems to be a good idea in my own opinion.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://vcoffee.cloud/vco-api-key.png&#34; alt=&#34;VCO API Key&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vco-api-key.png&#34; alt=&#34;VCO API Key&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;velocloud-crd-definition&#34;&gt;Velocloud CRD definition&lt;/h1&gt;
 &lt;p&gt;Now, let’s start coding a very basic Velocloud CRD in a crd.yaml file:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nn&#34;&gt;---&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -565,7 +565,7 @@
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;97&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;JSONPath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;.spec.bandwidth-limit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;velocloud-kubernetes-operator&#34;&gt;Velocloud Kubernetes Operator&lt;/h1&gt;
 &lt;p&gt;Finally, we need an operator. Basically, we want Kubernetes to run our Velocloud operator when a CRD is created/updated/deleted. For that, we’ll create a deployment of a pod with 2 containers: the operator itself (which is going to talk to the Velocloud Orchestrator) and a kubectl proxy (to handle authentication).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://vcoffee.cloud/vko-architecture.png&#34; alt=&#34;VKO Architecture&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vko-architecture.png&#34; alt=&#34;VKO Architecture&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Let’s change again our crd.yaml file to include this deployment as part of the CRD definition:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nn&#34;&gt;---&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;apiVersion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;apps/v1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -886,7 +886,7 @@ So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my ap
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For my application velokube1.vcn.cloud, I want to have a RealTime Service Class, use all the available links, have a high QoS priority and no bandwidth limit.&lt;/p&gt;
 &lt;p&gt;For my application velokube2.vcn.cloud, I want to have a RealTime Service Class, use only Internet Links, have a High QoS priority and a bandwidth limit set to 40%.&lt;/p&gt;
 &lt;p&gt;Let’s check the Velocloud configuration:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://vcoffee.cloud/vco-profiles.png&#34; alt=&#34;VCO Profiles&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vco-profiles.png&#34; alt=&#34;VCO Profiles&#34;&gt;&lt;/p&gt;
 &lt;p&gt;And the operator logs&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;deleporte@adeleporte-a01 ns1 % kubectl logs operator-5bf4b944cd-tnfh9 app -n ns1
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;2020-07-21 13:14:51,674 Starting the service
@@ -916,7 +916,7 @@ So now, I’ll acting as a dev, let’s create a velocloud.yaml as part of my ap
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;velocloudbp.vcn.cloud/velokube1 unchanged
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;velocloudbp.vcn.cloud/velokube2 configured
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;adeleporte@adeleporte-a01 ns1 %
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://vcoffee.cloud/vco-profiles2.png&#34; alt=&#34;VCO Profiles&#34;&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vco-profiles2.png&#34; alt=&#34;VCO Profiles&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;set-some-limits-to-devs&#34;&gt;Set some limits to devs&lt;/h1&gt;
 &lt;p&gt;Now, let’s imagine that I want to change the bandwidth limit to 75%&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nn&#34;&gt;---&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;

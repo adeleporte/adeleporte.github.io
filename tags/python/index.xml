@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>python on vCoffee.cloud Blog</title>
-    <link>http://vcoffee.cloud/tags/python/</link>
+    <link>https://vcoffee.cloud/tags/python/</link>
     <description>Recent content in python on vCoffee.cloud Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 02 Mar 2020 17:07:15 +0100</lastBuildDate><atom:link href="http://vcoffee.cloud/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Mar 2020 17:07:15 +0100</lastBuildDate><atom:link href="https://vcoffee.cloud/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MIGRATE VMS FROM VMC TO ON-PREM WHILE KEEPING NSX SECURITY TAGS</title>
-      <link>http://vcoffee.cloud/posts/vmc-tags/</link>
+      <link>https://vcoffee.cloud/posts/vmc-tags/</link>
       <pubDate>Mon, 02 Mar 2020 17:07:15 +0100</pubDate>
       
-      <guid>http://vcoffee.cloud/posts/vmc-tags/</guid>
+      <guid>https://vcoffee.cloud/posts/vmc-tags/</guid>
       <description>
         
-          &lt;p&gt;&lt;img src=&#34;http://vcoffee.cloud/vmc-tags.png&#34; alt=&#34;VMC NSX tags&#34;&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vmc-tags.png&#34; alt=&#34;VMC NSX tags&#34;&gt;&lt;/p&gt;
 &lt;p&gt;In this post, we’re going to see how to script the migration of some workloads from VMC to a datacenter on-prem, leveraging HCX for a live migration.&lt;/p&gt;
 &lt;p&gt;At the time of this writing, HCX doesn’t copy the NSX tags when doing a VM migration. The following script is going to automate the following actions:&lt;/p&gt;
 &lt;ul&gt;
@@ -333,9 +333,9 @@
 &lt;span class=&#34;ln&#34;&gt;58&lt;/span&gt; 
 &lt;span class=&#34;ln&#34;&gt;59&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, let’s test our script. Here is the VM at source, before the migration:
-&lt;img src=&#34;http://vcoffee.cloud/hcx-tags-vm-source.png&#34; alt=&#34;VM at source, before the migration&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://vcoffee.cloud/hcx-tags-vm-source.png&#34; alt=&#34;VM at source, before the migration&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Some tags are applied to the VM
-&lt;img src=&#34;http://vcoffee.cloud/hcx-tags-vm-tags.png&#34; alt=&#34;tags at source, before the migration (scope = scope1, tag = tag1)&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://vcoffee.cloud/hcx-tags-vm-tags.png&#34; alt=&#34;tags at source, before the migration (scope = scope1, tag = tag1)&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Start our script:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;adeleporte@adeleporte-a01 hcx-tags % ./main.py
 &lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;Start migration process...
@@ -366,10 +366,10 @@
 &lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;Tag VM in NSX DC
 &lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;Migration process &lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The migration is started and the HCX console can be used to follow its progress.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://vcoffee.cloud/hcx-tags-migration1.png&#34; alt=&#34;HCX Migration&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/hcx-tags-migration1.png&#34; alt=&#34;HCX Migration&#34;&gt;&lt;/p&gt;
 &lt;p&gt;When the migration is finished, let’s connect on the DC NSX to check the tags&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://vcoffee.cloud/hcx-tags-migration2.png&#34; alt=&#34;HCX Migration&#34;&gt;
-&lt;img src=&#34;http://vcoffee.cloud/hcx-tags-migration3.png&#34; alt=&#34;Tags after migration&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/hcx-tags-migration2.png&#34; alt=&#34;HCX Migration&#34;&gt;
+&lt;img src=&#34;https://vcoffee.cloud/hcx-tags-migration3.png&#34; alt=&#34;Tags after migration&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer&#34;&gt;&lt;em&gt;DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer&lt;/em&gt;&lt;/h3&gt;
 
         

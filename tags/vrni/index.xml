@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vrni on vCoffee.cloud Blog</title>
-    <link>http://vcoffee.cloud/tags/vrni/</link>
+    <link>https://vcoffee.cloud/tags/vrni/</link>
     <description>Recent content in vrni on vCoffee.cloud Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 24 Aug 2020 17:07:15 +0100</lastBuildDate><atom:link href="http://vcoffee.cloud/tags/vrni/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Aug 2020 17:07:15 +0100</lastBuildDate><atom:link href="https://vcoffee.cloud/tags/vrni/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GET VRNI GRAPHS DIRECTLY FROM A KUBECTL VRNI COMMAND!</title>
-      <link>http://vcoffee.cloud/posts/vrni-plugin/</link>
+      <link>https://vcoffee.cloud/posts/vrni-plugin/</link>
       <pubDate>Mon, 24 Aug 2020 17:07:15 +0100</pubDate>
       
-      <guid>http://vcoffee.cloud/posts/vrni-plugin/</guid>
+      <guid>https://vcoffee.cloud/posts/vrni-plugin/</guid>
       <description>
         
-          &lt;p&gt;&lt;img src=&#34;http://vcoffee.cloud/vrni-plugin-cli.png&#34; alt=&#34;kubectl vrni plugin&#34;&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/vrni-plugin-cli.png&#34; alt=&#34;kubectl vrni plugin&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Hi, today in this blog, I’m going to explain how to develop a small kubectl plugin. As you may know, VMware has a wonderful solution to collect and analyze network flows from many different sources, including Kubernetes: vRealize Network Insight (aka vRNI). My objective is to make this rich information easily and quickly available to a kube admin, thanks to a kubectl command.&lt;/p&gt;
 &lt;p&gt;What I want to achieve in this part 1 is a kubectl vrni flow IP command that will display some charts representing the flows for this specific IP (source or destination). This information can help to troubleshoot any networking issue. I will handle Kubernetes POD to IP translation in part 2.&lt;/p&gt;
 &lt;p&gt;Here are the different steps to code:
-&lt;img src=&#34;http://vcoffee.cloud/vrni-plugin-steps.png&#34; alt=&#34;Steps&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://vcoffee.cloud/vrni-plugin-steps.png&#34; alt=&#34;Steps&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I’m going to develop this code in Go. Because we’ll have to deal with Kubernetes API in Part 2, Go is the best language to start with.&lt;/p&gt;
 &lt;p&gt;Let’s start by creating a client that we’ll use to speak to vRNI:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;ln&#34;&gt;  1&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;main&lt;/span&gt;
@@ -374,7 +374,7 @@
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;adeleporte@adeleporte-a01 adeleporte % mv kubectl-vrni /usr/local/bin
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;adeleporte@adeleporte-a01 adeleporte % 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should now be able to plot nice graphs by calling kubectl vrni flows and adding any IP:
-&lt;img src=&#34;http://vcoffee.cloud/vrni-plugin-cli.png&#34; alt=&#34;kubectl vrni plugin&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://vcoffee.cloud/vrni-plugin-cli.png&#34; alt=&#34;kubectl vrni plugin&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;disclaimer-the-views-and-opinions-expressed-on-this-blog-are-our-own-and-may-not-reflect-the-views-and-opinions-of-our-employer&#34;&gt;&lt;em&gt;DISCLAIMER: The views and opinions expressed on this blog are our own and may not reflect the views and opinions of our employer&lt;/em&gt;&lt;/h3&gt;
 
         
