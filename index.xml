@@ -26,11 +26,11 @@
 &lt;li&gt;&lt;a href=&#34;#step-6-create-a-small-web-server-in-go&#34;&gt;Step 6: Create a small Web Server in Go&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#step-7-bundle-everything-in-a-docker-image&#34;&gt;Step 7: Bundle everything in a docker image&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;step-0-install-nodejs-angular-and-golang-on-mac&#34;&gt;Step 0: Install Node.js, Angular and GoLang on Mac&lt;/h1&gt;
+&lt;h1 id=&#34;step-0-install-nodejs-angular-and-golang-on-mac&#34;&gt;Step 0: install Node.js, Angular and GoLang on Mac&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;brew install node
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;npm install -g @angular/cli
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For Go, check out &lt;a href=&#34;https://golang.org/doc/install&#34;&gt;https://golang.org/doc/install&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;step-1-build-a-new-app&#34;&gt;Step 1: Build a new app&lt;/h1&gt;
+&lt;h1 id=&#34;step-1-build-a-new-app&#34;&gt;Step 1: build a new app&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;ng new my-app --routing&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt; --style&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;css &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; my-app &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; ng add @clr/angular
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;code . &lt;span class=&#34;c1&#34;&gt;# if Visual Studio Code is installed&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;ng serve --live-reload --open
