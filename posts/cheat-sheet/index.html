@@ -11,14 +11,14 @@
 
 <meta property="og:type" content="article">
 <meta name="description" content="Here are some steps to build a Clarity Angular App :-)
-Step 1: Build a new app 1ng new my-app --routing=false --style=css &amp;&amp; cd my-app &amp;&amp; ng add …">
+ Step 0: Requirements installation Step 1: Build a new app Step 2: Add component and routing Step 3: Add …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="My cheat sheet" />
 <meta property="og:url" content="https://vcoffee.cloud/posts/cheat-sheet/" />
 <meta property="og:title" content="My cheat sheet" />
 <meta property="og:description" content="Here are some steps to build a Clarity Angular App :-)
-Step 1: Build a new app 1ng new my-app --routing=false --style=css &amp;&amp; cd my-app &amp;&amp; ng add …" />
+ Step 0: Requirements installation Step 1: Build a new app Step 2: Add component and routing Step 3: Add …" />
 <meta property="og:image" content="https://vcoffee.cloud/" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://vcoffee.cloud/icons/apple-touch-icon.png'>
 <link rel="icon" type="image/png" sizes="32x32" href='https://vcoffee.cloud/icons/favicon-32x32.png'>
@@ -161,9 +161,24 @@ Step 1: Build a new app 1ng new my-app --routing=false --style=css &amp;&amp; cd
 
     
     <p>Here are some steps to build a Clarity Angular App :-)</p>
+<ul>
+<li><a href="#Step-0:-Install-Node.js,-Angular-and-GoLang-on-Mac">Step 0: Requirements installation</a></li>
+<li><a href="#Step-1:-Build-a-new-app">Step 1: Build a new app</a></li>
+<li><a href="#Step-2:-add-components-and-routing">Step 2: Add component and routing</a></li>
+<li><a href="#Step-3:-add-Clarity-component-to-display-data">Step 3: Add Clarity component to display data</a></li>
+<li><a href="#Step-4:-add-services">Step 4: Add Services</a></li>
+<li><a href="#Step-5:-add-Clarity-component-to-display-data">Step 5: Add Clarity component to display data</a></li>
+<li><a href="#Step-6:-create-a-small-Web-Server-in-Go">Step 6: Create a small Web Server in Go</a></li>
+<li><a href="#Step-7:-bundle-everything-in-a-docker-image">Step 7: Bundle everything in a docker image</a></li>
+</ul>
+<h1 id="step-0-install-nodejs-angular-and-golang-on-mac">Step 0: Install Node.js, Angular and GoLang on Mac</h1>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>brew install node
+<span class="ln">2</span>npm install -g @angular/cli
+</code></pre></div><p>For Go, check out <a href="https://golang.org/doc/install">https://golang.org/doc/install</a></p>
 <h1 id="step-1-build-a-new-app">Step 1: Build a new app</h1>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>ng new my-app --routing<span class="o">=</span><span class="nb">false</span> --style<span class="o">=</span>css <span class="o">&amp;&amp;</span> <span class="nb">cd</span> my-app <span class="o">&amp;&amp;</span> ng add @clr/angular <span class="o">&amp;&amp;</span> code .
-<span class="ln">2</span>ng serve --live-reload --open
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>ng new my-app --routing<span class="o">=</span><span class="nb">false</span> --style<span class="o">=</span>css <span class="o">&amp;&amp;</span> <span class="nb">cd</span> my-app <span class="o">&amp;&amp;</span> ng add @clr/angular
+<span class="ln">2</span>code . <span class="c1"># if Visual Studio Code is installed</span>
+<span class="ln">3</span>ng serve --live-reload --open
 </code></pre></div><h1 id="step-2-add-components-and-routing">Step 2: add components and routing</h1>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>ng generate module app-routing --flat --module<span class="o">=</span>app
 <span class="ln">2</span>ng generate component comp1
