@@ -64,9 +64,9 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;mv terraform-provider-ctoa ~/.terraform.d/plugins/vmware.com/edu/ctoa/0.1/linux_amd64/terraform-provider-ctoa
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-start-the-webserver&#34;&gt;3. Start the webserver&lt;/h3&gt;
 &lt;p&gt;To start the webserver, go to the ctoa-web folder:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ..&lt;span class=&#34;se&#34;&gt;\f&lt;/span&gt;rontend&lt;span class=&#34;se&#34;&gt;\d&lt;/span&gt;ist&lt;span class=&#34;se&#34;&gt;\c&lt;/span&gt;toa-web&lt;span class=&#34;se&#34;&gt;\
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And start the web server:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\c&lt;/span&gt;to-api-linux
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ../frontend/dist/ctoa-web
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And start the web server:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;./cto-api-linux
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/web-server.png&#34; alt=&#34;web server&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Don&#39;t close the windows above.&lt;/p&gt;
 &lt;p&gt;Go to your browser on 127.0.0.1 and you should see a basic webserver.&lt;/p&gt;
