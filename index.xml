@@ -32,9 +32,19 @@
 &lt;p&gt;Docker installed on your machine&lt;/p&gt;
 &lt;h3 id=&#34;0-start-the-container&#34;&gt;0. Start the container&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;docker run -p 5901:5901 -p 6901:6901 -p 80:80 --user &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; adeleporte/terraform-hacknite:latest
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and open a desktop in a browser&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;http://127.0.0.1:6901/?password&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;vncpassword in a browser to get a full desktop with all requirements &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Visual Studio, GO, Terraform, Git&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/docker.png&#34; alt=&#34;docker&#34;&gt;&lt;/p&gt;
+&lt;p&gt;or you can use the vnc client embedded in Mac&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;go to Finder&lt;/li&gt;
+&lt;li&gt;click Go, then Connect to server&lt;/li&gt;
+&lt;li&gt;enter vnc://127.0.0.1:5901&lt;/li&gt;
+&lt;li&gt;password is vncpassword&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/finder.png&#34; alt=&#34;finder&#34;&gt;
+&lt;img src=&#34;https://vcoffee.cloud/connect.png&#34; alt=&#34;connect&#34;&gt;
+&lt;img src=&#34;https://vcoffee.cloud/vnc.png&#34; alt=&#34;vnc&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;1-cloning-the-repo&#34;&gt;1. Cloning the repo:&lt;/h3&gt;
 &lt;p&gt;From a terminal:&lt;/p&gt;
 &lt;p&gt;Clone the following &lt;a href=&#34;https://github.com/adeleporte/ctoa-hacknite.git&#34;&gt;repo&lt;/a&gt; with the following command:&lt;/p&gt;

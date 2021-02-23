@@ -169,9 +169,19 @@
 <p>Docker installed on your machine</p>
 <h3 id="0-start-the-container">0. Start the container</h3>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>docker run -p 5901:5901 -p 6901:6901 -p 80:80 --user <span class="m">0</span> adeleporte/terraform-hacknite:latest
-</code></pre></div><p>and</p>
+</code></pre></div><p>and open a desktop in a browser</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>http://127.0.0.1:6901/?password<span class="o">=</span>vncpassword in a browser to get a full desktop with all requirements <span class="nb">set</span> <span class="o">(</span>Visual Studio, GO, Terraform, Git<span class="o">)</span>
 </code></pre></div><p><img src="/docker.png" alt="docker"></p>
+<p>or you can use the vnc client embedded in Mac</p>
+<ul>
+<li>go to Finder</li>
+<li>click Go, then Connect to server</li>
+<li>enter vnc://127.0.0.1:5901</li>
+<li>password is vncpassword</li>
+</ul>
+<p><img src="/finder.png" alt="finder">
+<img src="/connect.png" alt="connect">
+<img src="/vnc.png" alt="vnc"></p>
 <h3 id="1-cloning-the-repo">1. Cloning the repo:</h3>
 <p>From a terminal:</p>
 <p>Clone the following <a href="https://github.com/adeleporte/ctoa-hacknite.git">repo</a> with the following command:</p>
