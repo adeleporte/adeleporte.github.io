@@ -31,58 +31,52 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;requirements&#34;&gt;Requirements:&lt;/h2&gt;
 &lt;p&gt;Docker installed on your machine&lt;/p&gt;
 &lt;h3 id=&#34;0-start-the-container&#34;&gt;0. Start the container&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;docker run -p 5901:5901 -p 6901:6901 -p 80:80 --user 0 adeleporte/terraform-hacknite:latest
-and&lt;/li&gt;
-&lt;li&gt;http://127.0.0.1:6901/?password=vncpassword in a browser to get a full desktop with all requirements set (Visual Studio, GO, Terraform, Git)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;docker.png&#34; alt=&#34;docker&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;docker run -p 5901:5901 -p 6901:6901 -p 80:80 --user &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; adeleporte/terraform-hacknite:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;http://127.0.0.1:6901/?password&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;vncpassword in a browser to get a full desktop with all requirements &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Visual Studio, GO, Terraform, Git&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;docker.png&#34; alt=&#34;docker&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;1-cloning-the-repo&#34;&gt;1. Cloning the repo:&lt;/h3&gt;
 &lt;p&gt;From a terminal:&lt;/p&gt;
-&lt;p&gt;Clone the following &lt;a href=&#34;https://github.com/adeleporte/ctoa-hacknite.git&#34;&gt;repo&lt;/a&gt; with the following command:&lt;br&gt;
-&lt;code&gt;git clone https://github.com/adeleporte/ctoa-hacknite.git&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Navigate to the Terraform folder:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;cd ctoa-hacknite/terraform-provider-ctoa&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Create a folder where the compiled provider will be moved to.&lt;/p&gt;
+&lt;p&gt;Clone the following &lt;a href=&#34;https://github.com/adeleporte/ctoa-hacknite.git&#34;&gt;repo&lt;/a&gt; with the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git clone https://github.com/adeleporte/ctoa-hacknite.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Navigate to the Terraform folder:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ctoa-hacknite/terraform-provider-ctoa
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Create a folder where the compiled provider will be moved to.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;If your physical machine is a MAC:
-&lt;code&gt;mkdir -p ~/.terraform.d/plugins/vmware.com/edu/ctoa/0.1/darwin_amd64&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;If your physical machine is a Linux:
-&lt;code&gt;mkdir -p ~/.terraform.d/plugins/vmware.com/edu/ctoa/0.1/linux_amd64&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;If your physical machine is a MAC:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;2-compiling-the-provider-and-moving-to-the-correct-folder&#34;&gt;2. Compiling the provider and moving to the correct folder:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;mkdir -p ~/.terraform.d/plugins/vmware.com/edu/ctoa/0.1/darwin_amd64
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;If your physical machine is a Linux:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;mkdir -p ~/.terraform.d/plugins/vmware.com/edu/ctoa/0.1/linux_amd64
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-compiling-the-provider-and-moving-to-the-correct-folder&#34;&gt;2. Compiling the provider and moving to the correct folder:&lt;/h3&gt;
 &lt;p&gt;Compile the provider:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;go build -o terraform-provider-ctoa&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Move the provider to the correct location:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;go build -o terraform-provider-ctoa
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Move the provider to the correct location:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;If your physical machine is a MAC:
-&lt;code&gt;mv terraform-provider-ctoa ~/.terraform.d/plugins/vmware.com/edu/ctoa/0.1/darwin_amd64/terraform-provider-ctoa&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;If your physical machine is a Linux:
-&lt;code&gt;mv terraform-provider-ctoa ~/.terraform.d/plugins/vmware.com/edu/ctoa/0.1/linux_amd64/terraform-provider-ctoa&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;If your physical machine is a MAC:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;3-start-the-webserver&#34;&gt;3. Start the webserver&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;mv terraform-provider-ctoa ~/.terraform.d/plugins/vmware.com/edu/ctoa/0.1/darwin_amd64/terraform-provider-ctoa
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;If your physical machine is a Linux:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;mv terraform-provider-ctoa ~/.terraform.d/plugins/vmware.com/edu/ctoa/0.1/linux_amd64/terraform-provider-ctoa
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-start-the-webserver&#34;&gt;3. Start the webserver&lt;/h3&gt;
 &lt;p&gt;To start the webserver, go to the ctoa-web folder:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;cd ..\frontend\dist\ctoa-web\&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;And start the web server:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;.\cto-api-linux&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;web-server.png&#34; alt=&#34;web server&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ..&lt;span class=&#34;se&#34;&gt;\f&lt;/span&gt;rontend&lt;span class=&#34;se&#34;&gt;\d&lt;/span&gt;ist&lt;span class=&#34;se&#34;&gt;\c&lt;/span&gt;toa-web&lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And start the web server:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\c&lt;/span&gt;to-api-linux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;web-server.png&#34; alt=&#34;web server&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Don&#39;t close the windows above.&lt;/p&gt;
 &lt;p&gt;Go to your browser on 127.0.0.1 and you should see a basic webserver.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;clarity-web-server-empty.png&#34; alt=&#34;web_server_pre_apply&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;4-deploy-and-manager-resources-with-your-custom-terraform-provider&#34;&gt;4. Deploy and manager resources with your custom Terraform provider&lt;/h3&gt;
 &lt;p&gt;From Visual Studio Code, navigate back to the Terraform folder:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;cd ctoa-hacknite/terraform-provider-ctoa&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Assuming you&#39;re in &lt;code&gt;terraform-provider-ctoa&lt;/code&gt; and in the same folder as the &lt;code&gt;main.tf&lt;/code&gt; file, the initialization should work:&lt;br&gt;
-&lt;code&gt;terraform init&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Update the &lt;code&gt;main.tf&lt;/code&gt; file with more resources. With this Terraform provider, every &#39;resource&#39; you will create is a user, with a first name and a last name. For example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ctoa-hacknite/terraform-provider-ctoa&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Assuming you&#39;re in &lt;code&gt;terraform-provider-ctoa&lt;/code&gt; and in the same folder as the &lt;code&gt;main.tf&lt;/code&gt; file, the initialization should work:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;terraform init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Update the &lt;code&gt;main.tf&lt;/code&gt; file with more resources. With this Terraform provider, every &#39;resource&#39; you will create is a user, with a first name and a last name. For example:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-hcl&#34; data-lang=&#34;hcl&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;resource&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;ctoa_people&amp;#34; &amp;#34;adeleporte&amp;#34;&lt;/span&gt; {
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;  first_name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Antoine&amp;#34;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;  last_name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Deleporte&amp;#34;&lt;/span&gt;
@@ -94,10 +88,10 @@ and&lt;/li&gt;
 &lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In the &lt;code&gt;main.tf&lt;/code&gt; file, we refer to the host as the webserver (&lt;code&gt;127.0.0.1&lt;/code&gt; is the client itself). That&#39;s the webserver currently running.&lt;/p&gt;
 &lt;p&gt;In your Terraform terminal, once the main.tf file is updated with the resources you are creating, do a:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;terraform plan&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;And a:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;terraform apply&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;And you should see new entries added to the table on the webserver.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;terraform plan
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And a:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;terraform apply
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And you should see new entries added to the table on the webserver.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;clarity-web-server-done.png&#34; alt=&#34;web_server_apply&#34;&gt;&lt;/p&gt;
 &lt;p&gt;A &lt;code&gt;terraform destroy&lt;/code&gt; will remove all entries from the table.&lt;/p&gt;
 &lt;p&gt;Try to modify the resources by changing the first name or the second name of the resources. When you run a &lt;code&gt;terraform plan&lt;/code&gt;, you can see that the resource is not deleted and re-created by the change, but updated-in-place.&lt;/p&gt;
