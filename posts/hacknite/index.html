@@ -171,7 +171,7 @@
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>docker run -p 5901:5901 -p 6901:6901 -p 80:80 --user <span class="m">0</span> adeleporte/terraform-hacknite:latest
 </code></pre></div><p>and</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>http://127.0.0.1:6901/?password<span class="o">=</span>vncpassword in a browser to get a full desktop with all requirements <span class="nb">set</span> <span class="o">(</span>Visual Studio, GO, Terraform, Git<span class="o">)</span>
-</code></pre></div><p><img src="docker.png" alt="docker"></p>
+</code></pre></div><p><img src="/docker.png" alt="docker"></p>
 <h3 id="1-cloning-the-repo">1. Cloning the repo:</h3>
 <p>From a terminal:</p>
 <p>Clone the following <a href="https://github.com/adeleporte/ctoa-hacknite.git">repo</a> with the following command:</p>
@@ -204,10 +204,10 @@
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span><span class="nb">cd</span> ..<span class="se">\f</span>rontend<span class="se">\d</span>ist<span class="se">\c</span>toa-web<span class="se">\
 </span></code></pre></div><p>And start the web server:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>.<span class="se">\c</span>to-api-linux
-</code></pre></div><p><img src="web-server.png" alt="web server"></p>
+</code></pre></div><p><img src="/web-server.png" alt="web server"></p>
 <p>Don't close the windows above.</p>
 <p>Go to your browser on 127.0.0.1 and you should see a basic webserver.</p>
-<p><img src="clarity-web-server-empty.png" alt="web_server_pre_apply"></p>
+<p><img src="/clarity-web-server-empty.png" alt="web_server_pre_apply"></p>
 <h3 id="4-deploy-and-manager-resources-with-your-custom-terraform-provider">4. Deploy and manager resources with your custom Terraform provider</h3>
 <p>From Visual Studio Code, navigate back to the Terraform folder:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span><span class="nb">cd</span> ctoa-hacknite/terraform-provider-ctoa<span class="sb">`</span>
@@ -229,7 +229,7 @@
 </code></pre></div><p>And a:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>terraform apply
 </code></pre></div><p>And you should see new entries added to the table on the webserver.</p>
-<p><img src="clarity-web-server-done.png" alt="web_server_apply"></p>
+<p><img src="/clarity-web-server-done.png" alt="web_server_apply"></p>
 <p>A <code>terraform destroy</code> will remove all entries from the table.</p>
 <p>Try to modify the resources by changing the first name or the second name of the resources. When you run a <code>terraform plan</code>, you can see that the resource is not deleted and re-created by the change, but updated-in-place.</p>
 <p>Well done for building your own custom Terraform provider!</p>
