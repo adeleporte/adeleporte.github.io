@@ -57,9 +57,6 @@
 &lt;p&gt;Compile the provider:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;go build -o terraform-provider-ctoa
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Move the provider to the correct location:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;If your physical machine is a Linux:&lt;/li&gt;
-&lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;mv terraform-provider-ctoa ~/.terraform.d/plugins/vmware.com/edu/ctoa/0.1/linux_amd64/terraform-provider-ctoa
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-start-the-webserver&#34;&gt;3. Start the webserver&lt;/h3&gt;
 &lt;p&gt;To start the webserver, go to the ctoa-web folder:&lt;/p&gt;
