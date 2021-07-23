@@ -3,42 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vcoffee.cloud/tags/angular/</loc>
+    <lastmod>2021-07-23T17:07:15+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vcoffee.cloud/tags/clarity/</loc>
+    <lastmod>2021-07-23T17:07:15+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vcoffee.cloud/tags/code/</loc>
+    <lastmod>2021-07-23T17:07:15+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vcoffee.cloud/posts/</loc>
+    <lastmod>2021-07-23T17:07:15+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vcoffee.cloud/tags/</loc>
+    <lastmod>2021-07-23T17:07:15+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vcoffee.cloud/posts/varcade/</loc>
+    <lastmod>2021-07-23T17:07:15+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vcoffee.cloud/</loc>
+    <lastmod>2021-07-23T17:07:15+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vcoffee.cloud/posts/hacknite/</loc>
     <lastmod>2021-02-23T15:04:17+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vcoffee.cloud/posts/</loc>
-    <lastmod>2021-02-23T15:04:17+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vcoffee.cloud/</loc>
-    <lastmod>2021-02-23T15:04:17+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vcoffee.cloud/tags/angular/</loc>
-    <lastmod>2021-01-25T17:07:15+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vcoffee.cloud/tags/clarity/</loc>
-    <lastmod>2021-01-25T17:07:15+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vcoffee.cloud/tags/code/</loc>
-    <lastmod>2021-01-25T17:07:15+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://vcoffee.cloud/posts/cheat-sheet/</loc>
-    <lastmod>2021-01-25T17:07:15+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vcoffee.cloud/tags/</loc>
     <lastmod>2021-01-25T17:07:15+01:00</lastmod>
   </url>
   
@@ -120,10 +125,6 @@
   <url>
     <loc>https://vcoffee.cloud/posts/velocloud-ansible/</loc>
     <lastmod>2020-02-27T17:07:15+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vcoffee.cloud/posts/varcade/</loc>
   </url>
   
   <url>
