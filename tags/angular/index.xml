@@ -19,7 +19,7 @@
 &lt;em&gt;We are still working on it and expect to release the first version early September. &lt;strong&gt;Stay tuned!&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;why-scripts-arcade-&#34;&gt;Why &amp;quot;Scripts Arcade&amp;quot; ?&lt;/h2&gt;
 &lt;p&gt;What do people like in arcade gaming? Simplicity. Choose your game, insert a coin, play. There are only 3 simple steps with no complex setup, no specific prerequisites, nothing to install on your computer.&lt;/p&gt;
-&lt;p&gt;What if you could consume infrastructure automation as simple as that? With vArcade, we’ve got you covered.&lt;/p&gt;
+&lt;p&gt;What if you could consume infrastructure automation as simple as that? With &amp;quot;Scripts Arcade&amp;quot;, we’ve got you covered.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;We want to make automation easy. We want to make automation fun.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -39,7 +39,7 @@
 &lt;p&gt;There is nothing to install on your computer.&lt;/p&gt;
 &lt;p&gt;Download and install the OVA package. It’s based on Photon OS with virtual hardware version 13, so hopefully, it’s compatible with a lot of ESXi, Workstation and Fusion versions.&lt;/p&gt;
 &lt;p&gt;Once powered on, you can access the Web UI (HTTPS/443) on the VM IP. You can then login using the credentials you provided at install.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/varcade-login.png&#34; alt=&#34;varcade-login&#34; title=&#34;vArcade Login Page&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/varcade-login.png&#34; alt=&#34;varcade-login&#34; title=&#34;Scripts Arcade Login Page&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;play&#34;&gt;Play&lt;/h2&gt;
 &lt;h3 id=&#34;step-1--in-the-playstore-find-an-interesting-automation-script-youd-like-to-run&#34;&gt;Step 1 : In the Playstore, find an interesting automation script you’d like to run&lt;/h3&gt;
 &lt;p&gt;The user is presented a list of scripts that are available to run from the interface.&lt;/p&gt;
