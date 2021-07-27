@@ -8,7 +8,7 @@
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Fri, 23 Jul 2021 17:07:15 +0100</lastBuildDate><atom:link href="https://vcoffee.cloud/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>vArcade – An exclusive preview</title>
+      <title>Scripts Arcade – An exclusive preview</title>
       <link>https://vcoffee.cloud/posts/varcade/</link>
       <pubDate>Fri, 23 Jul 2021 17:07:15 +0100</pubDate>
       
@@ -17,24 +17,24 @@
         
           &lt;p&gt;Here is our new project.
 &lt;em&gt;We are still working on it and expect to release the first version early September. &lt;strong&gt;Stay tuned!&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;why-varcade&#34;&gt;Why vArcade&lt;/h2&gt;
+&lt;h2 id=&#34;why-scripts-arcade-&#34;&gt;Why &amp;quot;Scripts Arcade&amp;quot; ?&lt;/h2&gt;
 &lt;p&gt;What do people like in arcade gaming? Simplicity. Choose your game, insert a coin, play. There are only 3 simple steps with no complex setup, no specific prerequisites, nothing to install on your computer.&lt;/p&gt;
 &lt;p&gt;What if you could consume infrastructure automation as simple as that? With vArcade, we’ve got you covered.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;We want to make automation easy. We want to make automation fun.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Traditionally, when you want to start with automation there is a lot to learn and a slow learning curve. Of course, a ton of great VMware automation content is available on the web, from bloggers that are truly inspirational for us, to the VMware Code sample exchange. But they are difficult to consume for newbees, all using different tooling or scripting languages.&lt;/p&gt;
-&lt;p&gt;vArcade allows you to demonstrate the automation capabilities of VMware products easily and quickly to your team, to your customer, to your boss… You don’t need to learn how the APIs works, a programming/scripting/automation language, nor to install anything on your computer. You either don’t need to download a script somewhere on your computer, look at the instructions file, install the required packages and dependencies, adapt the instructions whether you are running on Windows, Mac or Linux, customize it in a text editor, and s.o.&lt;/p&gt;
+&lt;p&gt;&amp;quot;Scripts Arcade&amp;quot; allows you to demonstrate the automation capabilities of VMware products easily and quickly to your team, to your customer, to your boss… You don’t need to learn how the APIs works, a programming/scripting/automation language, nor to install anything on your computer. You either don’t need to download a script somewhere on your computer, look at the instructions file, install the required packages and dependencies, adapt the instructions whether you are running on Windows, Mac or Linux, customize it in a text editor, and s.o.&lt;/p&gt;
 &lt;p&gt;We’ve tried to make infrastructure automation as easy as playing an arcade game.&lt;/p&gt;
-&lt;h2 id=&#34;varcade-principles&#34;&gt;vArcade principles&lt;/h2&gt;
-&lt;p&gt;vArcade provides a simple web user interface to deploy community pre-built automation scripts. It only requires 3 simple steps to run a script:&lt;/p&gt;
+&lt;h2 id=&#34;scripts-arcade-principles&#34;&gt;&amp;quot;Scripts Arcade&amp;quot; principles&lt;/h2&gt;
+&lt;p&gt;&amp;quot;Scripts Arcade&amp;quot; provides a simple web user interface to deploy community pre-built automation scripts. It only requires 3 simple steps to run a script:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Select a script in the Playstore,&lt;/li&gt;
 &lt;li&gt;customize the variables,&lt;/li&gt;
 &lt;li&gt;run it.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;A collection of scripts is included and ready to use in the interface. We provide automation demo content for VMware solutions, including NSX-T, VMware SD-WAN, HCX and NSX Advanced Load Balancer.&lt;/p&gt;
-&lt;p&gt;vArcade support scripts written in major automation languages (i.e. Terraform, Ansible, Python, Bash, Powershell…).&lt;/p&gt;
+&lt;p&gt;&amp;quot;Scripts Arcade&amp;quot; supports scripts written in major automation languages (i.e. Terraform, Ansible, Python, Bash, Powershell…).&lt;/p&gt;
 &lt;h2 id=&#34;getting-started&#34;&gt;Getting started&lt;/h2&gt;
 &lt;p&gt;There is nothing to install on your computer.&lt;/p&gt;
 &lt;p&gt;Download and install the OVA package. It’s based on Photon OS with virtual hardware version 13, so hopefully, it’s compatible with a lot of ESXi, Workstation and Fusion versions.&lt;/p&gt;
@@ -43,19 +43,19 @@
 &lt;h2 id=&#34;play&#34;&gt;Play&lt;/h2&gt;
 &lt;h3 id=&#34;step-1--in-the-playstore-find-an-interesting-automation-script-youd-like-to-run&#34;&gt;Step 1 : In the Playstore, find an interesting automation script you’d like to run&lt;/h3&gt;
 &lt;p&gt;The user is presented a list of scripts that are available to run from the interface.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/varcade-playstore.png&#34; alt=&#34;varcade-playstore&#34; title=&#34;vArcade Playstore Page&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/varcade-playstore.png&#34; alt=&#34;varcade-playstore&#34; title=&#34;Scripts Arcade Playstore Page&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;step-2--fill-the-required-input-variables&#34;&gt;Step 2 : Fill the required input variables&lt;/h3&gt;
 &lt;p&gt;Then user is prompted to fill the list of necessary variables (example : NSX Manager IP, login and password). The Graphical interface will adapt to the requested script, building the web UI on the fly.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/varcade-variables.png&#34; alt=&#34;varcade-variables&#34; title=&#34;vArcade variables Page&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/varcade-variables.png&#34; alt=&#34;varcade-variables&#34; title=&#34;Scripts Arcade variables Page&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;step-3--review-the-generated-code-and-hit-the-actions-buttons-to-run-it-&#34;&gt;Step 3 : review the generated code and hit the actions buttons to run it !&lt;/h3&gt;
-&lt;p&gt;And that’s it. vArcade will generate the code. Just observe the code running.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/varcade-run.png&#34; alt=&#34;varcade-playstore&#34; title=&#34;vArcade run Page&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;varcade-needs-you&#34;&gt;vArcade needs you&lt;/h2&gt;
-&lt;p&gt;We’d like everyone to join and contribute to the vArcade Playstore. We try to keep things readable so that everyone could contribute. vArcade Playstore is maintained on our github repository. It’s just an easy to read and update JSON file. When someone publishes a script, he needs to fill a datamodel form in order to describe the variables requested by the script. And that&#39;s it.&lt;/p&gt;
-&lt;p&gt;Please note : Currently the project is open only to the main team. If you like to see your automation scripts in vArcade Playstore please drop us a message.&lt;/p&gt;
+&lt;p&gt;And that’s it. &amp;quot;Scripts Arcade&amp;quot; will generate the code. Just observe the code running.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vcoffee.cloud/varcade-run.png&#34; alt=&#34;varcade-playstore&#34; title=&#34;Scripts Arcade run Page&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;scripts-arcade-needs-you&#34;&gt;&amp;quot;Scripts Arcade&amp;quot; needs you&lt;/h2&gt;
+&lt;p&gt;We’d like everyone to join and contribute to the &amp;quot;Scripts Arcade&amp;quot; Playstore. We try to keep things readable so that everyone could contribute. &amp;quot;Scripts Arcade&amp;quot; Playstore is maintained on our github repository. It’s just an easy to read and update JSON file. When someone publishes a script, he needs to fill a datamodel form in order to describe the variables requested by the script. And that&#39;s it.&lt;/p&gt;
+&lt;p&gt;Please note : Currently the project is open only to the main team. If you like to see your automation scripts in &amp;quot;Scripts Arcade&amp;quot; Playstore please drop us a message.&lt;/p&gt;
 &lt;h2 id=&#34;wait-there-is-more&#34;&gt;Wait, there is more&lt;/h2&gt;
 &lt;p&gt;We learn a lot creating this new projet and we can&#39;t wait to share more with you. Other posts are coming.&lt;/p&gt;
-&lt;p&gt;And yes, vArcade runs in Dark Mode ;-)&lt;/p&gt;
+&lt;p&gt;And yes, &amp;quot;Scripts Arcade&amp;quot; runs in Dark Mode ;-)&lt;/p&gt;
 
         
       </description>
